@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ninja Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/admin.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand-row">
+      <div class="brand">Ninja Admin</div>
+      <button class="sidebar-toggle" type="button" aria-label="Toggle sidebar">☰</button>
+    </div>
+    <nav class="nav">
+      <a href="/dashboard" class="{% if not active_resource %}active{% endif %}"><span>Overview</span></a>
+      <a href="/dashboard/users" class="{% if active_resource == 'users' %}active{% endif %}"><span>Users</span></a>
+      <a href="/dashboard/categories" class="{% if active_resource == 'categories' %}active{% endif %}"><span>Categories</span></a>
+      <a href="/dashboard/products" class="{% if active_resource == 'products' %}active{% endif %}"><span>Products</span></a>
+      <a href="/dashboard/contacts" class="{% if active_resource == 'contacts' %}active{% endif %}"><span>Contacts</span></a>
+      <a href="/dashboard/front-sections" class="{% if active_resource == 'front-sections' %}active{% endif %}"><span>Front Sections</span></a>
+      <a href="/dashboard/multi-sections" class="{% if active_resource == 'multi-sections' %}active{% endif %}"><span>Multi Sections</span></a>
+      <a href="/dashboard/slider" class="{% if active_resource == 'slider' %}active{% endif %}"><span>Slider</span></a>
+      <a href="/dashboard/new-home-blocks" class="{% if active_resource == 'new-home-blocks' %}active{% endif %}"><span>New Home Blocks</span></a>
+      <a href="/dashboard/background-tasks" class="{% if active_resource == 'background-tasks' %}active{% endif %}"><span>Background Tasks</span></a>
+    </nav>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1>FastAPI Ninja Dashboard</h1>
+        {% if active_resource %}
+          <div class="page-label">{{ resource_labels.get(active_resource, active_resource|replace('-', ' ')|title) }}</div>
+        {% endif %}
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span class="badge">Storefront Admin</span>
+        <a href="/admin/logout" class="button-link secondary-btn">Logout</a>
+      </div>
+    </header>
+
+    {% if not active_resource %}
+    <section id="overview" class="card-grid">
+      <div class="stat-card">
+        <span class="label">Users</span>
+        <span class="value">{{ users|length }}</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Categories</span>
+        <span class="value">{{ categories|length }}</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Products</span>
+        <span class="value">{{ products|length }}</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Contacts</span>
+        <span class="value">{{ contacts|length }}</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Front Sections</span>
+        <span class="value">{{ front_sections|length }}</span>
+      </div>
+      <div class="stat-card">
+        <span class="label">Background Tasks</span>
+        <span class="value">{{ background_tasks|length }}</span>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if not active_resource or active_resource == 'users' %}
+    <section id="users" class="panel">
+      <div class="section-header">
+        <h2>Users</h2>
+        <form method="get" action="/dashboard/users" class="admin-form" style="display:flex;gap:8px;align-items:center;">
+          <input type="text" name="users_search" value="{{ page_meta.users.search }}" placeholder="Search users" style="max-width:220px;">
+          <button type="submit" class="secondary-btn">Search</button>
+        </form>
+      </div>
+      <form action="/admin/save/user" method="post" class="admin-form">
+        <input type="hidden" name="resource_id" value="{{ selected_items.get('user').id if selected_items.get('user') else '' }}">
+        <div class="form-grid">
+          <label>Name
+            <input type="text" name="name" value="{{ selected_items.get('user').name if selected_items.get('user') else '' }}" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" value="{{ selected_items.get('user').email if selected_items.get('user') else '' }}" required>
+          </label>
+          <label>Mobile Number
+            <input type="text" name="mobile_no" value="{{ selected_items.get('user').mobile_no if selected_items.get('user') else '' }}">
+          </label>
+          <label>Password
+            <input type="password" name="password" placeholder="{{ 'Leave blank to keep current password' if selected_items.get('user') else 'Enter password' }}">
+          </label>
+        </div>
+        <div class="form-actions" style="justify-content:flex-start;">
+          <button type="submit" class="primary-btn">{{ 'Update user' if selected_items.get('user') else 'Create user' }}</button>
+          {% if selected_items.get('user') %}
+            <a href="/dashboard/users" class="button-link secondary-btn">Cancel</a>
+          {% endif %}
+        </div>
+      </form>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Email</th><th>Mobile</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            {% for user in users %}
+              <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.mobile_no or '—' }}</td>
+                <td class="action-links">
+                  <a href="/dashboard/users?edit=user&id={{ user.id }}#users">Edit</a>
+                  <form class="inline-form" action="/admin/delete/user/{{ user.id }}" method="post">
+                    <button type="submit" class="danger-btn">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="form-actions" style="justify-content:space-between;">
+        <span>{{ page_meta.users.total }} results</span>
+        <div class="action-links">
+          {% if page_meta.users.page > 1 %}
+            <a href="/dashboard/users?users_page={{ page_meta.users.page - 1 }}&users_search={{ page_meta.users.search }}#users">Previous</a>
+          {% endif %}
+          <span>Page {{ page_meta.users.page }} / {{ page_meta.users.pages }}</span>
+          {% if page_meta.users.page < page_meta.users.pages %}
+            <a href="/dashboard/users?users_page={{ page_meta.users.page + 1 }}&users_search={{ page_meta.users.search }}#users">Next</a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if not active_resource or active_resource == 'categories' %}
+    <section id="categories" class="panel">
+      <div class="section-header">
+        <h2>Categories</h2>
+        <form method="get" action="/dashboard/categories" class="admin-form" style="display:flex;gap:8px;align-items:center;">
+          <input type="text" name="categories_search" value="{{ page_meta.categories.search }}" placeholder="Search categories" style="max-width:220px;">
+          <button type="submit" class="secondary-btn">Search</button>
+        </form>
+      </div>
+      <form action="/admin/save/category" method="post" class="admin-form">
+        <input type="hidden" name="resource_id" value="{{ selected_items.get('category').id if selected_items.get('category') else '' }}">
+        <div class="form-grid">
+          <label>Name
+            <input type="text" name="name" value="{{ selected_items.get('category').name if selected_items.get('category') else '' }}" required>
+          </label>
+          <label>Slug
+            <input type="text" name="slug" value="{{ selected_items.get('category').slug if selected_items.get('category') else '' }}" required>
+          </label>
+          <label>Parent ID
+            <input type="number" name="parent_id" value="{{ selected_items.get('category').parent_id if selected_items.get('category') else '' }}">
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="status" {% if not selected_items.get('category') or selected_items.get('category').status %}checked{% endif %}>
+            Active
+          </label>
+        </div>
+        <div class="form-grid" style="margin-top:12px;">
+          <label style="grid-column:1/-1;">Description
+            <textarea name="description">{{ selected_items.get('category').description if selected_items.get('category') else '' }}</textarea>
+          </label>
+        </div>
+        <div class="form-actions" style="justify-content:flex-start;">
+          <button type="submit" class="primary-btn">{{ 'Update category' if selected_items.get('category') else 'Create category' }}</button>
+          {% if selected_items.get('category') %}
+            <a href="/dashboard/categories" class="button-link secondary-btn">Cancel</a>
+          {% endif %}
+        </div>
+      </form>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Slug</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            {% for category in categories %}
+              <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>{{ category.slug }}</td>
+                <td>{{ 'Active' if category.status else 'Inactive' }}</td>
+                <td class="action-links">
+                  <a href="/dashboard/categories?edit=category&id={{ category.id }}#categories">Edit</a>
+                  <form class="inline-form" action="/admin/delete/category/{{ category.id }}" method="post">
+                    <button type="submit" class="danger-btn">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="form-actions" style="justify-content:space-between;">
+        <span>{{ page_meta.categories.total }} results</span>
+        <div class="action-links">
+          {% if page_meta.categories.page > 1 %}
+            <a href="/dashboard/categories?categories_page={{ page_meta.categories.page - 1 }}&categories_search={{ page_meta.categories.search }}#categories">Previous</a>
+          {% endif %}
+          <span>Page {{ page_meta.categories.page }} / {{ page_meta.categories.pages }}</span>
+          {% if page_meta.categories.page < page_meta.categories.pages %}
+            <a href="/dashboard/categories?categories_page={{ page_meta.categories.page + 1 }}&categories_search={{ page_meta.categories.search }}#categories">Next</a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if not active_resource or active_resource == 'products' %}
+    <section id="products" class="panel">
+      <div class="section-header">
+        <h2>Products</h2>
+        <form method="get" action="/dashboard/products" class="admin-form" style="display:flex;gap:8px;align-items:center;">
+          <input type="text" name="products_search" value="{{ page_meta.products.search }}" placeholder="Search products" style="max-width:220px;">
+          <button type="submit" class="secondary-btn">Search</button>
+        </form>
+      </div>
+      <form action="/admin/save/product" method="post" enctype="multipart/form-data" class="admin-form">
+        <input type="hidden" name="resource_id" value="{{ selected_items.get('product').id if selected_items.get('product') else '' }}">
+        <div class="form-grid">
+          <label>Name
+            <input type="text" name="name" value="{{ selected_items.get('product').name if selected_items.get('product') else '' }}" required>
+          </label>
+          <label>Price
+            <input type="number" step="0.01" name="price" value="{{ selected_items.get('product').price if selected_items.get('product') else '' }}" required>
+          </label>
+          <label>SKU
+            <input type="text" name="sku" value="{{ selected_items.get('product').sku if selected_items.get('product') else '' }}" required>
+          </label>
+          <label>Category ID
+            <input type="number" name="category_id" value="{{ selected_items.get('product').category_id if selected_items.get('product') else '' }}" required>
+          </label>
+          <label>Instagram Link
+            <input type="url" name="instagram_link" value="{{ selected_items.get('product').instagram_link if selected_items.get('product') else '' }}">
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="status" {% if not selected_items.get('product') or selected_items.get('product').status %}checked{% endif %}>
+            Active
+          </label>
+        </div>
+        <div class="form-grid" style="margin-top:12px;">
+          <label style="grid-column:1/-1;">Description
+            <textarea name="description">{{ selected_items.get('product').description if selected_items.get('product') else '' }}</textarea>
+          </label>
+          <label>Category Image
+            <input type="file" name="cat_image" accept="image/*">
+          </label>
+          <label>Product Image 1
+            <input type="file" name="image_1" accept="image/*">
+          </label>
+          <label>Product Image 2
+            <input type="file" name="image_2" accept="image/*">
+          </label>
+          <label>Product Image 3
+            <input type="file" name="image_3" accept="image/*">
+          </label>
+          <label>Product Image 4
+            <input type="file" name="image_4" accept="image/*">
+          </label>
+        </div>
+        <div class="form-actions" style="justify-content:flex-start;">
+          <button type="submit" class="primary-btn">{{ 'Update product' if selected_items.get('product') else 'Create product' }}</button>
+          {% if selected_items.get('product') %}
+            <a href="/dashboard/products" class="button-link secondary-btn">Cancel</a>
+          {% endif %}
+        </div>
+      </form>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Price</th><th>SKU</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            {% for product in products %}
+              <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.sku }}</td>
+                <td class="action-links">
+                  <a href="/dashboard/products?edit=product&id={{ product.id }}#products">Edit</a>
+                  <form class="inline-form" action="/admin/delete/product/{{ product.id }}" method="post">
+                    <button type="submit" class="danger-btn">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="form-actions" style="justify-content:space-between;">
+        <span>{{ page_meta.products.total }} results</span>
+        <div class="action-links">
+          {% if page_meta.products.page > 1 %}
+            <a href="/dashboard/products?products_page={{ page_meta.products.page - 1 }}&products_search={{ page_meta.products.search }}#products">Previous</a>
+          {% endif %}
+          <span>Page {{ page_meta.products.page }} / {{ page_meta.products.pages }}</span>
+          {% if page_meta.products.page < page_meta.products.pages %}
+            <a href="/dashboard/products?products_page={{ page_meta.products.page + 1 }}&products_search={{ page_meta.products.search }}#products">Next</a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if not active_resource or active_resource == 'contacts' %}
+    <section id="contacts" class="panel">
+      <div class="section-header">
+        <h2>Contacts</h2>
+        <form method="get" action="/dashboard/contacts" class="admin-form" style="display:flex;gap:8px;align-items:center;">
+          <input type="text" name="contacts_search" value="{{ page_meta.contacts.search }}" placeholder="Search contacts" style="max-width:220px;">
+          <button type="submit" class="secondary-btn">Search</button>
+        </form>
+      </div>
+      <form action="/admin/save/contact" method="post" class="admin-form">
+        <input type="hidden" name="resource_id" value="{{ selected_items.get('contact').id if selected_items.get('contact') else '' }}">
+        <div class="form-grid">
+          <label>Name
+            <input type="text" name="name" value="{{ selected_items.get('contact').name if selected_items.get('contact') else '' }}" required>
+          </label>
+          <label>Email
+            <input type="email" name="email" value="{{ selected_items.get('contact').email if selected_items.get('contact') else '' }}" required>
+          </label>
+          <label>Phone
+            <input type="text" name="phone" value="{{ selected_items.get('contact').phone if selected_items.get('contact') else '' }}" required>
+          </label>
+          <label>URL
+            <input type="url" name="url" value="{{ selected_items.get('contact').url if selected_items.get('contact') else '' }}">
+          </label>
+        </div>
+        <div class="form-grid" style="margin-top:12px;">
+          <label style="grid-column:1/-1;">Query
+            <textarea name="query" required>{{ selected_items.get('contact').query if selected_items.get('contact') else '' }}</textarea>
+          </label>
+        </div>
+        <div class="form-actions" style="justify-content:flex-start;">
+          <button type="submit" class="primary-btn">{{ 'Update contact' if selected_items.get('contact') else 'Create contact' }}</button>
+          {% if selected_items.get('contact') %}
+            <a href="/dashboard/contacts" class="button-link secondary-btn">Cancel</a>
+          {% endif %}
+        </div>
+      </form>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Email</th><th>Phone</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            {% for contact in contacts %}
+              <tr>
+                <td>{{ contact.id }}</td>
+                <td>{{ contact.name }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phone }}</td>
+                <td class="action-links">
+                  <a href="/dashboard/contacts?edit=contact&id={{ contact.id }}#contacts">Edit</a>
+                  <form class="inline-form" action="/admin/delete/contact/{{ contact.id }}" method="post">
+                    <button type="submit" class="danger-btn">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="form-actions" style="justify-content:space-between;">
+        <span>{{ page_meta.contacts.total }} results</span>
+        <div class="action-links">
+          {% if page_meta.contacts.page > 1 %}
+            <a href="/dashboard/contacts?contacts_page={{ page_meta.contacts.page - 1 }}&contacts_search={{ page_meta.contacts.search }}#contacts">Previous</a>
+          {% endif %}
+          <span>Page {{ page_meta.contacts.page }} / {{ page_meta.contacts.pages }}</span>
+          {% if page_meta.contacts.page < page_meta.contacts.pages %}
+            <a href="/dashboard/contacts?contacts_page={{ page_meta.contacts.page + 1 }}&contacts_search={{ page_meta.contacts.search }}#contacts">Next</a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if not active_resource or active_resource == 'front-sections' %}
+    <section id="front-sections" class="panel">
+      <div class="section-header">
+        <h2>Front Sections</h2>
+        <form method="get" action="/dashboard/front-sections" class="admin-form" style="display:flex;gap:8px;align-items:center;">
+          <input type="text" name="front_sections_search" value="{{ page_meta.front_sections.search }}" placeholder="Search front sections" style="max-width:220px;">
+          <button type="submit" class="secondary-btn">Search</button>
+        </form>
+      </div>
+      <form action="/admin/save/front_section" method="post" enctype="multipart/form-data" class="admin-form">
+        <input type="hidden" name="resource_id" value="{{ selected_items.get('front_section').id if selected_items.get('front_section') else '' }}">
+        <div class="form-grid">
+          <label>Block
+            <input type="number" name="block" value="{{ selected_items.get('front_section').block if selected_items.get('front_section') else '1' }}" required>
+          </label>
+          <label>Section
+            <input type="number" name="section" value="{{ selected_items.get('front_section').section if selected_items.get('front_section') else '1' }}" required>
+          </label>
+          <label>Name
+            <input type="text" name="name" value="{{ selected_items.get('front_section').name if selected_items.get('front_section') else '' }}">
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="status" {% if not selected_items.get('front_section') or selected_items.get('front_section').status %}checked{% endif %}>
+            Active
+          </label>
+          <label>Primary Image
+            <input type="file" name="image_primary" accept="image/*">
+          </label>
+          <label>Hover Image
+            <input type="file" name="image_hover" accept="image/*">
+          </label>
+        </div>
+        <div class="form-actions" style="justify-content:flex-start;">
+          <button type="submit" class="primary-btn">{{ 'Update front section' if selected_items.get('front_section') else 'Create front section' }}</button>
+          {% if selected_items.get('front_section') %}
+            <a href="/dashboard/front-sections" class="button-link secondary-btn">Cancel</a>
+          {% endif %}
+        </div>
+      </form>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Block</th><th>Section</th><th>Name</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            {% for section in front_sections %}
+              <tr>
+                <td>{{ section.id }}</td>
+                <td>{{ section.block }}</td>
+                <td>{{ section.section }}</td>
+                <td>{{ section.name or '—' }}</td>
+                <td class="action-links">
+                  <a href="/dashboard/front-sections?edit=front_section&id={{ section.id }}#front-sections">Edit</a>
+                  <form class="inline-form" action="/admin/delete/front_section/{{ section.id }}" method="post">
+                    <button type="submit" class="danger-btn">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="form-actions" style="justify-content:space-between;">
+        <span>{{ page_meta.front_sections.total }} results</span>
+        <div class="action-links">
+          {% if page_meta.front_sections.page > 1 %}
+            <a href="/dashboard/front-sections?front_sections_page={{ page_meta.front_sections.page - 1 }}&front_sections_search={{ page_meta.front_sections.search }}#front-sections">Previous</a>
+          {% endif %}
+          <span>Page {{ page_meta.front_sections.page }} / {{ page_meta.front_sections.pages }}</span>
+          {% if page_meta.front_sections.page < page_meta.front_sections.pages %}
+            <a href="/dashboard/front-sections?front_sections_page={{ page_meta.front_sections.page + 1 }}&front_sections_search={{ page_meta.front_sections.search }}#front-sections">Next</a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if not active_resource or active_resource == 'multi-sections' %}
+    <section id="multi-sections" class="panel">
+      <div class="section-header">
+        <h2>Multi Sections</h2>
+        <form method="get" action="/dashboard/multi-sections" class="admin-form" style="display:flex;gap:8px;align-items:center;">
+          <input type="text" name="multi_sections_search" value="{{ page_meta.multi_sections.search }}" placeholder="Search multi sections" style="max-width:220px;">
+          <button type="submit" class="secondary-btn">Search</button>
+        </form>
+      </div>
+      <form action="/admin/save/multi_section" method="post" enctype="multipart/form-data" class="admin-form">
+        <input type="hidden" name="resource_id" value="{{ selected_items.get('multi_section').id if selected_items.get('multi_section') else '' }}">
+        <div class="form-grid">
+          <label>Block
+            <input type="number" name="block" value="{{ selected_items.get('multi_section').block if selected_items.get('multi_section') else '1' }}" required>
+          </label>
+          <label>Section
+            <input type="number" name="section" value="{{ selected_items.get('multi_section').section if selected_items.get('multi_section') else '1' }}" required>
+          </label>
+          <label>Title
+            <input type="text" name="title" value="{{ selected_items.get('multi_section').title if selected_items.get('multi_section') else '' }}">
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="status" {% if not selected_items.get('multi_section') or selected_items.get('multi_section').status %}checked{% endif %}>
+            Active
+          </label>
+        </div>
+        <div class="form-grid" style="margin-top:12px;">
+          <label>Image 1
+            <input type="file" name="image_1" accept="image/*">
+          </label>
+          <label>Title 1
+            <input type="text" name="title_1" value="">
+          </label>
+          <label>Link 1
+            <input type="url" name="url_1" value="">
+          </label>
+          <label>Image 2
+            <input type="file" name="image_2" accept="image/*">
+          </label>
+          <label>Title 2
+            <input type="text" name="title_2" value="">
+          </label>
+          <label>Link 2
+            <input type="url" name="url_2" value="">
+          </label>
+          <label>Image 3
+            <input type="file" name="image_3" accept="image/*">
+          </label>
+          <label>Title 3
+            <input type="text" name="title_3" value="">
+          </label>
+          <label>Link 3
+            <input type="url" name="url_3" value="">
+          </label>
+          <label>Image 4
+            <input type="file" name="image_4" accept="image/*">
+          </label>
+          <label>Title 4
+            <input type="text" name="title_4" value="">
+          </label>
+          <label>Link 4
+            <input type="url" name="url_4" value="">
+          </label>
+        </div>
+        <div class="form-actions" style="justify-content:flex-start;">
+          <button type="submit" class="primary-btn">{{ 'Update multi section' if selected_items.get('multi_section') else 'Create multi section' }}</button>
+          {% if selected_items.get('multi_section') %}
+            <a href="/dashboard/multi-sections" class="button-link secondary-btn">Cancel</a>
+          {% endif %}
+        </div>
+      </form>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Block</th><th>Section</th><th>Title</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            {% for section in multi_sections %}
+              <tr>
+                <td>{{ section.id }}</td>
+                <td>{{ section.block }}</td>
+                <td>{{ section.section }}</td>
+                <td>{{ section.title or '—' }}</td>
+                <td class="action-links">
+                  <a href="/dashboard/multi-sections?edit=multi_section&id={{ section.id }}#multi-sections">Edit</a>
+                  <form class="inline-form" action="/admin/delete/multi_section/{{ section.id }}" method="post">
+                    <button type="submit" class="danger-btn">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="form-actions" style="justify-content:space-between;">
+        <span>{{ page_meta.multi_sections.total }} results</span>
+        <div class="action-links">
+          {% if page_meta.multi_sections.page > 1 %}
+            <a href="/dashboard/multi-sections?multi_sections_page={{ page_meta.multi_sections.page - 1 }}&multi_sections_search={{ page_meta.multi_sections.search }}#multi-sections">Previous</a>
+          {% endif %}
+          <span>Page {{ page_meta.multi_sections.page }} / {{ page_meta.multi_sections.pages }}</span>
+          {% if page_meta.multi_sections.page < page_meta.multi_sections.pages %}
+            <a href="/dashboard/multi-sections?multi_sections_page={{ page_meta.multi_sections.page + 1 }}&multi_sections_search={{ page_meta.multi_sections.search }}#multi-sections">Next</a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if not active_resource or active_resource == 'slider' %}
+    <section id="slider" class="panel">
+      <div class="section-header">
+        <h2>Slider</h2>
+        <form method="get" action="/dashboard/slider" class="admin-form" style="display:flex;gap:8px;align-items:center;">
+          <input type="text" name="multi_sections_search" value="{{ page_meta.multi_sections.search }}" placeholder="Search slider images" style="max-width:220px;">
+          <button type="submit" class="secondary-btn">Search</button>
+        </form>
+      </div>
+      <form action="/admin/save/slider" method="post" enctype="multipart/form-data" class="admin-form">
+        <input type="hidden" name="resource_id" value="{{ selected_items.get('multi_section').id if selected_items.get('multi_section') else '' }}">
+        <div class="form-grid">
+          <label>Block
+            <input type="number" name="block" value="{{ selected_items.get('multi_section').block if selected_items.get('multi_section') else '1' }}" required>
+          </label>
+          <label>Section
+            <input type="number" name="section" value="{{ selected_items.get('multi_section').section if selected_items.get('multi_section') else '1' }}" required>
+          </label>
+          <label>Title
+            <input type="text" name="title" value="{{ selected_items.get('multi_section').title if selected_items.get('multi_section') else '' }}">
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="status" {% if selected_items.get('multi_section') and selected_items.get('multi_section').status %}checked{% endif %}>
+            Active
+          </label>
+        </div>
+
+        <div id="slider-image-fields" style="display:grid;gap:12px;margin-top:16px;">
+          <div class="slider-upload-row" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:end;">
+            <label>Image 1
+              <input type="file" name="slider_images" accept="image/*">
+            </label>
+            <label>Caption 1
+              <input type="text" name="slider_titles" placeholder="Caption for image 1">
+            </label>
+            <label>Link 1
+              <input type="url" name="slider_links" placeholder="https://example.com">
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions" style="justify-content:flex-start;">
+          <button type="button" class="secondary-btn" id="add-slider-image">Add image</button>
+          <button type="submit" class="primary-btn">{{ 'Update slider' if selected_items.get('multi_section') else 'Create slider' }}</button>
+          {% if selected_items.get('multi_section') %}
+            <a href="/dashboard/slider" class="button-link secondary-btn">Cancel</a>
+          {% endif %}
+        </div>
+      </form>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Block</th>
+              <th>Section</th>
+              <th>Title</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for section in multi_sections %}
+              <tr>
+                <td>{{ section.id }}</td>
+                <td>{{ section.block }}</td>
+                <td>{{ section.section }}</td>
+                <td>{{ section.title or '—' }}</td>
+                <td class="action-links">
+                  <a href="/dashboard/slider?edit=multi_section&id={{ section.id }}#slider">Edit</a>
+                  <form class="inline-form" action="/admin/delete/multi_section/{{ section.id }}" method="post">
+                    <button type="submit" class="danger-btn">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="form-actions" style="justify-content:space-between;">
+        <span>{{ page_meta.multi_sections.total }} results</span>
+        <div class="action-links">
+          {% if page_meta.multi_sections.page > 1 %}
+            <a href="/dashboard/slider?multi_sections_page={{ page_meta.multi_sections.page - 1 }}&multi_sections_search={{ page_meta.multi_sections.search }}#slider">Previous</a>
+          {% endif %}
+          <span>Page {{ page_meta.multi_sections.page }} / {{ page_meta.multi_sections.pages }}</span>
+          {% if page_meta.multi_sections.page < page_meta.multi_sections.pages %}
+            <a href="/dashboard/slider?multi_sections_page={{ page_meta.multi_sections.page + 1 }}&multi_sections_search={{ page_meta.multi_sections.search }}#slider">Next</a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if not active_resource or active_resource == 'new-home-blocks' %}
+    <section id="new-home-blocks" class="panel">
+      <div class="section-header">
+        <h2>New Home Blocks</h2>
+        <form method="get" action="/dashboard/new-home-blocks" class="admin-form" style="display:flex;gap:8px;align-items:center;">
+          <input type="text" name="new_blocks_search" value="{{ page_meta.new_section_homeblocks.search }}" placeholder="Search home blocks" style="max-width:220px;">
+          <button type="submit" class="secondary-btn">Search</button>
+        </form>
+      </div>
+      <form action="/admin/save/new_section_homeblock" method="post" enctype="multipart/form-data" class="admin-form">
+        <input type="hidden" name="resource_id" value="{{ selected_items.get('new_section_homeblock').id if selected_items.get('new_section_homeblock') else '' }}">
+        <div class="form-grid">
+          <label>Block
+            <input type="number" name="block" value="{{ selected_items.get('new_section_homeblock').block if selected_items.get('new_section_homeblock') else '1' }}" required>
+          </label>
+          <label>Section
+            <input type="number" name="section" value="{{ selected_items.get('new_section_homeblock').section if selected_items.get('new_section_homeblock') else '1' }}" required>
+          </label>
+          <label>Title
+            <input type="text" name="title" value="{{ selected_items.get('new_section_homeblock').title if selected_items.get('new_section_homeblock') else '' }}">
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="status" {% if not selected_items.get('new_section_homeblock') or selected_items.get('new_section_homeblock').status %}checked{% endif %}>
+            Active
+          </label>
+        </div>
+        <div class="form-grid" style="margin-top:12px;">
+          <label>Image 1
+            <input type="file" name="image1" accept="image/*">
+          </label>
+          <label>Link 1
+            <input type="url" name="url1" value="">
+          </label>
+          <label>Image 2
+            <input type="file" name="image2" accept="image/*">
+          </label>
+          <label>Link 2
+            <input type="url" name="url2" value="">
+          </label>
+          <label>Image 3
+            <input type="file" name="image3" accept="image/*">
+          </label>
+          <label>Link 3
+            <input type="url" name="url3" value="">
+          </label>
+          <label>Image 4
+            <input type="file" name="image4" accept="image/*">
+          </label>
+          <label>Link 4
+            <input type="url" name="url4" value="">
+          </label>
+        </div>
+        <div class="form-actions" style="justify-content:flex-start;">
+          <button type="submit" class="primary-btn">{{ 'Update' if selected_items.get('new_section_homeblock') else 'Create' }} home block</button>
+          {% if selected_items.get('new_section_homeblock') %}
+            <a href="/dashboard/new-home-blocks" class="button-link secondary-btn">Cancel</a>
+          {% endif %}
+        </div>
+      </form>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Block</th><th>Section</th><th>Title</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            {% for block in new_section_homeblocks %}
+              <tr>
+                <td>{{ block.id }}</td>
+                <td>{{ block.block }}</td>
+                <td>{{ block.section }}</td>
+                <td>{{ block.title or '—' }}</td>
+                <td class="action-links">
+                  <a href="/dashboard/new-home-blocks?edit=new_section_homeblock&id={{ block.id }}#new-home-blocks">Edit</a>
+                  <form class="inline-form" action="/admin/delete/new_section_homeblock/{{ block.id }}" method="post">
+                    <button type="submit" class="danger-btn">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="form-actions" style="justify-content:space-between;">
+        <span>{{ page_meta.new_section_homeblocks.total }} results</span>
+        <div class="action-links">
+          {% if page_meta.new_section_homeblocks.page > 1 %}
+            <a href="/dashboard/new-home-blocks?new_blocks_page={{ page_meta.new_section_homeblocks.page - 1 }}&new_blocks_search={{ page_meta.new_section_homeblocks.search }}#new-home-blocks">Previous</a>
+          {% endif %}
+          <span>Page {{ page_meta.new_section_homeblocks.page }} / {{ page_meta.new_section_homeblocks.pages }}</span>
+          {% if page_meta.new_section_homeblocks.page < page_meta.new_section_homeblocks.pages %}
+            <a href="/dashboard/new-home-blocks?new_blocks_page={{ page_meta.new_section_homeblocks.page + 1 }}&new_blocks_search={{ page_meta.new_section_homeblocks.search }}#new-home-blocks">Next</a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if not active_resource or active_resource == 'background-tasks' %}
+    <section id="background-tasks" class="panel">
+      <div class="section-header">
+        <h2>Background Tasks</h2>
+        <form method="get" action="/dashboard/background-tasks" class="admin-form" style="display:flex;gap:8px;align-items:center;">
+          <input type="text" name="background_tasks_search" value="{{ page_meta.background_tasks.search }}" placeholder="Search tasks" style="max-width:220px;">
+          <button type="submit" class="secondary-btn">Search</button>
+        </form>
+      </div>
+      <form action="/admin/save/background_task" method="post" class="admin-form">
+        <input type="hidden" name="resource_id" value="{{ selected_items.get('background_task').id if selected_items.get('background_task') else '' }}">
+        <div class="form-grid">
+          <label>Name
+            <input type="text" name="name" value="{{ selected_items.get('background_task').name if selected_items.get('background_task') else '' }}" required>
+          </label>
+          <label>Task Type
+            <input type="text" name="task_type" value="{{ selected_items.get('background_task').task_type if selected_items.get('background_task') else 'csv_import' }}">
+          </label>
+          <label>Status
+            <input type="text" name="status" value="{{ selected_items.get('background_task').status if selected_items.get('background_task') else 'queued' }}">
+          </label>
+          <label>File Name
+            <input type="text" name="file_name" value="{{ selected_items.get('background_task').file_name if selected_items.get('background_task') else '' }}">
+          </label>
+          <label>Imported Count
+            <input type="number" name="imported_count" value="{{ selected_items.get('background_task').imported_count if selected_items.get('background_task') else '0' }}">
+          </label>
+          <label>Skipped Count
+            <input type="number" name="skipped_count" value="{{ selected_items.get('background_task').skipped_count if selected_items.get('background_task') else '0' }}">
+          </label>
+        </div>
+        <div class="form-grid" style="margin-top:12px;">
+          <label style="grid-column:1/-1;">Message
+            <textarea name="message">{{ selected_items.get('background_task').message if selected_items.get('background_task') else '' }}</textarea>
+          </label>
+          <label style="grid-column:1/-1;">Error Detail
+            <textarea name="error_detail">{{ selected_items.get('background_task').error_detail if selected_items.get('background_task') else '' }}</textarea>
+          </label>
+        </div>
+        <div class="form-actions" style="justify-content:flex-start;">
+          <button type="submit" class="primary-btn">{{ 'Update task' if selected_items.get('background_task') else 'Create task' }}</button>
+          {% if selected_items.get('background_task') %}
+            <a href="/dashboard/background-tasks" class="button-link secondary-btn">Cancel</a>
+          {% endif %}
+        </div>
+      </form>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Task</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            {% for task in background_tasks %}
+              <tr>
+                <td>{{ task.id }}</td>
+                <td>{{ task.name }}</td>
+                <td>{{ task.task_type }}</td>
+                <td>{{ task.status }}</td>
+                <td class="action-links">
+                  <a href="/dashboard/background-tasks?edit=background_task&id={{ task.id }}#background-tasks">Edit</a>
+                  <form class="inline-form" action="/admin/delete/background_task/{{ task.id }}" method="post">
+                    <button type="submit" class="danger-btn">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="form-actions" style="justify-content:space-between;">
+        <span>{{ page_meta.background_tasks.total }} results</span>
+        <div class="action-links">
+          {% if page_meta.background_tasks.page > 1 %}
+            <a href="/dashboard/background-tasks?background_tasks_page={{ page_meta.background_tasks.page - 1 }}&background_tasks_search={{ page_meta.background_tasks.search }}#background-tasks">Previous</a>
+          {% endif %}
+          <span>Page {{ page_meta.background_tasks.page }} / {{ page_meta.background_tasks.pages }}</span>
+          {% if page_meta.background_tasks.page < page_meta.background_tasks.pages %}
+            <a href="/dashboard/background-tasks?background_tasks_page={{ page_meta.background_tasks.page + 1 }}&background_tasks_search={{ page_meta.background_tasks.search }}#background-tasks">Next</a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+  </main>
+
+  <script>
+    const toggleButton = document.querySelector('.sidebar-toggle');
+    if (toggleButton) {
+      toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('sidebar-collapsed');
+      });
+    }
+
+    const addSliderImageButton = document.getElementById('add-slider-image');
+    const sliderImageFields = document.getElementById('slider-image-fields');
+    if (addSliderImageButton && sliderImageFields) {
+      const addSliderRow = () => {
+        const rows = sliderImageFields.querySelectorAll('.slider-upload-row');
+        const rowNumber = rows.length + 1;
+        const row = document.createElement('div');
+        row.className = 'slider-upload-row';
+        row.style.display = 'grid';
+        row.style.gridTemplateColumns = 'repeat(auto-fit,minmax(180px,1fr))';
+        row.style.gap = '12px';
+        row.style.alignItems = 'end';
+        row.innerHTML = `
+          <label>Image ${rowNumber}
+            <input type="file" name="slider_images" accept="image/*">
+          </label>
+          <label>Caption ${rowNumber}
+            <input type="text" name="slider_titles" placeholder="Caption for image ${rowNumber}">
+          </label>
+          <label>Link ${rowNumber}
+            <input type="url" name="slider_links" placeholder="https://example.com">
+          </label>
+        `;
+        sliderImageFields.appendChild(row);
+      };
+      addSliderImageButton.addEventListener('click', addSliderRow);
+    }
+  </script>
+</body>
+</html>

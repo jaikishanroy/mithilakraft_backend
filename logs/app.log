@@ -1,0 +1,1010 @@
+2026-11-09 23:44:58,221 INFO aartikraft Incoming request: GET /docs
+2026-11-09 23:44:58,222 INFO aartikraft Completed request: GET /docs status=200 elapsed=0.002s
+2026-11-09 23:44:58,579 INFO aartikraft Incoming request: GET /openapi.json
+2026-11-09 23:44:58,814 INFO aartikraft Completed request: GET /openapi.json status=200 elapsed=0.235s
+2026-11-09 23:45:06,125 INFO aartikraft Incoming request: GET /dashboard
+2026-11-09 23:45:06,363 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.238s
+2026-11-09 23:45:06,394 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-09 23:45:06,415 INFO aartikraft Completed request: GET /static/admin.css status=200 elapsed=0.021s
+2026-11-09 23:45:06,540 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-09 23:45:06,541 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.001s
+2026-11-09 23:45:55,194 INFO aartikraft Incoming request: POST /admin/save/product
+2026-11-09 23:45:55,633 INFO aartikraft Completed request: POST /admin/save/product status=303 elapsed=0.439s
+2026-11-09 23:45:55,640 INFO aartikraft Incoming request: GET /dashboard
+2026-11-09 23:45:55,698 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.058s
+2026-11-10 00:31:32,349 INFO aartikraft Incoming request: GET /all_cat
+2026-11-10 00:31:32,388 INFO aartikraft Completed request: GET /all_cat status=200 elapsed=0.039s
+2026-11-10 00:31:32,392 INFO aartikraft Incoming request: GET /products
+2026-11-10 00:31:32,409 INFO aartikraft Completed request: GET /products status=200 elapsed=0.016s
+2026-11-10 00:31:32,416 INFO aartikraft Incoming request: POST /login
+2026-11-10 00:31:32,435 INFO aartikraft Completed request: POST /login status=401 elapsed=0.019s
+2026-11-10 00:31:57,878 INFO aartikraft Incoming request: GET /products
+2026-11-10 00:31:57,922 INFO aartikraft Completed request: GET /products status=200 elapsed=0.044s
+2026-11-10 00:31:57,928 INFO aartikraft Incoming request: POST /login
+2026-11-10 00:31:57,941 INFO aartikraft Completed request: POST /login status=401 elapsed=0.013s
+2026-11-10 00:36:01,951 INFO aartikraft Incoming request: GET /products
+2026-11-10 00:36:02,000 INFO aartikraft Completed request: GET /products status=200 elapsed=0.050s
+2026-11-10 00:40:59,736 INFO aartikraft Incoming request: GET /products
+2026-11-10 00:40:59,790 INFO aartikraft Completed request: GET /products status=200 elapsed=0.055s
+2026-11-10 00:40:59,795 INFO aartikraft Incoming request: GET /front_sections
+2026-11-10 00:40:59,801 INFO aartikraft Completed request: GET /front_sections status=200 elapsed=0.005s
+2026-11-10 00:41:07,761 INFO aartikraft Incoming request: GET /front_sections
+2026-11-10 00:41:07,795 INFO aartikraft Completed request: GET /front_sections status=200 elapsed=0.034s
+2026-11-10 00:41:07,801 INFO aartikraft Incoming request: GET /multi_sections
+2026-11-10 00:41:07,807 INFO aartikraft Completed request: GET /multi_sections status=200 elapsed=0.006s
+2026-11-10 00:41:07,811 INFO aartikraft Incoming request: GET /new_section_homeblocks
+2026-11-10 00:41:07,820 INFO aartikraft Completed request: GET /new_section_homeblocks status=200 elapsed=0.008s
+2026-11-10 00:42:32,815 INFO aartikraft Incoming request: GET /products
+2026-11-10 00:42:32,869 INFO aartikraft Completed request: GET /products status=200 elapsed=0.053s
+2026-11-10 10:02:34,463 INFO aartikraft Incoming request: GET /
+2026-11-10 10:02:34,470 INFO aartikraft Completed request: GET / status=200 elapsed=0.007s
+2026-11-10 10:02:34,570 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-10 10:02:34,571 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.001s
+2026-11-10 10:02:40,880 INFO aartikraft Incoming request: GET /docs
+2026-11-10 10:02:40,885 INFO aartikraft Completed request: GET /docs status=200 elapsed=0.005s
+2026-11-10 10:02:41,133 INFO aartikraft Incoming request: GET /openapi.json
+2026-11-10 10:02:41,377 INFO aartikraft Completed request: GET /openapi.json status=200 elapsed=0.244s
+2026-11-10 10:03:45,023 INFO aartikraft Incoming request: GET /docs
+2026-11-10 10:03:45,026 INFO aartikraft Completed request: GET /docs status=200 elapsed=0.003s
+2026-11-10 10:03:45,253 INFO aartikraft Incoming request: GET /openapi.json
+2026-11-10 10:03:45,256 INFO aartikraft Completed request: GET /openapi.json status=200 elapsed=0.004s
+2026-11-10 10:04:43,313 INFO aartikraft Incoming request: GET /OpenAPI
+2026-11-10 10:04:43,315 INFO aartikraft Completed request: GET /OpenAPI status=404 elapsed=0.001s
+2026-11-10 10:04:52,838 INFO aartikraft Incoming request: GET /
+2026-11-10 10:04:52,847 INFO aartikraft Completed request: GET / status=200 elapsed=0.009s
+2026-11-10 10:04:59,580 INFO aartikraft Incoming request: GET /docs
+2026-11-10 10:04:59,582 INFO aartikraft Completed request: GET /docs status=200 elapsed=0.001s
+2026-11-10 10:04:59,802 INFO aartikraft Incoming request: GET /openapi.json
+2026-11-10 10:04:59,806 INFO aartikraft Completed request: GET /openapi.json status=200 elapsed=0.005s
+2026-11-10 10:06:53,157 INFO aartikraft Incoming request: GET /swagger
+2026-11-10 10:06:53,165 INFO aartikraft Completed request: GET /swagger status=404 elapsed=0.008s
+2026-11-10 10:07:15,332 INFO aartikraft Incoming request: GET /docs
+2026-11-10 10:07:15,335 INFO aartikraft Completed request: GET /docs status=200 elapsed=0.004s
+2026-11-10 10:07:15,627 INFO aartikraft Incoming request: GET /openapi.json
+2026-11-10 10:07:15,634 INFO aartikraft Completed request: GET /openapi.json status=200 elapsed=0.007s
+2026-11-10 10:13:37,173 INFO aartikraft Incoming request: GET /
+2026-11-10 10:13:37,176 INFO aartikraft Completed request: GET / status=200 elapsed=0.003s
+2026-11-10 10:16:46,327 INFO aartikraft Incoming request: GET /docs
+2026-11-10 10:16:46,330 INFO aartikraft Completed request: GET /docs status=200 elapsed=0.003s
+2026-11-10 10:16:46,679 INFO aartikraft Incoming request: GET /openapi.json
+2026-11-10 10:16:46,687 INFO aartikraft Completed request: GET /openapi.json status=200 elapsed=0.008s
+2026-11-10 10:16:53,698 INFO aartikraft Incoming request: GET /docs
+2026-11-10 10:16:53,702 INFO aartikraft Completed request: GET /docs status=200 elapsed=0.004s
+2026-11-10 10:16:54,006 INFO aartikraft Incoming request: GET /openapi.json
+2026-11-10 10:16:54,012 INFO aartikraft Completed request: GET /openapi.json status=200 elapsed=0.006s
+2026-11-10 10:16:59,075 INFO aartikraft Incoming request: GET /
+2026-11-10 10:16:59,077 INFO aartikraft Completed request: GET / status=200 elapsed=0.003s
+2026-11-10 10:19:35,131 INFO aartikraft Incoming request: GET /
+2026-11-10 10:19:35,132 INFO aartikraft Completed request: GET / status=200 elapsed=0.001s
+2026-11-10 10:19:41,510 INFO aartikraft Incoming request: GET /
+2026-11-10 10:19:41,512 INFO aartikraft Completed request: GET / status=200 elapsed=0.001s
+2026-11-10 10:19:42,742 INFO aartikraft Incoming request: GET /
+2026-11-10 10:19:42,744 INFO aartikraft Completed request: GET / status=200 elapsed=0.002s
+2026-11-10 10:21:05,638 INFO aartikraft Incoming request: GET /
+2026-11-10 10:21:05,644 INFO aartikraft Completed request: GET / status=200 elapsed=0.005s
+2026-11-10 10:21:05,823 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-10 10:21:05,834 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.012s
+2026-11-10 10:22:35,369 INFO aartikraft Incoming request: GET /
+2026-11-10 10:22:35,375 INFO aartikraft Completed request: GET / status=200 elapsed=0.006s
+2026-11-10 10:31:00,329 INFO aartikraft Incoming request: GET /products
+2026-11-10 10:31:00,393 INFO aartikraft Completed request: GET /products status=200 elapsed=0.064s
+2026-11-10 10:32:13,847 INFO aartikraft Incoming request: GET /products
+2026-11-10 10:32:13,872 INFO aartikraft Completed request: GET /products status=200 elapsed=0.025s
+2026-11-10 10:32:13,878 INFO aartikraft Incoming request: GET /products
+2026-11-10 10:32:13,885 INFO aartikraft Completed request: GET /products status=200 elapsed=0.008s
+2026-11-10 10:33:02,946 INFO aartikraft Incoming request: GET /products
+2026-11-10 10:33:02,971 INFO aartikraft Completed request: GET /products status=200 elapsed=0.025s
+2026-11-10 10:33:02,993 INFO aartikraft Incoming request: GET /products
+2026-11-10 10:33:03,023 INFO aartikraft Completed request: GET /products status=200 elapsed=0.030s
+2026-11-10 10:34:00,823 INFO aartikraft Incoming request: GET /products
+2026-11-10 10:34:00,856 INFO aartikraft Completed request: GET /products status=200 elapsed=0.034s
+2026-11-10 10:34:00,865 INFO aartikraft Incoming request: GET /products
+2026-11-10 10:34:00,890 INFO aartikraft Completed request: GET /products status=200 elapsed=0.025s
+2026-11-10 10:35:36,220 INFO aartikraft Incoming request: GET /media/cat/product_cat-ebe2ce3a829b45c4bbe8bee8351bff50.png
+2026-11-10 10:35:36,234 INFO aartikraft Incoming request: GET /media/cat/admin_product_cat-d63ddcd3f69a416bb7a777b790cbfa6c.png
+2026-11-10 10:35:36,245 INFO aartikraft Incoming request: GET /media/cat/Picsart_26-01-07_17-43-08-935 (1)-cf14031252d04b09b28ba2e422aaf28d.jpg
+2026-11-10 10:35:36,273 INFO aartikraft Completed request: GET /media/cat/Picsart_26-01-07_17-43-08-935 (1)-cf14031252d04b09b28ba2e422aaf28d.jpg status=200 elapsed=0.028s
+2026-11-10 10:35:36,274 INFO aartikraft Completed request: GET /media/cat/product_cat-ebe2ce3a829b45c4bbe8bee8351bff50.png status=200 elapsed=0.054s
+2026-11-10 10:35:36,278 INFO aartikraft Completed request: GET /media/cat/admin_product_cat-d63ddcd3f69a416bb7a777b790cbfa6c.png status=200 elapsed=0.044s
+2026-11-10 10:35:39,457 INFO aartikraft Incoming request: GET /products
+2026-11-10 10:35:39,492 INFO aartikraft Completed request: GET /products status=200 elapsed=0.035s
+2026-11-10 10:35:39,501 INFO aartikraft Incoming request: GET /products
+2026-11-10 10:35:39,523 INFO aartikraft Completed request: GET /products status=200 elapsed=0.023s
+2026-11-10 10:36:10,989 INFO aartikraft Incoming request: GET /products
+2026-11-10 10:36:11,035 INFO aartikraft Completed request: GET /products status=200 elapsed=0.046s
+2026-11-10 10:36:11,052 INFO aartikraft Incoming request: GET /products
+2026-11-10 10:36:11,091 INFO aartikraft Completed request: GET /products status=200 elapsed=0.039s
+2026-11-10 12:04:14,955 INFO aartikraft Incoming request: GET /products
+2026-11-10 12:04:14,966 INFO aartikraft Completed request: GET /products status=200 elapsed=0.011s
+2026-11-10 12:04:14,971 INFO aartikraft Incoming request: GET /products
+2026-11-10 12:04:14,981 INFO aartikraft Completed request: GET /products status=200 elapsed=0.010s
+2026-11-10 12:04:15,049 INFO aartikraft Incoming request: GET /media/cat/product_cat-ebe2ce3a829b45c4bbe8bee8351bff50.png
+2026-11-10 12:04:15,050 INFO aartikraft Incoming request: GET /media/cat/admin_product_cat-d63ddcd3f69a416bb7a777b790cbfa6c.png
+2026-11-10 12:04:15,051 INFO aartikraft Incoming request: GET /media/cat/Picsart_26-01-07_17-43-08-935 (1)-cf14031252d04b09b28ba2e422aaf28d.jpg
+2026-11-10 12:04:15,056 INFO aartikraft Completed request: GET /media/cat/product_cat-ebe2ce3a829b45c4bbe8bee8351bff50.png status=304 elapsed=0.007s
+2026-11-10 12:04:15,057 INFO aartikraft Completed request: GET /media/cat/Picsart_26-01-07_17-43-08-935 (1)-cf14031252d04b09b28ba2e422aaf28d.jpg status=304 elapsed=0.006s
+2026-11-10 12:04:15,058 INFO aartikraft Completed request: GET /media/cat/admin_product_cat-d63ddcd3f69a416bb7a777b790cbfa6c.png status=304 elapsed=0.007s
+2026-11-10 13:02:52,316 INFO aartikraft Incoming request: GET /products
+2026-11-10 13:02:52,334 INFO aartikraft Completed request: GET /products status=200 elapsed=0.018s
+2026-11-10 13:02:52,339 INFO aartikraft Incoming request: GET /products
+2026-11-10 13:02:52,349 INFO aartikraft Completed request: GET /products status=200 elapsed=0.010s
+2026-11-11 10:49:53,645 INFO aartikraft Incoming request: POST /admin/login
+2026-11-11 10:49:53,649 INFO aartikraft Completed request: POST /admin/login status=303 elapsed=0.004s
+2026-11-11 10:49:59,819 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 10:50:00,300 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.481s
+2026-11-11 10:50:21,255 INFO aartikraft Incoming request: GET /admin/login
+2026-11-11 10:50:21,261 INFO aartikraft Completed request: GET /admin/login status=200 elapsed=0.007s
+2026-11-11 10:50:21,321 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 10:50:21,341 INFO aartikraft Completed request: GET /static/admin.css status=200 elapsed=0.021s
+2026-11-11 10:50:21,519 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-11 10:50:21,520 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.001s
+2026-11-11 10:50:33,333 INFO aartikraft Incoming request: POST /admin/login
+2026-11-11 10:50:33,336 INFO aartikraft Completed request: POST /admin/login status=303 elapsed=0.003s
+2026-11-11 10:50:33,342 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 10:50:33,362 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.021s
+2026-11-11 10:50:33,399 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 10:50:33,402 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.002s
+2026-11-11 10:50:42,378 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 10:50:42,393 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.015s
+2026-11-11 10:50:42,422 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 10:50:42,424 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.002s
+2026-11-11 10:50:44,326 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 10:50:44,355 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.029s
+2026-11-11 10:51:01,659 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 10:51:01,674 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.015s
+2026-11-11 10:51:01,724 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 10:51:01,726 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.003s
+2026-11-11 10:51:03,981 INFO aartikraft Incoming request: GET /dashboard/background-tasks
+2026-11-11 10:51:03,999 INFO aartikraft Completed request: GET /dashboard/background-tasks status=200 elapsed=0.018s
+2026-11-11 10:51:05,861 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 10:51:05,883 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.022s
+2026-11-11 10:54:11,109 INFO aartikraft Incoming request: GET /admin/logout
+2026-11-11 10:54:11,111 INFO aartikraft Completed request: GET /admin/logout status=303 elapsed=0.002s
+2026-11-11 10:54:11,119 INFO aartikraft Incoming request: GET /admin/login
+2026-11-11 10:54:11,120 INFO aartikraft Completed request: GET /admin/login status=200 elapsed=0.002s
+2026-11-11 10:54:11,152 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 10:54:11,154 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.002s
+2026-11-11 10:54:12,882 INFO aartikraft Incoming request: POST /admin/login
+2026-11-11 10:54:12,884 INFO aartikraft Completed request: POST /admin/login status=303 elapsed=0.002s
+2026-11-11 10:54:12,891 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 10:54:12,911 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.021s
+2026-11-11 10:54:23,646 INFO aartikraft Incoming request: GET /dashboard/contacts
+2026-11-11 10:54:23,676 INFO aartikraft Completed request: GET /dashboard/contacts status=200 elapsed=0.031s
+2026-11-11 10:54:25,812 INFO aartikraft Incoming request: GET /dashboard/contacts
+2026-11-11 10:54:25,837 INFO aartikraft Completed request: GET /dashboard/contacts status=200 elapsed=0.025s
+2026-11-11 10:54:29,297 INFO aartikraft Incoming request: GET /dashboard/multi-sections
+2026-11-11 10:54:29,329 INFO aartikraft Completed request: GET /dashboard/multi-sections status=200 elapsed=0.032s
+2026-11-11 10:56:14,427 INFO aartikraft Incoming request: GET /
+2026-11-11 10:56:14,435 INFO aartikraft Completed request: GET / status=200 elapsed=0.008s
+2026-11-11 11:19:14,908 INFO aartikraft Incoming request: GET /products
+2026-11-11 11:19:14,997 INFO aartikraft Completed request: GET /products status=200 elapsed=0.088s
+2026-11-11 11:19:15,000 INFO aartikraft Incoming request: GET /products
+2026-11-11 11:19:15,017 INFO aartikraft Completed request: GET /products status=200 elapsed=0.017s
+2026-11-11 11:19:15,111 INFO aartikraft Incoming request: GET /media/cat/product_cat-ebe2ce3a829b45c4bbe8bee8351bff50.png
+2026-11-11 11:19:15,113 INFO aartikraft Incoming request: GET /media/cat/admin_product_cat-d63ddcd3f69a416bb7a777b790cbfa6c.png
+2026-11-11 11:19:15,117 INFO aartikraft Incoming request: GET /media/cat/Picsart_26-01-07_17-43-08-935 (1)-cf14031252d04b09b28ba2e422aaf28d.jpg
+2026-11-11 11:19:15,138 INFO aartikraft Completed request: GET /media/cat/admin_product_cat-d63ddcd3f69a416bb7a777b790cbfa6c.png status=304 elapsed=0.025s
+2026-11-11 11:19:15,139 INFO aartikraft Completed request: GET /media/cat/product_cat-ebe2ce3a829b45c4bbe8bee8351bff50.png status=304 elapsed=0.027s
+2026-11-11 11:19:15,139 INFO aartikraft Completed request: GET /media/cat/Picsart_26-01-07_17-43-08-935 (1)-cf14031252d04b09b28ba2e422aaf28d.jpg status=304 elapsed=0.022s
+2026-11-11 12:01:54,452 INFO aartikraft Incoming request: GET /dashboard/multi-sections
+2026-11-11 12:01:54,515 INFO aartikraft Completed request: GET /dashboard/multi-sections status=200 elapsed=0.065s
+2026-11-11 12:01:54,568 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 12:01:54,572 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.004s
+2026-11-11 12:01:56,917 INFO aartikraft Incoming request: GET /dashboard/multi-sections
+2026-11-11 12:01:56,935 INFO aartikraft Completed request: GET /dashboard/multi-sections status=200 elapsed=0.018s
+2026-11-11 12:01:58,049 INFO aartikraft Incoming request: GET /dashboard/multi-sections
+2026-11-11 12:01:58,067 INFO aartikraft Completed request: GET /dashboard/multi-sections status=200 elapsed=0.018s
+2026-11-11 12:04:38,532 INFO aartikraft Incoming request: GET /dashboard/background-tasks
+2026-11-11 12:04:38,545 INFO aartikraft Completed request: GET /dashboard/background-tasks status=200 elapsed=0.013s
+2026-11-11 12:04:40,090 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:04:40,119 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.029s
+2026-11-11 12:04:42,129 INFO aartikraft Incoming request: GET /dashboard/multi-sections
+2026-11-11 12:04:42,144 INFO aartikraft Completed request: GET /dashboard/multi-sections status=200 elapsed=0.015s
+2026-11-11 12:04:43,473 INFO aartikraft Incoming request: GET /dashboard/front-sections
+2026-11-11 12:04:43,501 INFO aartikraft Completed request: GET /dashboard/front-sections status=200 elapsed=0.027s
+2026-11-11 12:04:48,037 INFO aartikraft Incoming request: GET /dashboard/contacts
+2026-11-11 12:04:48,052 INFO aartikraft Completed request: GET /dashboard/contacts status=200 elapsed=0.015s
+2026-11-11 12:04:51,553 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 12:04:51,569 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.016s
+2026-11-11 12:04:54,546 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-11 12:04:54,561 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.014s
+2026-11-11 12:04:57,492 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 12:04:57,509 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.016s
+2026-11-11 12:06:35,710 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-11 12:06:35,728 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.018s
+2026-11-11 12:06:39,817 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 12:06:39,833 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.015s
+2026-11-11 12:06:42,589 INFO aartikraft Incoming request: GET /dashboard/contacts
+2026-11-11 12:06:42,611 INFO aartikraft Completed request: GET /dashboard/contacts status=200 elapsed=0.022s
+2026-11-11 12:06:45,543 INFO aartikraft Incoming request: GET /dashboard/front-sections
+2026-11-11 12:06:45,564 INFO aartikraft Completed request: GET /dashboard/front-sections status=200 elapsed=0.020s
+2026-11-11 12:06:53,764 INFO aartikraft Incoming request: GET /dashboard/multi-sections
+2026-11-11 12:06:53,783 INFO aartikraft Completed request: GET /dashboard/multi-sections status=200 elapsed=0.018s
+2026-11-11 12:06:56,017 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:06:56,040 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.024s
+2026-11-11 12:10:55,012 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:10:55,025 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.014s
+2026-11-11 12:10:55,062 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 12:10:55,064 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.002s
+2026-11-11 12:10:56,627 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:10:56,646 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.019s
+2026-11-11 12:11:21,102 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:11:21,130 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.028s
+2026-11-11 12:11:22,272 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:11:22,296 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.024s
+2026-11-11 12:11:23,329 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:11:23,353 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.024s
+2026-11-11 12:11:23,511 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:11:23,534 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.023s
+2026-11-11 12:11:23,695 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:11:23,711 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.016s
+2026-11-11 12:11:23,878 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:11:23,893 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.015s
+2026-11-11 12:11:24,072 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:11:24,101 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.029s
+2026-11-11 12:11:24,258 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:11:24,283 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.025s
+2026-11-11 12:11:24,441 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:11:24,480 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.038s
+2026-11-11 12:11:28,270 INFO aartikraft Incoming request: GET /dashboard/front-sections
+2026-11-11 12:11:28,292 INFO aartikraft Completed request: GET /dashboard/front-sections status=200 elapsed=0.023s
+2026-11-11 12:11:59,871 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 12:11:59,885 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.014s
+2026-11-11 12:12:02,300 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 12:12:02,319 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.020s
+2026-11-11 12:12:03,886 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:12:03,919 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.034s
+2026-11-11 12:12:05,966 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 12:12:05,988 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.022s
+2026-11-11 12:12:07,582 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-11 12:12:07,603 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.021s
+2026-11-11 12:18:46,569 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 12:18:46,665 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.104s
+2026-11-11 12:19:35,753 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 12:19:35,821 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.069s
+2026-11-11 12:19:35,948 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 12:19:35,950 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.003s
+2026-11-11 12:19:39,849 INFO aartikraft Incoming request: GET /dashboard/front-sections
+2026-11-11 12:19:39,893 INFO aartikraft Completed request: GET /dashboard/front-sections status=200 elapsed=0.045s
+2026-11-11 12:27:54,903 INFO aartikraft Incoming request: GET /dashboard/front-sections
+2026-11-11 12:27:55,148 INFO aartikraft Completed request: GET /dashboard/front-sections status=200 elapsed=0.245s
+2026-11-11 12:27:58,525 INFO aartikraft Incoming request: GET /dashboard/image-slider
+2026-11-11 12:27:58,526 INFO aartikraft Completed request: GET /dashboard/image-slider status=303 elapsed=0.001s
+2026-11-11 12:27:58,532 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:27:58,546 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.014s
+2026-11-11 12:28:25,758 INFO aartikraft Incoming request: GET /dashboard/image-slider
+2026-11-11 12:28:25,761 INFO aartikraft Completed request: GET /dashboard/image-slider status=303 elapsed=0.004s
+2026-11-11 12:28:25,769 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:28:25,795 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.026s
+2026-11-11 12:28:33,167 INFO aartikraft Incoming request: GET /dashboard/image-slider
+2026-11-11 12:28:33,171 INFO aartikraft Completed request: GET /dashboard/image-slider status=303 elapsed=0.004s
+2026-11-11 12:28:33,187 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:28:33,215 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.028s
+2026-11-11 12:28:34,791 INFO aartikraft Incoming request: GET /dashboard/image-slider
+2026-11-11 12:28:34,796 INFO aartikraft Completed request: GET /dashboard/image-slider status=303 elapsed=0.005s
+2026-11-11 12:28:34,811 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:28:34,824 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.014s
+2026-11-11 12:28:36,150 INFO aartikraft Incoming request: GET /dashboard/image-slider
+2026-11-11 12:28:36,152 INFO aartikraft Completed request: GET /dashboard/image-slider status=303 elapsed=0.002s
+2026-11-11 12:28:36,161 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:28:36,181 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.020s
+2026-11-11 12:28:49,498 INFO aartikraft Incoming request: GET /admin/logout
+2026-11-11 12:28:49,499 INFO aartikraft Completed request: GET /admin/logout status=303 elapsed=0.002s
+2026-11-11 12:28:49,507 INFO aartikraft Incoming request: GET /admin/login
+2026-11-11 12:28:49,508 INFO aartikraft Completed request: GET /admin/login status=200 elapsed=0.001s
+2026-11-11 12:28:49,555 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 12:28:49,560 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.005s
+2026-11-11 12:28:51,127 INFO aartikraft Incoming request: POST /admin/login
+2026-11-11 12:28:51,155 INFO aartikraft Completed request: POST /admin/login status=303 elapsed=0.028s
+2026-11-11 12:28:51,165 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:28:51,193 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.028s
+2026-11-11 12:28:55,111 INFO aartikraft Incoming request: GET /dashboard/image-slider
+2026-11-11 12:28:55,113 INFO aartikraft Completed request: GET /dashboard/image-slider status=303 elapsed=0.002s
+2026-11-11 12:28:55,119 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:28:55,133 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.014s
+2026-11-11 12:28:56,286 INFO aartikraft Incoming request: GET /dashboard/image-slider
+2026-11-11 12:28:56,289 INFO aartikraft Completed request: GET /dashboard/image-slider status=303 elapsed=0.003s
+2026-11-11 12:28:56,297 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:28:56,317 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.020s
+2026-11-11 12:28:57,308 INFO aartikraft Incoming request: GET /dashboard/image-slider
+2026-11-11 12:28:57,311 INFO aartikraft Completed request: GET /dashboard/image-slider status=303 elapsed=0.003s
+2026-11-11 12:28:57,318 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:28:57,348 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.031s
+2026-11-11 12:29:24,982 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 12:29:24,998 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.016s
+2026-11-11 12:29:58,893 INFO aartikraft Incoming request: GET /dashboard/image-slider
+2026-11-11 12:29:58,894 INFO aartikraft Completed request: GET /dashboard/image-slider status=303 elapsed=0.002s
+2026-11-11 12:29:58,903 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:29:58,919 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.016s
+2026-11-11 12:35:01,532 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:35:01,563 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.030s
+2026-11-11 12:39:04,790 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:39:05,066 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.276s
+2026-11-11 12:39:05,110 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 12:39:05,112 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.002s
+2026-11-11 12:39:11,220 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:39:11,259 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.039s
+2026-11-11 12:39:12,669 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:39:12,682 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.013s
+2026-11-11 12:39:13,869 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:39:13,890 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.021s
+2026-11-11 12:46:06,697 INFO aartikraft Incoming request: HEAD /dashboard/slider
+2026-11-11 12:46:06,698 INFO aartikraft Completed request: HEAD /dashboard/slider status=405 elapsed=0.001s
+2026-11-11 12:48:05,661 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:48:05,766 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.105s
+2026-11-11 12:48:05,805 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 12:48:05,828 INFO aartikraft Completed request: GET /static/admin.css status=200 elapsed=0.022s
+2026-11-11 12:48:05,950 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-11 12:48:05,952 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.003s
+2026-11-11 12:48:08,244 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 12:48:08,265 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.022s
+2026-11-11 12:48:31,141 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 12:48:31,164 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.023s
+2026-11-11 12:48:34,189 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 12:48:34,208 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.018s
+2026-11-11 12:48:35,219 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-11 12:48:35,239 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.020s
+2026-11-11 12:48:36,978 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 12:48:36,994 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.017s
+2026-11-11 12:48:59,615 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 12:48:59,628 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.013s
+2026-11-11 12:49:02,955 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 12:49:02,970 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.015s
+2026-11-11 12:49:05,019 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 12:49:05,053 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.033s
+2026-11-11 12:49:06,312 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-11 12:49:06,329 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.017s
+2026-11-11 12:49:07,153 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 12:49:07,168 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.015s
+2026-11-11 12:49:08,046 INFO aartikraft Incoming request: GET /dashboard/contacts
+2026-11-11 12:49:08,065 INFO aartikraft Completed request: GET /dashboard/contacts status=200 elapsed=0.019s
+2026-11-11 12:49:18,718 INFO aartikraft Incoming request: GET /products
+2026-11-11 12:49:18,736 INFO aartikraft Completed request: GET /products status=200 elapsed=0.018s
+2026-11-11 12:49:18,741 INFO aartikraft Incoming request: GET /products
+2026-11-11 12:49:18,756 INFO aartikraft Completed request: GET /products status=200 elapsed=0.015s
+2026-11-11 12:50:28,190 INFO aartikraft Incoming request: GET /dashboard/contacts
+2026-11-11 12:50:28,209 INFO aartikraft Completed request: GET /dashboard/contacts status=200 elapsed=0.019s
+2026-11-11 12:50:30,635 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-11 12:50:30,650 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.015s
+2026-11-11 12:50:32,339 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 12:50:32,351 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.012s
+2026-11-11 12:50:52,743 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:50:52,761 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.018s
+2026-11-11 12:50:59,545 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 12:50:59,560 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.014s
+2026-11-11 12:51:01,674 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 12:51:01,703 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.029s
+2026-11-11 12:51:39,347 INFO aartikraft Incoming request: GET /dashboard/front-sections
+2026-11-11 12:51:39,367 INFO aartikraft Completed request: GET /dashboard/front-sections status=200 elapsed=0.020s
+2026-11-11 12:51:42,534 INFO aartikraft Incoming request: GET /dashboard/contacts
+2026-11-11 12:51:42,548 INFO aartikraft Completed request: GET /dashboard/contacts status=200 elapsed=0.014s
+2026-11-11 13:01:34,865 INFO aartikraft Incoming request: GET /ws
+2026-11-11 13:01:34,872 INFO aartikraft Completed request: GET /ws status=404 elapsed=0.007s
+2026-11-11 13:01:34,878 INFO aartikraft Incoming request: GET /products
+2026-11-11 13:01:34,921 INFO aartikraft Completed request: GET /products status=200 elapsed=0.043s
+2026-11-11 13:01:34,935 INFO aartikraft Incoming request: GET /products
+2026-11-11 13:01:34,951 INFO aartikraft Completed request: GET /products status=200 elapsed=0.016s
+2026-11-11 16:39:30,965 INFO aartikraft Incoming request: GET /
+2026-11-11 16:39:30,971 INFO aartikraft Completed request: GET / status=200 elapsed=0.005s
+2026-11-11 16:39:31,159 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-11 16:39:31,160 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.002s
+2026-11-11 16:39:35,887 INFO aartikraft Incoming request: GET /docs
+2026-11-11 16:39:35,894 INFO aartikraft Completed request: GET /docs status=200 elapsed=0.007s
+2026-11-11 16:39:36,193 INFO aartikraft Incoming request: GET /openapi.json
+2026-11-11 16:39:36,412 INFO aartikraft Completed request: GET /openapi.json status=200 elapsed=0.219s
+2026-11-11 16:39:44,558 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 16:39:44,566 INFO aartikraft Completed request: GET /dashboard status=303 elapsed=0.008s
+2026-11-11 16:39:44,574 INFO aartikraft Incoming request: GET /admin/login
+2026-11-11 16:39:44,584 INFO aartikraft Completed request: GET /admin/login status=200 elapsed=0.010s
+2026-11-11 16:39:44,649 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 16:39:44,663 INFO aartikraft Completed request: GET /static/admin.css status=200 elapsed=0.014s
+2026-11-11 16:39:56,647 INFO aartikraft Incoming request: POST /admin/login
+2026-11-11 16:39:56,651 INFO aartikraft Completed request: POST /admin/login status=303 elapsed=0.004s
+2026-11-11 16:39:56,657 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 16:39:56,753 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.097s
+2026-11-11 16:40:03,270 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 16:40:03,303 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.033s
+2026-11-11 16:40:05,363 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 16:40:05,391 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.028s
+2026-11-11 16:40:06,697 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-11 16:40:06,718 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.021s
+2026-11-11 16:40:07,893 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 16:40:07,909 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.015s
+2026-11-11 16:40:08,663 INFO aartikraft Incoming request: GET /dashboard/contacts
+2026-11-11 16:40:08,685 INFO aartikraft Completed request: GET /dashboard/contacts status=200 elapsed=0.022s
+2026-11-11 16:40:09,526 INFO aartikraft Incoming request: GET /dashboard/front-sections
+2026-11-11 16:40:09,539 INFO aartikraft Completed request: GET /dashboard/front-sections status=200 elapsed=0.014s
+2026-11-11 16:40:10,417 INFO aartikraft Incoming request: GET /dashboard/multi-sections
+2026-11-11 16:40:10,436 INFO aartikraft Completed request: GET /dashboard/multi-sections status=200 elapsed=0.019s
+2026-11-11 16:40:11,518 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 16:40:11,533 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.015s
+2026-11-11 16:40:12,981 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 16:40:12,998 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.017s
+2026-11-11 16:41:11,385 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 16:41:11,387 INFO aartikraft Completed request: GET /dashboard status=303 elapsed=0.001s
+2026-11-11 16:43:28,899 INFO aartikraft Incoming request: GET /admin/login
+2026-11-11 16:43:28,901 INFO aartikraft Completed request: GET /admin/login status=200 elapsed=0.001s
+2026-11-11 16:43:35,636 INFO aartikraft Incoming request: POST /admin/login
+2026-11-11 16:43:35,639 INFO aartikraft Completed request: POST /admin/login status=303 elapsed=0.003s
+2026-11-11 16:43:35,667 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 16:43:35,949 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.282s
+2026-11-11 16:43:42,839 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-11 16:43:42,858 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.019s
+2026-11-11 16:43:42,869 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-11 16:43:42,879 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.010s
+2026-11-11 16:43:42,891 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 16:43:42,904 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.012s
+2026-11-11 16:43:42,916 INFO aartikraft Incoming request: GET /dashboard/contacts
+2026-11-11 16:43:42,932 INFO aartikraft Completed request: GET /dashboard/contacts status=200 elapsed=0.016s
+2026-11-11 16:43:42,947 INFO aartikraft Incoming request: GET /dashboard/front-sections
+2026-11-11 16:43:42,961 INFO aartikraft Completed request: GET /dashboard/front-sections status=200 elapsed=0.014s
+2026-11-11 16:43:42,972 INFO aartikraft Incoming request: GET /dashboard/multi-sections
+2026-11-11 16:43:42,983 INFO aartikraft Completed request: GET /dashboard/multi-sections status=200 elapsed=0.010s
+2026-11-11 16:43:42,995 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 16:43:43,007 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.012s
+2026-11-11 16:43:43,018 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 16:43:43,036 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.018s
+2026-11-11 16:43:43,061 INFO aartikraft Incoming request: GET /dashboard/background-tasks
+2026-11-11 16:43:43,083 INFO aartikraft Completed request: GET /dashboard/background-tasks status=200 elapsed=0.022s
+2026-11-11 16:43:58,120 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-11 16:43:58,134 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.014s
+2026-11-11 16:44:00,462 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 16:44:00,483 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.020s
+2026-11-11 16:44:06,001 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 16:44:06,021 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.020s
+2026-11-11 17:06:04,400 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:06:04,502 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.102s
+2026-11-11 17:06:04,509 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:06:04,527 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.017s
+2026-11-11 17:06:37,210 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:06:37,234 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.024s
+2026-11-11 17:06:37,256 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:06:37,262 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.008s
+2026-11-11 17:06:44,232 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-11 17:06:45,270 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=1.038s
+2026-11-11 17:06:57,540 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:06:57,593 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.053s
+2026-11-11 17:06:57,624 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:06:57,656 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.032s
+2026-11-11 17:07:28,218 INFO aartikraft Incoming request: GET /products
+2026-11-11 17:07:28,235 INFO aartikraft Completed request: GET /products status=200 elapsed=0.017s
+2026-11-11 17:07:28,239 INFO aartikraft Incoming request: GET /products
+2026-11-11 17:07:28,245 INFO aartikraft Completed request: GET /products status=200 elapsed=0.005s
+2026-11-11 17:07:28,344 INFO aartikraft Incoming request: GET /media/cat/product_cat-ebe2ce3a829b45c4bbe8bee8351bff50.png
+2026-11-11 17:07:28,351 INFO aartikraft Incoming request: GET /media/cat/admin_product_cat-d63ddcd3f69a416bb7a777b790cbfa6c.png
+2026-11-11 17:07:28,351 INFO aartikraft Incoming request: GET /media/cat/Picsart_26-01-07_17-43-08-935 (1)-cf14031252d04b09b28ba2e422aaf28d.jpg
+2026-11-11 17:07:28,364 INFO aartikraft Completed request: GET /media/cat/product_cat-ebe2ce3a829b45c4bbe8bee8351bff50.png status=304 elapsed=0.020s
+2026-11-11 17:07:28,364 INFO aartikraft Completed request: GET /media/cat/admin_product_cat-d63ddcd3f69a416bb7a777b790cbfa6c.png status=304 elapsed=0.014s
+2026-11-11 17:07:28,365 INFO aartikraft Completed request: GET /media/cat/Picsart_26-01-07_17-43-08-935 (1)-cf14031252d04b09b28ba2e422aaf28d.jpg status=304 elapsed=0.013s
+2026-11-11 17:07:38,867 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:07:38,879 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.013s
+2026-11-11 17:07:38,887 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:07:38,894 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.007s
+2026-11-11 17:10:22,754 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:10:22,799 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.046s
+2026-11-11 17:10:22,987 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-11 17:10:22,996 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.010s
+2026-11-11 17:10:47,502 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 17:10:47,531 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.029s
+2026-11-11 17:17:31,435 INFO aartikraft Incoming request: POST /admin/save/slider
+2026-11-11 17:17:31,647 INFO aartikraft Completed request: POST /admin/save/slider status=303 elapsed=0.212s
+2026-11-11 17:17:31,652 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 17:17:31,665 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.013s
+2026-11-11 17:17:31,721 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 17:17:31,730 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.009s
+2026-11-11 17:17:48,426 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 17:17:48,454 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.028s
+2026-11-11 17:18:27,037 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:18:27,044 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.007s
+2026-11-11 17:18:28,556 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:18:28,565 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.009s
+2026-11-11 17:18:29,418 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:18:29,429 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.011s
+2026-11-11 17:18:30,549 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:18:30,556 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.006s
+2026-11-11 17:18:35,791 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:18:35,794 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.003s
+2026-11-11 17:18:43,542 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 17:18:43,560 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.024s
+2026-11-11 17:19:05,836 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:19:05,842 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.007s
+2026-11-11 17:19:06,907 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:19:06,911 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.004s
+2026-11-11 17:19:09,469 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:19:09,477 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.007s
+2026-11-11 17:19:42,943 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:19:42,959 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.015s
+2026-11-11 17:19:46,698 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:19:46,728 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.031s
+2026-11-11 17:19:53,804 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:19:53,848 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.044s
+2026-11-11 17:19:53,939 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:19:53,972 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.032s
+2026-11-11 17:21:25,033 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:21:25,037 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.004s
+2026-11-11 17:21:25,322 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-11 17:21:25,324 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.002s
+2026-11-11 17:21:53,148 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:21:53,155 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.006s
+2026-11-11 17:21:59,673 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:21:59,684 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.011s
+2026-11-11 17:21:59,798 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-11 17:21:59,800 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.002s
+2026-11-11 17:22:02,032 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:22:02,037 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 17:29:45,516 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:29:45,526 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.010s
+2026-11-11 17:29:50,007 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:29:50,016 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.009s
+2026-11-11 17:29:50,058 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:29:50,078 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.019s
+2026-11-11 17:30:17,504 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:30:17,508 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.004s
+2026-11-11 17:30:18,596 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:30:18,601 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.004s
+2026-11-11 17:32:53,183 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:53,187 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 17:32:54,082 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:54,090 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.008s
+2026-11-11 17:32:54,280 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:54,284 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.004s
+2026-11-11 17:32:54,480 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:54,482 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.003s
+2026-11-11 17:32:54,682 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:54,684 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.002s
+2026-11-11 17:32:54,877 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:54,881 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.004s
+2026-11-11 17:32:55,083 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:55,086 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.003s
+2026-11-11 17:32:55,271 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:55,276 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 17:32:55,491 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:55,502 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.011s
+2026-11-11 17:32:55,722 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:55,735 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.013s
+2026-11-11 17:32:55,894 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:55,899 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 17:32:59,423 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:59,452 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.029s
+2026-11-11 17:32:59,465 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:32:59,476 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.011s
+2026-11-11 17:33:04,791 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 17:33:04,824 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.034s
+2026-11-11 17:35:28,741 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-11 17:35:28,773 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.032s
+2026-11-11 17:38:27,787 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:38:27,827 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.040s
+2026-11-11 17:38:32,501 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:38:32,526 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.024s
+2026-11-11 17:38:32,538 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:38:32,554 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.016s
+2026-11-11 17:38:37,535 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-11 17:38:37,803 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.268s
+2026-11-11 17:38:45,474 INFO aartikraft Incoming request: GET /products
+2026-11-11 17:38:45,485 INFO aartikraft Completed request: GET /products status=200 elapsed=0.011s
+2026-11-11 17:38:45,495 INFO aartikraft Incoming request: GET /products
+2026-11-11 17:38:45,587 INFO aartikraft Completed request: GET /products status=200 elapsed=0.092s
+2026-11-11 17:39:14,507 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:39:14,515 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.008s
+2026-11-11 17:39:14,523 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:39:14,530 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.007s
+2026-11-11 17:40:01,219 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:40:01,224 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.006s
+2026-11-11 17:40:06,717 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 17:40:06,764 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.047s
+2026-11-11 17:40:53,196 INFO aartikraft Incoming request: POST /admin/save/slider
+2026-11-11 17:40:53,418 INFO aartikraft Completed request: POST /admin/save/slider status=303 elapsed=0.222s
+2026-11-11 17:40:53,425 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 17:40:53,450 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.025s
+2026-11-11 17:40:59,595 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:40:59,602 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.006s
+2026-11-11 17:41:00,764 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:41:00,770 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.006s
+2026-11-11 17:41:01,099 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:41:01,105 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.006s
+2026-11-11 17:41:01,309 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:41:01,317 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.007s
+2026-11-11 17:41:01,499 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:41:01,503 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 17:41:01,685 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:41:01,689 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.004s
+2026-11-11 17:41:01,868 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:41:01,873 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 17:41:02,059 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:41:02,065 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.006s
+2026-11-11 17:41:02,264 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:41:02,268 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.003s
+2026-11-11 17:41:02,450 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:41:02,455 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 17:42:03,608 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 17:42:03,638 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.030s
+2026-11-11 17:43:44,496 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 17:43:44,713 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.217s
+2026-11-11 17:43:46,611 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 17:43:46,643 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.032s
+2026-11-11 17:44:16,673 INFO aartikraft Incoming request: POST /admin/save/slider
+2026-11-11 17:44:16,716 INFO aartikraft Completed request: POST /admin/save/slider status=303 elapsed=0.043s
+2026-11-11 17:44:16,721 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 17:44:16,746 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.024s
+2026-11-11 17:44:27,943 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:27,958 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.015s
+2026-11-11 17:44:29,299 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:29,318 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.020s
+2026-11-11 17:44:29,964 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:29,969 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 17:44:30,163 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:30,166 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.003s
+2026-11-11 17:44:30,377 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:30,383 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.006s
+2026-11-11 17:44:30,551 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:30,555 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 17:44:30,751 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:30,759 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.008s
+2026-11-11 17:44:30,946 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:30,951 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.004s
+2026-11-11 17:44:31,173 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:31,182 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.009s
+2026-11-11 17:44:31,362 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:31,371 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.009s
+2026-11-11 17:44:31,578 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:31,583 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 17:44:31,776 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:31,782 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.006s
+2026-11-11 17:44:31,976 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:31,980 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.003s
+2026-11-11 17:44:32,198 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:32,210 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.012s
+2026-11-11 17:44:32,430 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:32,439 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.009s
+2026-11-11 17:44:32,666 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:32,671 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 17:44:32,841 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:32,846 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.004s
+2026-11-11 17:44:34,525 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:44:34,542 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.016s
+2026-11-11 17:45:10,402 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:45:10,414 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.012s
+2026-11-11 17:54:39,691 INFO aartikraft Incoming request: GET /
+2026-11-11 17:54:39,702 INFO aartikraft Completed request: GET / status=200 elapsed=0.011s
+2026-11-11 17:54:39,881 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-11 17:54:39,884 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.003s
+2026-11-11 17:54:44,199 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 17:54:44,202 INFO aartikraft Completed request: GET /dashboard status=303 elapsed=0.003s
+2026-11-11 17:54:44,211 INFO aartikraft Incoming request: GET /admin/login
+2026-11-11 17:54:44,219 INFO aartikraft Completed request: GET /admin/login status=200 elapsed=0.007s
+2026-11-11 17:54:52,485 INFO aartikraft Incoming request: POST /admin/login
+2026-11-11 17:54:52,488 INFO aartikraft Completed request: POST /admin/login status=303 elapsed=0.003s
+2026-11-11 17:54:52,493 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 17:54:52,556 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.063s
+2026-11-11 17:55:06,634 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 17:55:06,659 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.026s
+2026-11-11 17:55:11,787 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 17:55:11,827 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.040s
+2026-11-11 17:57:31,220 INFO aartikraft Incoming request: POST /admin/save/slider
+2026-11-11 17:57:31,493 INFO aartikraft Completed request: POST /admin/save/slider status=303 elapsed=0.273s
+2026-11-11 17:57:31,500 INFO aartikraft Incoming request: GET /dashboard
+2026-11-11 17:57:31,533 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.033s
+2026-11-11 17:57:31,593 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-11 17:57:31,610 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.017s
+2026-11-11 17:59:09,419 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 17:59:09,427 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.008s
+2026-11-11 18:01:18,799 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 18:01:18,824 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.026s
+2026-11-11 18:01:25,903 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 18:01:25,936 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.034s
+2026-11-11 18:01:31,067 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-11 18:01:31,093 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.027s
+2026-11-11 18:05:20,794 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 18:05:20,812 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.018s
+2026-11-11 18:05:21,984 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 18:05:21,990 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.006s
+2026-11-11 18:05:22,739 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 18:05:22,746 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.007s
+2026-11-11 18:05:22,950 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 18:05:22,956 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 18:05:23,125 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 18:05:23,130 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.006s
+2026-11-11 18:05:23,305 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 18:05:23,312 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.007s
+2026-11-11 18:05:23,515 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 18:05:23,528 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.013s
+2026-11-11 18:05:23,676 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 18:05:23,680 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.004s
+2026-11-11 18:05:23,864 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 18:05:23,874 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.010s
+2026-11-11 18:06:49,870 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 18:06:49,908 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.038s
+2026-11-11 18:11:27,530 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 18:11:27,556 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.027s
+2026-11-11 18:11:27,596 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 18:11:27,620 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.024s
+2026-11-11 18:11:27,831 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg
+2026-11-11 18:11:27,833 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg
+2026-11-11 18:11:27,840 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-11 18:11:27,841 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-11 18:11:27,863 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=200 elapsed=0.023s
+2026-11-11 18:11:27,864 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg status=200 elapsed=0.033s
+2026-11-11 18:11:27,864 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg status=200 elapsed=0.031s
+2026-11-11 18:11:27,868 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=200 elapsed=0.028s
+2026-11-11 22:53:46,346 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:53:46,380 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.034s
+2026-11-11 22:53:46,397 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:53:46,418 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.021s
+2026-11-11 22:53:46,965 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg
+2026-11-11 22:53:46,981 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg
+2026-11-11 22:53:46,994 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-11 22:53:46,995 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-11 22:53:46,995 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg status=200 elapsed=0.031s
+2026-11-11 22:53:46,996 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg status=200 elapsed=0.015s
+2026-11-11 22:53:47,016 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=200 elapsed=0.021s
+2026-11-11 22:53:47,016 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=200 elapsed=0.022s
+2026-11-11 22:53:54,305 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:53:54,331 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.026s
+2026-11-11 22:53:54,356 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:53:54,384 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.028s
+2026-11-11 22:53:54,797 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg
+2026-11-11 22:53:54,820 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg
+2026-11-11 22:53:54,825 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-11 22:53:54,834 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-11 22:53:54,844 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg status=304 elapsed=0.040s
+2026-11-11 22:53:54,862 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg status=304 elapsed=0.041s
+2026-11-11 22:53:54,874 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=304 elapsed=0.049s
+2026-11-11 22:53:54,877 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=304 elapsed=0.042s
+2026-11-11 22:54:26,021 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:54:26,056 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.034s
+2026-11-11 22:54:26,069 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:54:26,084 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.014s
+2026-11-11 22:55:05,391 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:55:05,456 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.065s
+2026-11-11 22:55:05,487 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:55:05,538 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.052s
+2026-11-11 22:56:11,139 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:56:11,158 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.019s
+2026-11-11 22:56:11,209 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:56:11,244 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.036s
+2026-11-11 22:56:54,681 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:56:54,716 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.036s
+2026-11-11 22:56:54,738 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:56:54,759 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.022s
+2026-11-11 22:56:58,785 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:56:58,815 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.029s
+2026-11-11 22:56:58,833 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:56:58,866 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.033s
+2026-11-11 22:58:06,221 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:58:06,251 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.030s
+2026-11-11 22:58:06,278 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:58:06,297 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.019s
+2026-11-11 22:58:10,559 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:58:10,574 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 22:58:10,585 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.026s
+2026-11-11 22:58:10,788 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.213s
+2026-11-11 22:58:11,043 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg
+2026-11-11 22:58:11,044 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg
+2026-11-11 22:58:11,051 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-11 22:58:11,052 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-11 22:58:11,059 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=200 elapsed=0.008s
+2026-11-11 22:58:11,061 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg status=200 elapsed=0.017s
+2026-11-11 22:58:11,062 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg status=200 elapsed=0.019s
+2026-11-11 22:58:11,070 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=200 elapsed=0.018s
+2026-11-11 23:02:17,465 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:02:17,487 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.022s
+2026-11-11 23:02:17,499 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:02:17,513 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.014s
+2026-11-11 23:04:50,791 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:04:50,807 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.016s
+2026-11-11 23:04:50,827 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:04:50,842 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.015s
+2026-11-11 23:05:02,085 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:05:02,101 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:05:02,121 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.035s
+2026-11-11 23:05:02,141 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.039s
+2026-11-11 23:05:02,355 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg
+2026-11-11 23:05:02,356 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg
+2026-11-11 23:05:02,362 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-11 23:05:02,371 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-11 23:05:02,382 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg status=200 elapsed=0.027s
+2026-11-11 23:05:02,383 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg status=200 elapsed=0.027s
+2026-11-11 23:05:02,389 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=200 elapsed=0.027s
+2026-11-11 23:05:02,396 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=200 elapsed=0.025s
+2026-11-11 23:05:05,625 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:05:05,631 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:05:05,643 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.018s
+2026-11-11 23:05:05,660 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.029s
+2026-11-11 23:05:05,887 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg
+2026-11-11 23:05:05,887 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg
+2026-11-11 23:05:05,888 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-11 23:05:05,888 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-11 23:05:05,895 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=200 elapsed=0.007s
+2026-11-11 23:05:05,895 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=200 elapsed=0.007s
+2026-11-11 23:05:05,895 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg status=200 elapsed=0.008s
+2026-11-11 23:05:05,912 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg status=200 elapsed=0.025s
+2026-11-11 23:05:14,762 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:05:14,798 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.036s
+2026-11-11 23:05:14,825 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:05:14,883 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.058s
+2026-11-11 23:05:24,157 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:05:24,165 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.008s
+2026-11-11 23:05:24,180 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:05:24,187 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.007s
+2026-11-11 23:05:24,417 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg
+2026-11-11 23:05:24,419 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg
+2026-11-11 23:05:24,425 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-11 23:05:24,426 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg status=200 elapsed=0.009s
+2026-11-11 23:05:24,426 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg status=200 elapsed=0.007s
+2026-11-11 23:05:24,427 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-11 23:05:24,436 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=200 elapsed=0.011s
+2026-11-11 23:05:24,452 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=200 elapsed=0.025s
+2026-11-11 23:14:45,250 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:45,264 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.014s
+2026-11-11 23:14:45,281 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:45,300 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.020s
+2026-11-11 23:14:53,343 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:53,362 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.018s
+2026-11-11 23:14:53,373 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:53,384 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.011s
+2026-11-11 23:14:55,045 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:55,058 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.013s
+2026-11-11 23:14:55,065 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:55,073 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.007s
+2026-11-11 23:14:56,453 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:56,473 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.021s
+2026-11-11 23:14:56,478 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:56,486 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.008s
+2026-11-11 23:14:57,011 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:57,028 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.018s
+2026-11-11 23:14:57,038 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:57,057 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.020s
+2026-11-11 23:14:57,545 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:57,556 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:57,577 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.031s
+2026-11-11 23:14:57,577 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.021s
+2026-11-11 23:14:57,974 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:57,990 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.016s
+2026-11-11 23:14:57,996 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:58,003 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.008s
+2026-11-11 23:14:58,521 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:58,549 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.028s
+2026-11-11 23:14:58,572 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:58,585 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.013s
+2026-11-11 23:14:58,984 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:59,013 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.028s
+2026-11-11 23:14:59,024 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:59,033 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.009s
+2026-11-11 23:14:59,527 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:59,536 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.010s
+2026-11-11 23:14:59,544 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:14:59,594 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.050s
+2026-11-11 23:15:00,045 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:00,061 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.016s
+2026-11-11 23:15:01,057 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:01,078 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.021s
+2026-11-11 23:15:01,088 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:01,093 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 23:15:03,043 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:03,076 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.033s
+2026-11-11 23:15:03,086 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:03,100 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.013s
+2026-11-11 23:15:03,960 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:03,985 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.026s
+2026-11-11 23:15:03,992 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:04,013 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.021s
+2026-11-11 23:15:06,297 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:06,313 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.016s
+2026-11-11 23:15:06,326 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:06,332 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.007s
+2026-11-11 23:15:15,589 INFO aartikraft Incoming request: GET /
+2026-11-11 23:15:15,592 INFO aartikraft Completed request: GET / status=200 elapsed=0.003s
+2026-11-11 23:15:15,640 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-11 23:15:15,641 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.001s
+2026-11-11 23:15:21,027 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:21,032 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.005s
+2026-11-11 23:15:21,038 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:21,047 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.009s
+2026-11-11 23:15:29,871 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:29,883 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.012s
+2026-11-11 23:15:29,895 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:29,906 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.012s
+2026-11-11 23:15:30,081 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg
+2026-11-11 23:15:30,083 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg
+2026-11-11 23:15:30,083 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-11 23:15:30,084 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-11 23:15:30,090 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg status=200 elapsed=0.007s
+2026-11-11 23:15:30,090 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=200 elapsed=0.007s
+2026-11-11 23:15:30,091 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg status=200 elapsed=0.010s
+2026-11-11 23:15:30,097 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=200 elapsed=0.013s
+2026-11-11 23:15:47,722 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:47,737 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.016s
+2026-11-11 23:15:47,744 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:15:47,752 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.008s
+2026-11-11 23:36:40,879 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:36:40,892 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.012s
+2026-11-11 23:36:40,920 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:36:40,929 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.009s
+2026-11-11 23:36:41,053 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg
+2026-11-11 23:36:41,067 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg
+2026-11-11 23:36:41,069 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg status=304 elapsed=0.016s
+2026-11-11 23:36:41,072 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-11 23:36:41,072 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-11 23:36:41,084 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg status=304 elapsed=0.018s
+2026-11-11 23:36:41,085 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=304 elapsed=0.013s
+2026-11-11 23:36:41,086 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=304 elapsed=0.014s
+2026-11-11 23:37:31,358 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:37:31,366 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.008s
+2026-11-11 23:37:31,372 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:37:31,378 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.007s
+2026-11-11 23:37:31,416 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg
+2026-11-11 23:37:31,417 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg
+2026-11-11 23:37:31,417 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-11 23:37:31,418 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-11 23:37:31,421 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=304 elapsed=0.003s
+2026-11-11 23:37:31,421 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg status=304 elapsed=0.005s
+2026-11-11 23:37:31,423 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=304 elapsed=0.004s
+2026-11-11 23:37:31,423 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg status=304 elapsed=0.006s
+2026-11-11 23:38:36,582 INFO aartikraft Incoming request: GET /products
+2026-11-11 23:38:36,593 INFO aartikraft Completed request: GET /products status=200 elapsed=0.012s
+2026-11-11 23:38:36,603 INFO aartikraft Incoming request: GET /products
+2026-11-11 23:38:36,622 INFO aartikraft Completed request: GET /products status=200 elapsed=0.019s
+2026-11-11 23:50:29,289 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:50:29,334 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.046s
+2026-11-11 23:50:29,356 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:50:29,371 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.015s
+2026-11-11 23:55:36,493 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:55:36,516 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.023s
+2026-11-11 23:55:36,534 INFO aartikraft Incoming request: GET /slider_images
+2026-11-11 23:55:36,548 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.014s
+2026-11-12 00:07:55,223 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 00:07:55,260 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.037s
+2026-11-12 00:07:55,290 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 00:07:55,316 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.026s
+2026-11-12 09:29:35,507 INFO aartikraft Incoming request: GET /products
+2026-11-12 09:29:35,523 INFO aartikraft Completed request: GET /products status=200 elapsed=0.016s
+2026-11-12 09:29:35,531 INFO aartikraft Incoming request: GET /products
+2026-11-12 09:29:35,540 INFO aartikraft Completed request: GET /products status=200 elapsed=0.009s
+2026-11-12 09:34:05,355 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 09:34:05,381 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.026s
+2026-11-12 09:34:05,398 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 09:34:05,406 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.008s
+2026-11-12 09:34:05,711 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg
+2026-11-12 09:34:05,774 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg
+2026-11-12 09:34:05,775 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-12 09:34:05,779 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-12 09:34:05,781 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg status=304 elapsed=0.070s
+2026-11-12 09:34:05,781 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg status=304 elapsed=0.007s
+2026-11-12 09:34:05,781 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=304 elapsed=0.007s
+2026-11-12 09:34:05,785 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=304 elapsed=0.006s
+2026-11-12 09:34:20,029 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 09:34:20,070 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.041s
+2026-11-12 09:34:20,083 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 09:34:20,105 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.023s
+2026-11-12 09:34:20,306 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg
+2026-11-12 09:34:20,308 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg
+2026-11-12 09:34:20,309 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-12 09:34:20,311 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-12 09:34:20,314 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.20-59dea60a5fcc4503b9199dac02c2f36e.jpeg status=304 elapsed=0.008s
+2026-11-12 09:34:20,316 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.19-27e55725257f4a479ecc6c08bd351da1.jpeg status=304 elapsed=0.008s
+2026-11-12 09:34:20,317 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=304 elapsed=0.006s
+2026-11-12 09:34:20,317 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=304 elapsed=0.009s
+2026-11-12 09:43:22,193 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-12 09:43:22,424 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.231s
+2026-11-12 09:43:22,471 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-12 09:43:22,473 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.003s
+2026-11-12 09:44:04,139 INFO aartikraft Incoming request: POST /admin/save/slider
+2026-11-12 09:44:06,946 INFO aartikraft Completed request: POST /admin/save/slider status=303 elapsed=2.807s
+2026-11-12 09:44:06,952 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 09:44:06,994 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.042s
+2026-11-12 09:44:14,217 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 09:44:14,237 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.020s
+2026-11-12 09:44:14,253 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 09:44:14,278 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.025s
+2026-11-12 09:44:14,525 INFO aartikraft Incoming request: GET /media/section/nathan-anderson-XENuKo9Gn8k-unsplash-4e47dfcb9f604db7bb31fea1f762d75d.jpg
+2026-11-12 09:44:14,528 INFO aartikraft Completed request: GET /media/section/nathan-anderson-XENuKo9Gn8k-unsplash-4e47dfcb9f604db7bb31fea1f762d75d.jpg status=200 elapsed=0.003s
+2026-11-12 09:44:14,537 INFO aartikraft Incoming request: GET /media/section/keagan-henman-jr6P9SoJMNs-unsplash-94a334ebfae349eab9f9435fb0d64c5f.jpg
+2026-11-12 09:44:14,544 INFO aartikraft Completed request: GET /media/section/keagan-henman-jr6P9SoJMNs-unsplash-94a334ebfae349eab9f9435fb0d64c5f.jpg status=200 elapsed=0.007s
+2026-11-12 10:49:55,372 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 10:49:55,400 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.028s
+2026-11-12 10:49:55,417 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 10:49:55,431 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.014s
+2026-11-12 10:49:55,615 INFO aartikraft Incoming request: GET /media/section/nathan-anderson-XENuKo9Gn8k-unsplash-4e47dfcb9f604db7bb31fea1f762d75d.jpg
+2026-11-12 10:49:55,618 INFO aartikraft Incoming request: GET /media/section/keagan-henman-jr6P9SoJMNs-unsplash-94a334ebfae349eab9f9435fb0d64c5f.jpg
+2026-11-12 10:49:55,620 INFO aartikraft Completed request: GET /media/section/nathan-anderson-XENuKo9Gn8k-unsplash-4e47dfcb9f604db7bb31fea1f762d75d.jpg status=304 elapsed=0.006s
+2026-11-12 10:49:55,624 INFO aartikraft Completed request: GET /media/section/keagan-henman-jr6P9SoJMNs-unsplash-94a334ebfae349eab9f9435fb0d64c5f.jpg status=304 elapsed=0.007s

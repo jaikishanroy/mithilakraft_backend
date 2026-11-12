@@ -1,0 +1,6 @@
+#!/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/bin/python
+import sys
+from idna.cli import main
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(main())
