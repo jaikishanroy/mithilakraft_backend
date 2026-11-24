@@ -726,35 +726,40 @@
         <input type="hidden" name="resource_id" value="{{ selected_items.get('new_arrival_feature').id if selected_items.get('new_arrival_feature') else '' }}">
         <div class="form-grid">
           <label>Title
-            <input type="text" name="title" value="{{ selected_items.get('new_arrival_feature').title if selected_items.get('new_arrival_feature') else 'Aurora Pendant' }}" required>
+            <input type="text" name="title" value="{{ selected_items.get('new_arrival_feature').title if selected_items.get('new_arrival_feature') else '' }}" required>
           </label>
-          <label>Badge / Label
-            <input type="text" name="badge" value="{{ selected_items.get('new_arrival_feature').badge if selected_items.get('new_arrival_feature') else 'New Arrival' }}">
+          <label>Badge
+            <input type="text" name="badge" value="{{ selected_items.get('new_arrival_feature').badge if selected_items.get('new_arrival_feature') else '' }}" placeholder="Featured Collection">
+          </label>
+          <label>Category
+            <input type="text" name="category" value="{{ selected_items.get('new_arrival_feature').category if selected_items.get('new_arrival_feature') else '' }}" placeholder="Saree">
+          </label>
+          <label>Fabric
+            <input type="text" name="fabric" value="{{ selected_items.get('new_arrival_feature').fabric if selected_items.get('new_arrival_feature') else '' }}" placeholder="Fabric details">
           </label>
           <label>Price
-            <input type="text" name="price" value="{{ selected_items.get('new_arrival_feature').price if selected_items.get('new_arrival_feature') else '$4,850' }}">
+            <input type="text" name="price" value="{{ selected_items.get('new_arrival_feature').price if selected_items.get('new_arrival_feature') else '' }}" placeholder="Price to display">
           </label>
           <label>Material
-            <input type="text" name="material" value="{{ selected_items.get('new_arrival_feature').material if selected_items.get('new_arrival_feature') else '22K Yellow Gold' }}">
+            <input type="text" name="material" value="{{ selected_items.get('new_arrival_feature').material if selected_items.get('new_arrival_feature') else '' }}" placeholder="Material details">
           </label>
-          <label>Weight
-            <input type="text" name="weight" value="{{ selected_items.get('new_arrival_feature').weight if selected_items.get('new_arrival_feature') else '18.5 grams' }}">
+          <label>Color
+            <input type="text" name="color" value="{{ selected_items.get('new_arrival_feature').color if selected_items.get('new_arrival_feature') else '' }}" placeholder="Color">
           </label>
-          <label>Chain Length
-            <input type="text" name="chain_length" value="{{ selected_items.get('new_arrival_feature').chain_length if selected_items.get('new_arrival_feature') else '18 inches (adjustable)' }}">
+          <label>Work
+            <input type="text" name="work" value="{{ selected_items.get('new_arrival_feature').work if selected_items.get('new_arrival_feature') else '' }}" placeholder="Craft/work details">
           </label>
-          <label>Color Options
-            <input type="text" name="color_options" value="{{ selected_items.get('new_arrival_feature').color_options if selected_items.get('new_arrival_feature') else 'Gold, Rose Gold, Silver' }}" placeholder="Gold, Rose Gold, Silver">
+          <label>Craft
+            <input type="text" name="craft" value="{{ selected_items.get('new_arrival_feature').craft if selected_items.get('new_arrival_feature') else '' }}" placeholder="Technique">
           </label>
-          <label>Size Options
-            <input type="text" name="size_options" value="{{ selected_items.get('new_arrival_feature').size_options if selected_items.get('new_arrival_feature') else 'Small, Medium, Large' }}" placeholder="Small, Medium, Large">
+          <label>Print
+            <input type="text" name="print" value="{{ selected_items.get('new_arrival_feature').print if selected_items.get('new_arrival_feature') else '' }}" placeholder="Print details">
           </label>
-          <label>Quantity
-            <div class="quantity-stepper">
-              <button type="button" class="qty-btn" data-direction="-1" aria-label="Decrease quantity">−</button>
-              <input type="number" name="quantity" min="1" step="1" value="{{ selected_items.get('new_arrival_feature').quantity if selected_items.get('new_arrival_feature') else 1 }}">
-              <button type="button" class="qty-btn" data-direction="1" aria-label="Increase quantity">＋</button>
-            </div>
+          <label>Occasion
+            <input type="text" name="occasion" value="{{ selected_items.get('new_arrival_feature').occasion if selected_items.get('new_arrival_feature') else '' }}" placeholder="Occasion">
+          </label>
+          <label>Sizes (comma separated, optional)
+            <input type="text" name="sizes" value="{{ (selected_items.get('new_arrival_feature').sizes or '').replace('[', '').replace(']', '').replace('\"', '') if selected_items.get('new_arrival_feature') else '' }}" placeholder="Size 1, Size 2">
           </label>
           <label class="checkbox-row">
             <input type="checkbox" name="status" {% if not selected_items.get('new_arrival_feature') or selected_items.get('new_arrival_feature').status %}checked{% endif %}>
@@ -763,22 +768,22 @@
           <label>Featured Image
             <input type="file" name="image" accept="image/*">
           </label>
-          <label>Product URL
-            <input type="url" name="product_url" value="{{ selected_items.get('new_arrival_feature').product_url if selected_items.get('new_arrival_feature') else '' }}" placeholder="https://example.com/product">
+          <label>Image URL (optional)
+            <input type="text" name="url" value="" placeholder="https://domain.com/images/product.jpg">
           </label>
         </div>
 
         <div class="new-arrival-editor-grid" style="margin-top:18px;">
-          <div class="new-arrival-image-box">
+          <div class="new-arrival-image-box" style="max-width:170px;max-height:120px;border:1px solid #d9d9d9;border-radius:8px;padding:6px;">
             {% if selected_items.get('new_arrival_feature') and selected_items.get('new_arrival_feature').image %}
-              <img src="{{ selected_items.get('new_arrival_feature').image }}" alt="{{ selected_items.get('new_arrival_feature').title }}">
+              <img src="{{ selected_items.get('new_arrival_feature').image }}" alt="{{ selected_items.get('new_arrival_feature').title }}" style="max-width:100%;max-height:104px;object-fit:cover;border-radius:6px;">
             {% else %}
-              <div class="new-arrival-placeholder">Upload a featured image for the new arrival block.</div>
+              <div class="new-arrival-placeholder" style="font-size:12px;">No image</div>
             {% endif %}
           </div>
           <div class="new-arrival-editor-wrap">
-            <label>Left Content (WYSIWYG)
-              <textarea name="description" id="new-arrival-editor">{{ selected_items.get('new_arrival_feature').description if selected_items.get('new_arrival_feature') else 'Inspired by the ethereal dance of northern lights, the Aurora Pendant captures the fluid movement of light through hand-hammered 22-karat gold.' }}</textarea>
+            <label>Description
+              <textarea name="description" id="new-arrival-editor">{{ selected_items.get('new_arrival_feature').description if selected_items.get('new_arrival_feature') else '' }}</textarea>
             </label>
           </div>
         </div>
@@ -790,33 +795,18 @@
           {% endif %}
         </div>
       </form>
-
-      <script>
-        document.addEventListener('DOMContentLoaded', function () {
-          document.querySelectorAll('.qty-btn').forEach(function (button) {
-            button.addEventListener('click', function () {
-              var stepper = this.closest('.quantity-stepper');
-              var input = stepper && stepper.querySelector('input[name="quantity"]');
-              if (!input) return;
-              var current = Number(input.value || 1);
-              var delta = Number(this.dataset.direction || 1);
-              input.value = Math.max(1, current + delta);
-            });
-          });
-        });
-      </script>
-
       <div class="table-wrapper">
         <table>
           <thead>
-            <tr><th>ID</th><th>Title</th><th>Badge</th><th>Status</th><th>Actions</th></tr>
+            <tr><th>ID</th><th>Title</th><th>Category</th><th>Price</th><th>Status</th><th>Actions</th></tr>
           </thead>
           <tbody>
             {% for feature in new_arrivals %}
               <tr>
                 <td>{{ feature.id }}</td>
                 <td>{{ feature.title }}</td>
-                <td>{{ feature.badge or 'New Arrival' }}</td>
+                <td>{{ feature.category or '—' }}</td>
+                <td>{{ feature.price or '—' }}</td>
                 <td>{{ 'Active' if feature.status else 'Inactive' }}</td>
                 <td class="action-links">
                   <a href="/dashboard/new-arrivals?edit=new_arrival_feature&id={{ feature.id }}#new-arrivals">Edit</a>

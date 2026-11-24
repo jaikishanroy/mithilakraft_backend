@@ -289,13 +289,15 @@ def ensure_new_arrival_schema():
 
             required = {
                 "price": "VARCHAR(100)",
+                "category": "VARCHAR(255)",
+                "fabric": "VARCHAR(255)",
                 "material": "VARCHAR(255)",
-                "weight": "VARCHAR(255)",
-                "chain_length": "VARCHAR(255)",
-                "product_url": "VARCHAR(1000)",
-                "color_options": "TEXT",
-                "size_options": "TEXT",
-                "quantity": "INTEGER NOT NULL DEFAULT 1",
+                "color": "VARCHAR(255)",
+                "work": "VARCHAR(255)",
+                "craft": "VARCHAR(255)",
+                "print_details": "VARCHAR(255)",
+                "occasion": "VARCHAR(255)",
+                "sizes": "TEXT",
             }
 
             for column_name, column_sql in required.items():
@@ -458,23 +460,36 @@ def build_product_response(product: Product, db: Session) -> ProductOut:
     )
 
 
+def parse_sizes(value: str | None) -> list[str]:
+    if not value:
+        return []
+    try:
+        parsed = json.loads(value)
+    except (TypeError, ValueError, json.JSONDecodeError):
+        parsed = [item.strip() for item in str(value).split(",") if item.strip()]
+    if not isinstance(parsed, list):
+        return []
+    return [str(item).strip() for item in parsed if str(item).strip()]
+
+
 def build_new_arrival_feature_response(feature: NewArrivalFeature) -> NewArrivalFeatureOut:
     base_url = resolve_public_base_url()
     return NewArrivalFeatureOut(
         id=feature.id,
         title=feature.title,
-        badge=feature.badge or "New Arrival",
-        description=feature.description,
         image=prepend_base_url(feature.image, base_url),
+        badge=feature.badge,
+        description=feature.description,
         price=feature.price,
+        category=feature.category,
+        fabric=feature.fabric,
         material=feature.material,
-        weight=feature.weight,
-        chain_length=feature.chain_length,
-        product_url=prepend_base_url(feature.product_url, base_url),
-        color_options=feature.color_options,
-        size_options=feature.size_options,
-        quantity=int(feature.quantity or 1),
-        status=bool(feature.status),
+        color=feature.color,
+        work=feature.work,
+        craft=feature.craft,
+        print=feature.print_details,
+        occasion=feature.occasion,
+        sizes=parse_sizes(feature.sizes),
         created_at=feature.created_at,
     )
 
@@ -574,23 +589,24 @@ def list_products(db: Session = Depends(get_db)):
     return [build_product_response(product, db) for product in products]
 
 
-@app.get("/new_arrivals", response_model=list[ProductOut])
+@app.get("/new_arrivals", response_model=list[NewArrivalFeatureOut])
 def list_new_arrivals(db: Session = Depends(get_db)):
-    products = db.query(Product).filter(Product.is_new_arrival.is_(True)).order_by(Product.id.desc()).all()
-    return [build_product_response(product, db) for product in products]
+    features = db.query(NewArrivalFeature).filter(NewArrivalFeature.status.is_(True)).order_by(NewArrivalFeature.id.desc()).all()
+    return [build_new_arrival_feature_response(feature) for feature in features]
 
 
 @app.get("/products/new-arrivals", response_model=list[ProductOut])
 def list_product_new_arrivals(db: Session = Depends(get_db)):
-    return list_new_arrivals(db=db)
+    products = db.query(Product).filter(Product.is_new_arrival.is_(True)).order_by(Product.id.desc()).all()
+    return [build_product_response(product, db) for product in products]
 
 
-@app.get("/new_arrivals/featured", response_model=ProductOut | None)
+@app.get("/new_arrivals/featured", response_model=NewArrivalFeatureOut | None)
 def get_featured_new_arrival(db: Session = Depends(get_db)):
-    product = db.query(Product).filter(Product.is_new_arrival.is_(True)).order_by(Product.id.desc()).first()
-    if not product:
+    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.status.is_(True)).order_by(NewArrivalFeature.id.desc()).first()
+    if not feature:
         return None
-    return build_product_response(product, db)
+    return build_new_arrival_feature_response(feature)
 
 
 @app.get("/new_arrival_features", response_model=list[NewArrivalFeatureOut])
@@ -607,42 +623,91 @@ def get_new_arrival_feature(db: Session = Depends(get_db)):
     return build_new_arrival_feature_response(feature)
 
 
+@app.get("/new_arrival_features/{feature_id}", response_model=NewArrivalFeatureOut)
+def get_new_arrival_feature_by_id(feature_id: int, db: Session = Depends(get_db)):
+    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.id == feature_id).first()
+    if not feature:
+        raise HTTPException(status_code=404, detail="New arrival not found")
+    return build_new_arrival_feature_response(feature)
+
+
 @app.post("/new_arrival_features/create", response_model=NewArrivalFeatureOut)
 def create_new_arrival_feature(
     title: str = Form(...),
     badge: str | None = Form(None),
     description: str | None = Form(None),
     price: str | None = Form(None),
+    category: str | None = Form(None),
+    fabric: str | None = Form(None),
     material: str | None = Form(None),
-    weight: str | None = Form(None),
-    chain_length: str | None = Form(None),
-    product_url: str | None = Form(None),
-    color_options: str | None = Form(None),
-    size_options: str | None = Form(None),
-    quantity: int = Form(1),
+    color: str | None = Form(None),
+    work: str | None = Form(None),
+    craft: str | None = Form(None),
+    print: str | None = Form(None),
+    occasion: str | None = Form(None),
+    sizes: str | None = Form(None),
     status: bool = Form(True),
+    url: str | None = Form(None),
     image: UploadFile | None = File(None),
     db: Session = Depends(get_db),
 ):
+    parsed_sizes = parse_sizes(sizes)
     feature = NewArrivalFeature(
         title=title,
-        badge=badge or "New Arrival",
+        badge=badge or None,
         description=description,
         price=price or None,
+        category=category or None,
+        fabric=fabric or None,
         material=material or None,
-        weight=weight or None,
-        chain_length=chain_length or None,
-        product_url=product_url or None,
-        color_options=color_options or None,
-        size_options=size_options or None,
-        quantity=max(1, quantity),
+        color=color or None,
+        work=work or None,
+        craft=craft or None,
+        print_details=print or None,
+        occasion=occasion or None,
+        sizes=json.dumps(parsed_sizes),
         status=status,
-        image=save_upload(image, "new-arrival") if image and getattr(image, "filename", None) else None,
+        image=save_upload(image, "new-arrival") if image and getattr(image, "filename", None) else (url or None),
     )
     db.add(feature)
     db.commit()
     db.refresh(feature)
     return build_new_arrival_feature_response(feature)
+
+
+@app.put("/new_arrival_features/{feature_id}", response_model=NewArrivalFeatureOut)
+def update_new_arrival_feature(feature_id: int, payload: NewArrivalFeatureCreate, db: Session = Depends(get_db)):
+    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.id == feature_id).first()
+    if not feature:
+        raise HTTPException(status_code=404, detail="New arrival not found")
+    data = payload.model_dump()
+    feature.title = data["title"]
+    feature.image = data.get("image")
+    feature.badge = data.get("badge")
+    feature.description = data.get("description")
+    feature.price = data.get("price")
+    feature.category = data.get("category")
+    feature.fabric = data.get("fabric")
+    feature.material = data.get("material")
+    feature.color = data.get("color")
+    feature.work = data.get("work")
+    feature.craft = data.get("craft")
+    feature.print_details = data.get("print")
+    feature.occasion = data.get("occasion")
+    feature.sizes = json.dumps(data.get("sizes") or [])
+    db.commit()
+    db.refresh(feature)
+    return build_new_arrival_feature_response(feature)
+
+
+@app.delete("/new_arrival_features/{feature_id}")
+def delete_new_arrival_feature(feature_id: int, db: Session = Depends(get_db)):
+    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.id == feature_id).first()
+    if not feature:
+        raise HTTPException(status_code=404, detail="New arrival not found")
+    db.delete(feature)
+    db.commit()
+    return {"detail": "New arrival deleted"}
 
 
 @app.get("/get_product/{product_id}", response_model=ProductOut)
@@ -1447,24 +1512,26 @@ async def save_admin_resource(resource: str, request: Request, db: Session = Dep
             obj = NewArrivalFeature(title=(form.get("title") or "").strip() or "New Arrival")
             db.add(obj)
         obj.title = (form.get("title") or "").strip() or obj.title
-        obj.badge = (form.get("badge") or "").strip() or "New Arrival"
+        obj.badge = (form.get("badge") or "").strip() or None
         obj.description = form.get("description") or None
         obj.price = (form.get("price") or "").strip() or None
+        obj.category = (form.get("category") or "").strip() or None
+        obj.fabric = (form.get("fabric") or "").strip() or None
         obj.material = (form.get("material") or "").strip() or None
-        obj.weight = (form.get("weight") or "").strip() or None
-        obj.chain_length = (form.get("chain_length") or "").strip() or None
-        obj.product_url = (form.get("product_url") or "").strip() or None
-        obj.color_options = (form.get("color_options") or "").strip() or None
-        obj.size_options = (form.get("size_options") or "").strip() or None
-        quantity_value = form.get("quantity")
-        try:
-            obj.quantity = max(1, int(quantity_value or 1))
-        except (TypeError, ValueError):
-            obj.quantity = 1
+        obj.color = (form.get("color") or "").strip() or None
+        obj.work = (form.get("work") or "").strip() or None
+        obj.craft = (form.get("craft") or "").strip() or None
+        obj.print_details = (form.get("print") or "").strip() or None
+        obj.occasion = (form.get("occasion") or "").strip() or None
+        obj.sizes = json.dumps(parse_sizes(form.get("sizes")))
         obj.status = form.get("status") == "on"
         image = form.get("image")
         if image and getattr(image, "filename", None):
             obj.image = save_upload(image, "new-arrival")
+        else:
+            image_url = (form.get("url") or "").strip()
+            if image_url:
+                obj.image = image_url
         db.commit(); db.refresh(obj)
 
     elif resource == "new_section_homeblock":

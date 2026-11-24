@@ -231,35 +231,37 @@ class NewSectionHomeBlockOut(BaseModel):
 
 class NewArrivalFeatureCreate(BaseModel):
     title: str
-    badge: Optional[str] = "New Arrival"
-    description: Optional[str] = None
     image: Optional[str] = None
+    badge: Optional[str] = None
+    description: Optional[str] = None
     price: Optional[str] = None
+    category: Optional[str] = None
+    fabric: Optional[str] = None
     material: Optional[str] = None
-    weight: Optional[str] = None
-    chain_length: Optional[str] = None
-    product_url: Optional[str] = None
-    color_options: Optional[str] = None
-    size_options: Optional[str] = None
-    quantity: int = 1
-    status: bool = True
+    color: Optional[str] = None
+    work: Optional[str] = None
+    craft: Optional[str] = None
+    print: Optional[str] = None
+    occasion: Optional[str] = None
+    sizes: List[str] = Field(default_factory=list)
 
 
 class NewArrivalFeatureOut(BaseModel):
     id: int
     title: str
-    badge: Optional[str] = "New Arrival"
-    description: Optional[str] = None
     image: Optional[str] = None
+    badge: Optional[str] = None
+    description: Optional[str] = None
     price: Optional[str] = None
+    category: Optional[str] = None
+    fabric: Optional[str] = None
     material: Optional[str] = None
-    weight: Optional[str] = None
-    chain_length: Optional[str] = None
-    product_url: Optional[str] = None
-    color_options: Optional[str] = None
-    size_options: Optional[str] = None
-    quantity: int = 1
-    status: bool
+    color: Optional[str] = None
+    work: Optional[str] = None
+    craft: Optional[str] = None
+    print: Optional[str] = None
+    occasion: Optional[str] = None
+    sizes: List[str] = Field(default_factory=list)
     created_at: Optional[datetime] = None
 
     model_config = ConfigDict(from_attributes=True)
