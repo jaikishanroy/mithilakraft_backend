@@ -67,7 +67,12 @@ class ProductCreate(BaseModel):
     sku: str
     category_id: int
     status: bool = True
+    is_new_arrival: bool = False
     cat_image: Optional[str] = None
+    featured_image: Optional[str] = None
+    material: Optional[str] = None
+    weight: Optional[str] = None
+    chain_length: Optional[str] = None
     instagram_link: Optional[str] = None
 
 
@@ -79,7 +84,12 @@ class ProductOut(BaseModel):
     sku: str
     category_id: int
     status: bool
+    is_new_arrival: bool = False
     cat_image: Optional[str] = None
+    featured_image: Optional[str] = None
+    material: Optional[str] = None
+    weight: Optional[str] = None
+    chain_length: Optional[str] = None
     instagram_link: Optional[str] = None
     category_name: Optional[str] = None
     images: List[ProductImageOut] = Field(default_factory=list)
@@ -215,5 +225,41 @@ class NewSectionHomeBlockOut(BaseModel):
     image4: Optional[str] = None
     url4: Optional[str] = None
     status: bool
+
+    model_config = ConfigDict(from_attributes=True)
+
+
+class NewArrivalFeatureCreate(BaseModel):
+    title: str
+    badge: Optional[str] = "New Arrival"
+    description: Optional[str] = None
+    image: Optional[str] = None
+    price: Optional[str] = None
+    material: Optional[str] = None
+    weight: Optional[str] = None
+    chain_length: Optional[str] = None
+    product_url: Optional[str] = None
+    color_options: Optional[str] = None
+    size_options: Optional[str] = None
+    quantity: int = 1
+    status: bool = True
+
+
+class NewArrivalFeatureOut(BaseModel):
+    id: int
+    title: str
+    badge: Optional[str] = "New Arrival"
+    description: Optional[str] = None
+    image: Optional[str] = None
+    price: Optional[str] = None
+    material: Optional[str] = None
+    weight: Optional[str] = None
+    chain_length: Optional[str] = None
+    product_url: Optional[str] = None
+    color_options: Optional[str] = None
+    size_options: Optional[str] = None
+    quantity: int = 1
+    status: bool
+    created_at: Optional[datetime] = None
 
     model_config = ConfigDict(from_attributes=True)

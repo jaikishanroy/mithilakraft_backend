@@ -29,6 +29,7 @@ from models import (
     FrontSection,
     HomeBlock,
     MultiImageSection,
+    NewArrivalFeature,
     NewSectionHomeBlock,
     Product,
     ProductImage,
@@ -47,6 +48,8 @@ from schemas import (
     HomeBlockPayload,
     MultiImageSectionCreate,
     MultiImageSectionOut,
+    NewArrivalFeatureCreate,
+    NewArrivalFeatureOut,
     NewSectionHomeBlockCreate,
     NewSectionHomeBlockOut,
     ProductCreate,
@@ -139,17 +142,36 @@ def resolve_public_base_url(request: Request | None = None) -> str:
     return configured_base_url.rstrip("/") if configured_base_url else (str(request.base_url).rstrip("/") if request else "http://localhost:8001")
 
 
+def looks_like_url_or_asset(value: str | None) -> bool:
+    if not value or not isinstance(value, str):
+        return False
+    text = value.strip()
+    if not text:
+        return False
+    if text.startswith(("http://", "https://", "data:", "mailto:")):
+        return True
+    if text.startswith(("/", "./", "../", "media/", "static/", "uploads/", "new-arrival/", "cat/", "section/", "front/")):
+        return True
+    if any(text.lower().endswith(ext) for ext in (".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg", ".bmp", ".pdf")):
+        return True
+    if "/" in text or ("." in text and text.split(".")[-1].isalpha()):
+        return True
+    return False
+
+
 def prepend_base_url(value: str | None, base_url: str | None = None) -> str | None:
     if value is None or value == "":
         return value
     if value.startswith(("http://", "https://", "data:")):
         return value
+    if not looks_like_url_or_asset(value):
+        return value
     normalized_base_url = (base_url or resolve_public_base_url()).rstrip("/")
     if value.startswith("/") and not value.startswith("//"):
         return f"{normalized_base_url}{value}"
-    if not value.startswith(("http://", "https://")):
-        return f"{normalized_base_url}/{value.lstrip('/')}"
-    return value
+    if value.startswith(("./", "../")):
+        return f"{normalized_base_url}/{value.lstrip('./')}"
+    return f"{normalized_base_url}/{value.lstrip('/')}"
 
 
 def add_base_url_prefix(value, base_url):
@@ -158,11 +180,13 @@ def add_base_url_prefix(value, base_url):
     if isinstance(value, list):
         return [add_base_url_prefix(item, base_url) for item in value]
     if isinstance(value, str):
-        if value.startswith(("http://", "https://", "data:")):
+        if not value or value.startswith(("http://", "https://", "data:")):
             return value
-        if value.startswith("/") and not value.startswith("//"):
-            return f"{base_url}{value}"
-        if value and not value.startswith("//"):
+        if looks_like_url_or_asset(value):
+            if value.startswith("/") and not value.startswith("//"):
+                return f"{base_url}{value}"
+            if value.startswith(("./", "../")):
+                return f"{base_url}/{value.lstrip('./')}"
             return f"{base_url}/{value.lstrip('/')}"
     return value
 
@@ -206,9 +230,96 @@ async def add_base_url_to_json_responses(request: Request, call_next):
         return response
 
 
-Base.metadata.create_all(bind=engine)
+def ensure_product_schema():
+    try:
+        with engine.begin() as connection:
+            inspector = connection.dialect.get_table_names(connection) if hasattr(connection.dialect, "get_table_names") else None
+            if inspector is not None and "products" not in inspector:
+                Base.metadata.create_all(bind=engine)
+                return
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+            if "sqlite" in str(engine.url).lower():
+                existing = connection.exec_driver_sql("PRAGMA table_info(products)").fetchall()
+                existing_cols = {row[1] for row in existing}
+            else:
+                result = connection.exec_driver_sql(
+                    "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'products'"
+                ).fetchall()
+                existing_cols = {row[0] for row in result}
+
+            required = {
+                "is_new_arrival": "BOOLEAN NOT NULL DEFAULT 0",
+                "featured_image": "VARCHAR(500)",
+                "material": "VARCHAR(255)",
+                "weight": "VARCHAR(255)",
+                "chain_length": "VARCHAR(255)",
+            }
+
+            for column_name, column_sql in required.items():
+                if column_name in existing_cols:
+                    continue
+                try:
+                    if "sqlite" in str(engine.url).lower():
+                        connection.exec_driver_sql(f"ALTER TABLE products ADD COLUMN {column_name} {column_sql};")
+                    else:
+                        connection.exec_driver_sql(f"ALTER TABLE products ADD COLUMN {column_name} {column_sql};")
+                except Exception:
+                    logger.warning("Could not add column %s to products table; continuing.", column_name)
+    except Exception:
+        logger.warning("Could not ensure product schema migration; fallback to create_all.", exc_info=True)
+        Base.metadata.create_all(bind=engine)
+
+
+def ensure_new_arrival_schema():
+    try:
+        with engine.begin() as connection:
+            inspector = connection.dialect.get_table_names(connection) if hasattr(connection.dialect, "get_table_names") else None
+            if inspector is not None and "new_arrival_features" not in inspector:
+                Base.metadata.create_all(bind=engine)
+                return
+
+            if "sqlite" in str(engine.url).lower():
+                existing = connection.exec_driver_sql("PRAGMA table_info(new_arrival_features)").fetchall()
+                existing_cols = {row[1] for row in existing}
+            else:
+                result = connection.exec_driver_sql(
+                    "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'new_arrival_features'"
+                ).fetchall()
+                existing_cols = {row[0] for row in result}
+
+            required = {
+                "price": "VARCHAR(100)",
+                "material": "VARCHAR(255)",
+                "weight": "VARCHAR(255)",
+                "chain_length": "VARCHAR(255)",
+                "product_url": "VARCHAR(1000)",
+                "color_options": "TEXT",
+                "size_options": "TEXT",
+                "quantity": "INTEGER NOT NULL DEFAULT 1",
+            }
+
+            for column_name, column_sql in required.items():
+                if column_name in existing_cols:
+                    continue
+                try:
+                    connection.exec_driver_sql(f"ALTER TABLE new_arrival_features ADD COLUMN {column_name} {column_sql};")
+                except Exception:
+                    logger.warning("Could not add column %s to new_arrival_features table; continuing.", column_name)
+    except Exception:
+        logger.warning("Could not ensure new_arrival schema migration; fallback to create_all.", exc_info=True)
+        Base.metadata.create_all(bind=engine)
+
+
+Base.metadata.create_all(bind=engine)
+ensure_product_schema()
+ensure_new_arrival_schema()
+
+try:
+    pwd_context = CryptContext(schemes=["bcrypt", "pbkdf2_sha256"], deprecated="auto")
+    pwd_context.hash("compatibility-check")
+except Exception:
+    logger.warning("bcrypt backend is incompatible in this environment; falling back to pbkdf2_sha256 only.", exc_info=True)
+    pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
 
 
 def get_password_hash(password: str) -> str:
@@ -216,7 +327,17 @@ def get_password_hash(password: str) -> str:
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    return pwd_context.verify(plain_password, hashed_password)
+    try:
+        return pwd_context.verify(plain_password, hashed_password)
+    except Exception:
+        if hashed_password and hashed_password.startswith("$2"):
+            try:
+                import bcrypt as bcrypt_module
+
+                return bcrypt_module.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
+            except Exception:
+                return False
+        return False
 
 
 def get_selected_dashboard_item(db: Session, resource: str, resource_id: str | None):
@@ -234,6 +355,7 @@ def get_selected_dashboard_item(db: Session, resource: str, resource_id: str | N
         "contact": Contact,
         "front_section": FrontSection,
         "multi_section": MultiImageSection,
+        "new_arrival_feature": NewArrivalFeature,
         "new_section_homeblock": NewSectionHomeBlock,
         "background_task": BackgroundTask,
     }
@@ -315,7 +437,12 @@ def build_product_response(product: Product, db: Session) -> ProductOut:
         sku=product.sku,
         category_id=product.category_id,
         status=bool(product.status),
+        is_new_arrival=bool(product.is_new_arrival),
         cat_image=prepend_base_url(product.cat_image, base_url),
+        featured_image=prepend_base_url(product.featured_image or product.cat_image, base_url),
+        material=product.material,
+        weight=product.weight,
+        chain_length=product.chain_length,
         instagram_link=product.instagram_link,
         category_name=category.name if category else None,
         images=[
@@ -328,6 +455,27 @@ def build_product_response(product: Product, db: Session) -> ProductOut:
             }
             for img in images
         ],
+    )
+
+
+def build_new_arrival_feature_response(feature: NewArrivalFeature) -> NewArrivalFeatureOut:
+    base_url = resolve_public_base_url()
+    return NewArrivalFeatureOut(
+        id=feature.id,
+        title=feature.title,
+        badge=feature.badge or "New Arrival",
+        description=feature.description,
+        image=prepend_base_url(feature.image, base_url),
+        price=feature.price,
+        material=feature.material,
+        weight=feature.weight,
+        chain_length=feature.chain_length,
+        product_url=prepend_base_url(feature.product_url, base_url),
+        color_options=feature.color_options,
+        size_options=feature.size_options,
+        quantity=int(feature.quantity or 1),
+        status=bool(feature.status),
+        created_at=feature.created_at,
     )
 
 
@@ -370,8 +518,13 @@ def create_product(
     sku: str = Form(...),
     category_id: int = Form(...),
     status: bool = Form(True),
+    is_new_arrival: bool = Form(False),
+    material: str | None = Form(None),
+    weight: str | None = Form(None),
+    chain_length: str | None = Form(None),
     instagram_link: str | None = Form(None),
     cat_image: UploadFile | None = File(None),
+    featured_image: UploadFile | None = File(None),
     images: List[UploadFile] = File(default=[]),
     db: Session = Depends(get_db),
 ):
@@ -380,6 +533,7 @@ def create_product(
         raise HTTPException(status_code=404, detail="Category not found")
 
     cat_image_path = save_upload(cat_image, "cat") if cat_image and getattr(cat_image, "filename", None) else ""
+    featured_image_path = save_upload(featured_image, "cat") if featured_image and getattr(featured_image, "filename", None) else None
     product = Product(
         name=name,
         price=price,
@@ -387,8 +541,13 @@ def create_product(
         sku=sku,
         category_id=category_id,
         status=status,
+        is_new_arrival=is_new_arrival,
+        material=material,
+        weight=weight,
+        chain_length=chain_length,
         instagram_link=instagram_link,
         cat_image=cat_image_path,
+        featured_image=featured_image_path or cat_image_path or None,
     )
     db.add(product)
     db.commit()
@@ -413,6 +572,77 @@ def create_product(
 def list_products(db: Session = Depends(get_db)):
     products = db.query(Product).all()
     return [build_product_response(product, db) for product in products]
+
+
+@app.get("/new_arrivals", response_model=list[ProductOut])
+def list_new_arrivals(db: Session = Depends(get_db)):
+    products = db.query(Product).filter(Product.is_new_arrival.is_(True)).order_by(Product.id.desc()).all()
+    return [build_product_response(product, db) for product in products]
+
+
+@app.get("/products/new-arrivals", response_model=list[ProductOut])
+def list_product_new_arrivals(db: Session = Depends(get_db)):
+    return list_new_arrivals(db=db)
+
+
+@app.get("/new_arrivals/featured", response_model=ProductOut | None)
+def get_featured_new_arrival(db: Session = Depends(get_db)):
+    product = db.query(Product).filter(Product.is_new_arrival.is_(True)).order_by(Product.id.desc()).first()
+    if not product:
+        return None
+    return build_product_response(product, db)
+
+
+@app.get("/new_arrival_features", response_model=list[NewArrivalFeatureOut])
+def list_new_arrival_features(db: Session = Depends(get_db)):
+    features = db.query(NewArrivalFeature).order_by(NewArrivalFeature.id.desc()).all()
+    return [build_new_arrival_feature_response(feature) for feature in features]
+
+
+@app.get("/new_arrival_feature", response_model=NewArrivalFeatureOut | None)
+def get_new_arrival_feature(db: Session = Depends(get_db)):
+    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.status.is_(True)).order_by(NewArrivalFeature.id.desc()).first()
+    if not feature:
+        return None
+    return build_new_arrival_feature_response(feature)
+
+
+@app.post("/new_arrival_features/create", response_model=NewArrivalFeatureOut)
+def create_new_arrival_feature(
+    title: str = Form(...),
+    badge: str | None = Form(None),
+    description: str | None = Form(None),
+    price: str | None = Form(None),
+    material: str | None = Form(None),
+    weight: str | None = Form(None),
+    chain_length: str | None = Form(None),
+    product_url: str | None = Form(None),
+    color_options: str | None = Form(None),
+    size_options: str | None = Form(None),
+    quantity: int = Form(1),
+    status: bool = Form(True),
+    image: UploadFile | None = File(None),
+    db: Session = Depends(get_db),
+):
+    feature = NewArrivalFeature(
+        title=title,
+        badge=badge or "New Arrival",
+        description=description,
+        price=price or None,
+        material=material or None,
+        weight=weight or None,
+        chain_length=chain_length or None,
+        product_url=product_url or None,
+        color_options=color_options or None,
+        size_options=size_options or None,
+        quantity=max(1, quantity),
+        status=status,
+        image=save_upload(image, "new-arrival") if image and getattr(image, "filename", None) else None,
+    )
+    db.add(feature)
+    db.commit()
+    db.refresh(feature)
+    return build_new_arrival_feature_response(feature)
 
 
 @app.get("/get_product/{product_id}", response_model=ProductOut)
@@ -864,6 +1094,7 @@ RESOURCE_LABELS = {
     "front-sections": "Front Sections",
     "multi-sections": "Multi Sections",
     "slider": "Slider",
+    "new-arrivals": "New Arrivals",
     "new-home-blocks": "New Home Blocks",
     "background-tasks": "Background Tasks",
 }
@@ -932,6 +1163,13 @@ async def dashboard_view(request: Request, db: Session = Depends(get_db), resour
     new_blocks_page = max(1, int(request.query_params.get("new_blocks_page", "1") or 1))
     new_section_homeblocks, new_blocks_page, new_blocks_pages, new_blocks_total = paginate(new_blocks_query.order_by(NewSectionHomeBlock.id.desc()), new_blocks_page, page_size)
 
+    new_arrivals_query = db.query(NewArrivalFeature)
+    new_arrivals_search = request.query_params.get("new_arrivals_search", "")
+    if new_arrivals_search:
+        new_arrivals_query = new_arrivals_query.filter(NewArrivalFeature.title.ilike(f"%{new_arrivals_search}%"))
+    new_arrivals_page = max(1, int(request.query_params.get("new_arrivals_page", "1") or 1))
+    new_arrivals, new_arrivals_page, new_arrivals_pages, new_arrivals_total = paginate(new_arrivals_query.order_by(NewArrivalFeature.id.desc()), new_arrivals_page, page_size)
+
     background_tasks_query = db.query(BackgroundTask)
     task_search = request.query_params.get("background_tasks_search", "")
     if task_search:
@@ -948,6 +1186,7 @@ async def dashboard_view(request: Request, db: Session = Depends(get_db), resour
             "contact",
             "front_section",
             "multi_section",
+            "new_arrival_feature",
             "new_section_homeblock",
             "background_task",
         ]
@@ -963,6 +1202,7 @@ async def dashboard_view(request: Request, db: Session = Depends(get_db), resour
             "front_sections": front_sections,
             "multi_sections": multi_sections,
             "new_section_homeblocks": new_section_homeblocks,
+            "new_arrivals": new_arrivals,
             "background_tasks": background_tasks,
             "selected_items": selected_items,
             "active_resource": resource,
@@ -975,6 +1215,7 @@ async def dashboard_view(request: Request, db: Session = Depends(get_db), resour
                 "front_sections": {"page": front_sections_page, "pages": front_sections_pages, "total": front_sections_total, "search": front_sections_search},
                 "multi_sections": {"page": multi_sections_page, "pages": multi_sections_pages, "total": multi_sections_total, "search": multi_sections_search},
                 "new_section_homeblocks": {"page": new_blocks_page, "pages": new_blocks_pages, "total": new_blocks_total, "search": new_blocks_search},
+                "new_arrivals": {"page": new_arrivals_page, "pages": new_arrivals_pages, "total": new_arrivals_total, "search": new_arrivals_search},
                 "background_tasks": {"page": background_tasks_page, "pages": background_tasks_pages, "total": background_tasks_total, "search": task_search},
             },
         },
@@ -995,6 +1236,7 @@ async def save_admin_resource(resource: str, request: Request, db: Session = Dep
         "front_section": "front-sections",
         "multi_section": "multi-sections",
         "slider": "slider",
+        "new_arrival_feature": "new-arrivals",
         "new_section_homeblock": "new-home-blocks",
         "background_task": "background-tasks",
     }.get(resource, "overview")
@@ -1053,6 +1295,13 @@ async def save_admin_resource(resource: str, request: Request, db: Session = Dep
         elif isinstance(cat_image_field, str):
             saved_cat_image = (cat_image_field or "").strip() or saved_cat_image
 
+        featured_image_field = form.get("featured_image")
+        saved_featured_image = product.featured_image if product and product.featured_image else saved_cat_image
+        if featured_image_field and getattr(featured_image_field, "filename", None):
+            saved_featured_image = save_upload(featured_image_field, "cat")
+        elif isinstance(featured_image_field, str):
+            saved_featured_image = (featured_image_field or "").strip() or saved_featured_image
+
         payload = {
             "name": (form.get("name") or "").strip(),
             "price": float(price_value),
@@ -1060,8 +1309,13 @@ async def save_admin_resource(resource: str, request: Request, db: Session = Dep
             "sku": (form.get("sku") or "").strip(),
             "category_id": int(category_id),
             "status": form.get("status") == "on",
+            "is_new_arrival": form.get("is_new_arrival") == "on",
+            "material": (form.get("material") or "").strip() or None,
+            "weight": (form.get("weight") or "").strip() or None,
+            "chain_length": (form.get("chain_length") or "").strip() or None,
             "instagram_link": form.get("instagram_link") or None,
             "cat_image": saved_cat_image,
+            "featured_image": saved_featured_image,
         }
         if product is None:
             product = Product(**payload)
@@ -1187,6 +1441,32 @@ async def save_admin_resource(resource: str, request: Request, db: Session = Dep
                     item.image = saved_path
         db.commit(); db.refresh(obj)
 
+    elif resource == "new_arrival_feature":
+        obj = db.query(NewArrivalFeature).filter(NewArrivalFeature.id == int(resource_id)).first() if resource_id else None
+        if obj is None:
+            obj = NewArrivalFeature(title=(form.get("title") or "").strip() or "New Arrival")
+            db.add(obj)
+        obj.title = (form.get("title") or "").strip() or obj.title
+        obj.badge = (form.get("badge") or "").strip() or "New Arrival"
+        obj.description = form.get("description") or None
+        obj.price = (form.get("price") or "").strip() or None
+        obj.material = (form.get("material") or "").strip() or None
+        obj.weight = (form.get("weight") or "").strip() or None
+        obj.chain_length = (form.get("chain_length") or "").strip() or None
+        obj.product_url = (form.get("product_url") or "").strip() or None
+        obj.color_options = (form.get("color_options") or "").strip() or None
+        obj.size_options = (form.get("size_options") or "").strip() or None
+        quantity_value = form.get("quantity")
+        try:
+            obj.quantity = max(1, int(quantity_value or 1))
+        except (TypeError, ValueError):
+            obj.quantity = 1
+        obj.status = form.get("status") == "on"
+        image = form.get("image")
+        if image and getattr(image, "filename", None):
+            obj.image = save_upload(image, "new-arrival")
+        db.commit(); db.refresh(obj)
+
     elif resource == "new_section_homeblock":
         block = int(form.get("block") or 0)
         section = int(form.get("section") or 0)
@@ -1242,6 +1522,7 @@ async def delete_admin_resource(resource: str, resource_id: int, request: Reques
         "contact": Contact,
         "front_section": FrontSection,
         "multi_section": MultiImageSection,
+        "new_arrival_feature": NewArrivalFeature,
         "new_section_homeblock": NewSectionHomeBlock,
         "background_task": BackgroundTask,
     }
@@ -1260,6 +1541,7 @@ async def delete_admin_resource(resource: str, resource_id: int, request: Reques
         "contact": "contacts",
         "front_section": "front-sections",
         "multi_section": "multi-sections",
+        "new_arrival_feature": "new-arrivals",
         "new_section_homeblock": "new-home-blocks",
         "background_task": "background-tasks",
     }.get(resource, "overview")

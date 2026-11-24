@@ -40,7 +40,12 @@ class Product(Base):
     sku = Column(String(255), unique=True, nullable=False)
     category_id = Column(Integer, ForeignKey("categories.id", ondelete="CASCADE"), nullable=False)
     status = Column(Boolean, default=True, nullable=False)
+    is_new_arrival = Column(Boolean, default=False, nullable=False)
     cat_image = Column(String(500), nullable=True)
+    featured_image = Column(String(500), nullable=True)
+    material = Column(String(255), nullable=True)
+    weight = Column(String(255), nullable=True)
+    chain_length = Column(String(255), nullable=True)
     instagram_link = Column(String(1000), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
 
@@ -161,3 +166,23 @@ class NewSectionHomeBlock(Base):
     status = Column(Boolean, default=True, nullable=False)
 
     __table_args__ = (UniqueConstraint("block", "section", name="uix_new_section_home_block"),)
+
+
+class NewArrivalFeature(Base):
+    __tablename__ = "new_arrival_features"
+
+    id = Column(Integer, primary_key=True, index=True)
+    title = Column(String(255), nullable=False)
+    badge = Column(String(100), default="New Arrival", nullable=True)
+    description = Column(Text, nullable=True)
+    image = Column(String(1000), nullable=True)
+    price = Column(String(100), nullable=True)
+    material = Column(String(255), nullable=True)
+    weight = Column(String(255), nullable=True)
+    chain_length = Column(String(255), nullable=True)
+    product_url = Column(String(1000), nullable=True)
+    color_options = Column(Text, nullable=True)
+    size_options = Column(Text, nullable=True)
+    quantity = Column(Integer, default=1, nullable=False)
+    status = Column(Boolean, default=True, nullable=False)
+    created_at = Column(DateTime, default=datetime.utcnow)

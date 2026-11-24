@@ -21,6 +21,7 @@
       <a href="/dashboard/front-sections" class="{% if active_resource == 'front-sections' %}active{% endif %}"><span>Front Sections</span></a>
       <a href="/dashboard/multi-sections" class="{% if active_resource == 'multi-sections' %}active{% endif %}"><span>Multi Sections</span></a>
       <a href="/dashboard/slider" class="{% if active_resource == 'slider' %}active{% endif %}"><span>Slider</span></a>
+      <a href="/dashboard/new-arrivals" class="{% if active_resource == 'new-arrivals' %}active{% endif %}"><span>New Arrivals</span></a>
       <a href="/dashboard/new-home-blocks" class="{% if active_resource == 'new-home-blocks' %}active{% endif %}"><span>New Home Blocks</span></a>
       <a href="/dashboard/background-tasks" class="{% if active_resource == 'background-tasks' %}active{% endif %}"><span>Background Tasks</span></a>
     </nav>
@@ -246,6 +247,19 @@
             <input type="checkbox" name="status" {% if not selected_items.get('product') or selected_items.get('product').status %}checked{% endif %}>
             Active
           </label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="is_new_arrival" {% if selected_items.get('product') and selected_items.get('product').is_new_arrival %}checked{% endif %}>
+            New Arrival
+          </label>
+          <label>Material
+            <input type="text" name="material" value="{{ selected_items.get('product').material if selected_items.get('product') else '' }}">
+          </label>
+          <label>Weight
+            <input type="text" name="weight" value="{{ selected_items.get('product').weight if selected_items.get('product') else '' }}">
+          </label>
+          <label>Chain Length
+            <input type="text" name="chain_length" value="{{ selected_items.get('product').chain_length if selected_items.get('product') else '' }}">
+          </label>
         </div>
         <div class="form-grid" style="margin-top:12px;">
           <label style="grid-column:1/-1;">Description
@@ -253,6 +267,9 @@
           </label>
           <label>Category Image
             <input type="file" name="cat_image" accept="image/*">
+          </label>
+          <label>Featured Image
+            <input type="file" name="featured_image" accept="image/*">
           </label>
           <label>Product Image 1
             <input type="file" name="image_1" accept="image/*">
@@ -277,7 +294,7 @@
       <div class="table-wrapper">
         <table>
           <thead>
-            <tr><th>ID</th><th>Name</th><th>Price</th><th>SKU</th><th>Actions</th></tr>
+            <tr><th>ID</th><th>Name</th><th>Price</th><th>SKU</th><th>New Arrival</th><th>Actions</th></tr>
           </thead>
           <tbody>
             {% for product in products %}
@@ -286,6 +303,7 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.sku }}</td>
+                <td>{{ 'Yes' if product.is_new_arrival else 'No' }}</td>
                 <td class="action-links">
                   <a href="/dashboard/products?edit=product&id={{ product.id }}#products">Edit</a>
                   <form class="inline-form" action="/admin/delete/product/{{ product.id }}" method="post">
@@ -591,27 +609,53 @@
           <label>Section
             <input type="number" name="section" value="{{ selected_items.get('multi_section').section if selected_items.get('multi_section') else '1' }}" required>
           </label>
-          <label>Title
-            <input type="text" name="title" value="{{ selected_items.get('multi_section').title if selected_items.get('multi_section') else '' }}">
+          <label>Collection title
+            <input type="text" name="title" value="{{ selected_items.get('multi_section').title if selected_items.get('multi_section') else '' }}" placeholder="Collection title">
           </label>
           <label class="checkbox-row">
-            <input type="checkbox" name="status" {% if selected_items.get('multi_section') and selected_items.get('multi_section').status %}checked{% endif %}>
+            <input type="checkbox" name="status" {% if not selected_items.get('multi_section') or selected_items.get('multi_section').status %}checked{% endif %}>
             Active
           </label>
         </div>
 
         <div id="slider-image-fields" style="display:grid;gap:12px;margin-top:16px;">
-          <div class="slider-upload-row" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:end;">
-            <label>Image 1
-              <input type="file" name="slider_images" accept="image/*">
-            </label>
-            <label>Caption 1
-              <input type="text" name="slider_titles" placeholder="Caption for image 1">
-            </label>
-            <label>Link 1
-              <input type="url" name="slider_links" placeholder="https://example.com">
-            </label>
-          </div>
+          {% if selected_items.get('multi_section') and selected_items.get('multi_section').images %}
+            {% for image_item in selected_items.get('multi_section').images|sort(attribute='order') %}
+              <div class="slider-upload-row" style="display:grid;grid-template-columns:140px repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:end;">
+                <div style="border:1px solid #d9d9d9;border-radius:8px;min-height:96px;display:flex;align-items:center;justify-content:center;background:#f8f8f8;padding:6px;">
+                  {% if image_item.image %}
+                    <img src="{{ image_item.image }}" alt="Slider image {{ loop.index }}" style="max-width:100%;max-height:82px;object-fit:cover;border-radius:6px;">
+                  {% else %}
+                    <span style="font-size:12px;color:#666;">No image</span>
+                  {% endif %}
+                </div>
+                <label>Image {{ loop.index }}
+                  <input type="file" name="slider_images" accept="image/*">
+                </label>
+                <label>Description {{ loop.index }}
+                  <input type="text" name="slider_titles" value="{{ image_item.title or '' }}" placeholder="Description">
+                </label>
+                <label>URL {{ loop.index }}
+                  <input type="text" name="slider_links" value="{{ image_item.url or '' }}" placeholder="/collections/sarees">
+                </label>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="slider-upload-row" style="display:grid;grid-template-columns:140px repeat(auto-fit,minmax(180px,1fr));gap:12px;align-items:end;">
+              <div style="border:1px solid #d9d9d9;border-radius:8px;min-height:96px;display:flex;align-items:center;justify-content:center;background:#f8f8f8;padding:6px;">
+                <span style="font-size:12px;color:#666;">No image</span>
+              </div>
+              <label>Image 1
+                <input type="file" name="slider_images" accept="image/*">
+              </label>
+              <label>Description 1
+                <input type="text" name="slider_titles" placeholder="Description">
+              </label>
+              <label>URL 1
+                <input type="text" name="slider_links" placeholder="/collections/sarees">
+              </label>
+            </div>
+          {% endif %}
         </div>
 
         <div class="form-actions" style="justify-content:flex-start;">
@@ -630,7 +674,8 @@
               <th>ID</th>
               <th>Block</th>
               <th>Section</th>
-              <th>Title</th>
+              <th>Collection title</th>
+              <th>Status</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -641,6 +686,7 @@
                 <td>{{ section.block }}</td>
                 <td>{{ section.section }}</td>
                 <td>{{ section.title or '—' }}</td>
+                <td>{{ 'Active' if section.status else 'Inactive' }}</td>
                 <td class="action-links">
                   <a href="/dashboard/slider?edit=multi_section&id={{ section.id }}#slider">Edit</a>
                   <form class="inline-form" action="/admin/delete/multi_section/{{ section.id }}" method="post">
@@ -661,6 +707,137 @@
           <span>Page {{ page_meta.multi_sections.page }} / {{ page_meta.multi_sections.pages }}</span>
           {% if page_meta.multi_sections.page < page_meta.multi_sections.pages %}
             <a href="/dashboard/slider?multi_sections_page={{ page_meta.multi_sections.page + 1 }}&multi_sections_search={{ page_meta.multi_sections.search }}#slider">Next</a>
+          {% endif %}
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+    {% if not active_resource or active_resource == 'new-arrivals' %}
+    <section id="new-arrivals" class="panel">
+      <div class="section-header">
+        <h2>New Arrivals</h2>
+        <form method="get" action="/dashboard/new-arrivals" class="admin-form" style="display:flex;gap:8px;align-items:center;">
+          <input type="text" name="new_arrivals_search" value="{{ page_meta.new_arrivals.search }}" placeholder="Search new arrivals" style="max-width:220px;">
+          <button type="submit" class="secondary-btn">Search</button>
+        </form>
+      </div>
+      <form action="/admin/save/new_arrival_feature" method="post" enctype="multipart/form-data" class="admin-form">
+        <input type="hidden" name="resource_id" value="{{ selected_items.get('new_arrival_feature').id if selected_items.get('new_arrival_feature') else '' }}">
+        <div class="form-grid">
+          <label>Title
+            <input type="text" name="title" value="{{ selected_items.get('new_arrival_feature').title if selected_items.get('new_arrival_feature') else 'Aurora Pendant' }}" required>
+          </label>
+          <label>Badge / Label
+            <input type="text" name="badge" value="{{ selected_items.get('new_arrival_feature').badge if selected_items.get('new_arrival_feature') else 'New Arrival' }}">
+          </label>
+          <label>Price
+            <input type="text" name="price" value="{{ selected_items.get('new_arrival_feature').price if selected_items.get('new_arrival_feature') else '$4,850' }}">
+          </label>
+          <label>Material
+            <input type="text" name="material" value="{{ selected_items.get('new_arrival_feature').material if selected_items.get('new_arrival_feature') else '22K Yellow Gold' }}">
+          </label>
+          <label>Weight
+            <input type="text" name="weight" value="{{ selected_items.get('new_arrival_feature').weight if selected_items.get('new_arrival_feature') else '18.5 grams' }}">
+          </label>
+          <label>Chain Length
+            <input type="text" name="chain_length" value="{{ selected_items.get('new_arrival_feature').chain_length if selected_items.get('new_arrival_feature') else '18 inches (adjustable)' }}">
+          </label>
+          <label>Color Options
+            <input type="text" name="color_options" value="{{ selected_items.get('new_arrival_feature').color_options if selected_items.get('new_arrival_feature') else 'Gold, Rose Gold, Silver' }}" placeholder="Gold, Rose Gold, Silver">
+          </label>
+          <label>Size Options
+            <input type="text" name="size_options" value="{{ selected_items.get('new_arrival_feature').size_options if selected_items.get('new_arrival_feature') else 'Small, Medium, Large' }}" placeholder="Small, Medium, Large">
+          </label>
+          <label>Quantity
+            <div class="quantity-stepper">
+              <button type="button" class="qty-btn" data-direction="-1" aria-label="Decrease quantity">−</button>
+              <input type="number" name="quantity" min="1" step="1" value="{{ selected_items.get('new_arrival_feature').quantity if selected_items.get('new_arrival_feature') else 1 }}">
+              <button type="button" class="qty-btn" data-direction="1" aria-label="Increase quantity">＋</button>
+            </div>
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" name="status" {% if not selected_items.get('new_arrival_feature') or selected_items.get('new_arrival_feature').status %}checked{% endif %}>
+            Active
+          </label>
+          <label>Featured Image
+            <input type="file" name="image" accept="image/*">
+          </label>
+          <label>Product URL
+            <input type="url" name="product_url" value="{{ selected_items.get('new_arrival_feature').product_url if selected_items.get('new_arrival_feature') else '' }}" placeholder="https://example.com/product">
+          </label>
+        </div>
+
+        <div class="new-arrival-editor-grid" style="margin-top:18px;">
+          <div class="new-arrival-image-box">
+            {% if selected_items.get('new_arrival_feature') and selected_items.get('new_arrival_feature').image %}
+              <img src="{{ selected_items.get('new_arrival_feature').image }}" alt="{{ selected_items.get('new_arrival_feature').title }}">
+            {% else %}
+              <div class="new-arrival-placeholder">Upload a featured image for the new arrival block.</div>
+            {% endif %}
+          </div>
+          <div class="new-arrival-editor-wrap">
+            <label>Left Content (WYSIWYG)
+              <textarea name="description" id="new-arrival-editor">{{ selected_items.get('new_arrival_feature').description if selected_items.get('new_arrival_feature') else 'Inspired by the ethereal dance of northern lights, the Aurora Pendant captures the fluid movement of light through hand-hammered 22-karat gold.' }}</textarea>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-actions" style="justify-content:flex-start;">
+          <button type="submit" class="primary-btn">{{ 'Update new arrival' if selected_items.get('new_arrival_feature') else 'Create new arrival' }}</button>
+          {% if selected_items.get('new_arrival_feature') %}
+            <a href="/dashboard/new-arrivals" class="button-link secondary-btn">Cancel</a>
+          {% endif %}
+        </div>
+      </form>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          document.querySelectorAll('.qty-btn').forEach(function (button) {
+            button.addEventListener('click', function () {
+              var stepper = this.closest('.quantity-stepper');
+              var input = stepper && stepper.querySelector('input[name="quantity"]');
+              if (!input) return;
+              var current = Number(input.value || 1);
+              var delta = Number(this.dataset.direction || 1);
+              input.value = Math.max(1, current + delta);
+            });
+          });
+        });
+      </script>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr><th>ID</th><th>Title</th><th>Badge</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody>
+            {% for feature in new_arrivals %}
+              <tr>
+                <td>{{ feature.id }}</td>
+                <td>{{ feature.title }}</td>
+                <td>{{ feature.badge or 'New Arrival' }}</td>
+                <td>{{ 'Active' if feature.status else 'Inactive' }}</td>
+                <td class="action-links">
+                  <a href="/dashboard/new-arrivals?edit=new_arrival_feature&id={{ feature.id }}#new-arrivals">Edit</a>
+                  <form class="inline-form" action="/admin/delete/new_arrival_feature/{{ feature.id }}" method="post">
+                    <button type="submit" class="danger-btn">Delete</button>
+                  </form>
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="form-actions" style="justify-content:space-between;">
+        <span>{{ page_meta.new_arrivals.total }} results</span>
+        <div class="action-links">
+          {% if page_meta.new_arrivals.page > 1 %}
+            <a href="/dashboard/new-arrivals?new_arrivals_page={{ page_meta.new_arrivals.page - 1 }}&new_arrivals_search={{ page_meta.new_arrivals.search }}#new-arrivals">Previous</a>
+          {% endif %}
+          <span>Page {{ page_meta.new_arrivals.page }} / {{ page_meta.new_arrivals.pages }}</span>
+          {% if page_meta.new_arrivals.page < page_meta.new_arrivals.pages %}
+            <a href="/dashboard/new-arrivals?new_arrivals_page={{ page_meta.new_arrivals.page + 1 }}&new_arrivals_search={{ page_meta.new_arrivals.search }}#new-arrivals">Next</a>
           {% endif %}
         </div>
       </div>
@@ -866,24 +1043,39 @@
         const row = document.createElement('div');
         row.className = 'slider-upload-row';
         row.style.display = 'grid';
-        row.style.gridTemplateColumns = 'repeat(auto-fit,minmax(180px,1fr))';
+        row.style.gridTemplateColumns = '140px repeat(auto-fit,minmax(180px,1fr))';
         row.style.gap = '12px';
         row.style.alignItems = 'end';
         row.innerHTML = `
+          <div style="border:1px solid #d9d9d9;border-radius:8px;min-height:96px;display:flex;align-items:center;justify-content:center;background:#f8f8f8;padding:6px;">
+            <span style="font-size:12px;color:#666;">No image</span>
+          </div>
           <label>Image ${rowNumber}
             <input type="file" name="slider_images" accept="image/*">
           </label>
-          <label>Caption ${rowNumber}
-            <input type="text" name="slider_titles" placeholder="Caption for image ${rowNumber}">
+          <label>Description ${rowNumber}
+            <input type="text" name="slider_titles" placeholder="Description">
           </label>
-          <label>Link ${rowNumber}
-            <input type="url" name="slider_links" placeholder="https://example.com">
+          <label>URL ${rowNumber}
+            <input type="text" name="slider_links" placeholder="/collections/sarees">
           </label>
         `;
         sliderImageFields.appendChild(row);
       };
       addSliderImageButton.addEventListener('click', addSliderRow);
     }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/tinymce@6/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({
+      selector: '#new-arrival-editor',
+      height: 300,
+      menubar: false,
+      plugins: 'advlist autolink lists link preview wordcount',
+      toolbar: 'undo redo | bold italic underline | bullist numlist | link | removeformat',
+      content_style: 'body { font-family: Arial, sans-serif; font-size: 15px; color: #111827; }',
+      branding: false,
+    });
   </script>
 </body>
 </html>

@@ -1008,3 +1008,1366 @@
 2026-11-12 10:49:55,618 INFO aartikraft Incoming request: GET /media/section/keagan-henman-jr6P9SoJMNs-unsplash-94a334ebfae349eab9f9435fb0d64c5f.jpg
 2026-11-12 10:49:55,620 INFO aartikraft Completed request: GET /media/section/nathan-anderson-XENuKo9Gn8k-unsplash-4e47dfcb9f604db7bb31fea1f762d75d.jpg status=304 elapsed=0.006s
 2026-11-12 10:49:55,624 INFO aartikraft Completed request: GET /media/section/keagan-henman-jr6P9SoJMNs-unsplash-94a334ebfae349eab9f9435fb0d64c5f.jpg status=304 elapsed=0.007s
+2026-11-12 12:40:57,032 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 12:40:57,282 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.250s
+2026-11-12 12:40:57,345 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-12 12:40:57,358 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.014s
+2026-11-12 12:41:07,793 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 12:41:07,877 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.085s
+2026-11-12 12:42:31,645 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-12 12:42:31,772 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.129s
+2026-11-12 12:53:54,978 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-12 12:53:55,032 ERROR aartikraft Unhandled exception for GET /dashboard/new-home-blocks after 0.054s
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 335, in _query
+    conn.query(q)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 591, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 867, in _read_query_result
+    result.read()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 1300, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 820, in _read_packet
+    packet.raise_for_error()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+    raise errorclass(errno, errval, sqlstate=sqlstate)
+pymysql.err.OperationalError: (1054, "Unknown column 'products.is_new_arrival' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 112, in log_request_and_exceptions
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 179, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 149, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/sessions.py", line 92, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 1330, in handle
+    await super().handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 289, in handle
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 152, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 745, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 372, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 940, in dashboard_view
+    products, products_page, products_pages, products_total = paginate(products_query.order_by(Product.id.desc()), products_page, page_size)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 252, in paginate
+    total = query.count()
+            ^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 3207, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2899, in scalar
+    ret = self.one()
+          ^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2872, in one
+    return self._iter().one()  # type: ignore[return-value]
+           ^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2921, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2555, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2445, in _execute_internal
+    compile_state_cls.orm_execute_statement(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 322, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1494, in execute
+    return meth(
+           ^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 335, in _query
+    conn.query(q)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 591, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 867, in _read_query_result
+    result.read()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 1300, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 820, in _read_packet
+    packet.raise_for_error()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+    raise errorclass(errno, errval, sqlstate=sqlstate)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'products.is_new_arrival' in 'field list'")
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT products.id AS products_id, products.name AS products_name, products.price AS products_price, products.description AS products_description, products.sku AS products_sku, products.category_id AS products_category_id, products.status AS products_status, products.is_new_arrival AS products_is_new_arrival, products.cat_image AS products_cat_image, products.featured_image AS products_featured_image, products.material AS products_material, products.weight AS products_weight, products.chain_length AS products_chain_length, products.instagram_link AS products_instagram_link, products.created_at AS products_created_at 
+FROM products ORDER BY products.id DESC) AS anon_1]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+2026-11-12 12:53:57,312 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-12 12:53:57,326 ERROR aartikraft Unhandled exception for GET /dashboard/new-home-blocks after 0.014s
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 335, in _query
+    conn.query(q)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 591, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 867, in _read_query_result
+    result.read()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 1300, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 820, in _read_packet
+    packet.raise_for_error()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+    raise errorclass(errno, errval, sqlstate=sqlstate)
+pymysql.err.OperationalError: (1054, "Unknown column 'products.is_new_arrival' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 112, in log_request_and_exceptions
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 179, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 149, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/sessions.py", line 92, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 1330, in handle
+    await super().handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 289, in handle
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 152, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 745, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 372, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 940, in dashboard_view
+    products, products_page, products_pages, products_total = paginate(products_query.order_by(Product.id.desc()), products_page, page_size)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 252, in paginate
+    total = query.count()
+            ^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 3207, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2899, in scalar
+    ret = self.one()
+          ^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2872, in one
+    return self._iter().one()  # type: ignore[return-value]
+           ^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2921, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2555, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2445, in _execute_internal
+    compile_state_cls.orm_execute_statement(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 322, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1494, in execute
+    return meth(
+           ^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 335, in _query
+    conn.query(q)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 591, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 867, in _read_query_result
+    result.read()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 1300, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 820, in _read_packet
+    packet.raise_for_error()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+    raise errorclass(errno, errval, sqlstate=sqlstate)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'products.is_new_arrival' in 'field list'")
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT products.id AS products_id, products.name AS products_name, products.price AS products_price, products.description AS products_description, products.sku AS products_sku, products.category_id AS products_category_id, products.status AS products_status, products.is_new_arrival AS products_is_new_arrival, products.cat_image AS products_cat_image, products.featured_image AS products_featured_image, products.material AS products_material, products.weight AS products_weight, products.chain_length AS products_chain_length, products.instagram_link AS products_instagram_link, products.created_at AS products_created_at 
+FROM products ORDER BY products.id DESC) AS anon_1]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+2026-11-12 12:54:01,352 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 12:54:01,393 ERROR aartikraft Unhandled exception for GET /dashboard after 0.041s
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 335, in _query
+    conn.query(q)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 591, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 867, in _read_query_result
+    result.read()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 1300, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 820, in _read_packet
+    packet.raise_for_error()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+    raise errorclass(errno, errval, sqlstate=sqlstate)
+pymysql.err.OperationalError: (1054, "Unknown column 'products.is_new_arrival' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 112, in log_request_and_exceptions
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 179, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 149, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/sessions.py", line 92, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 1330, in handle
+    await super().handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 289, in handle
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 152, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 745, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 372, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 940, in dashboard_view
+    products, products_page, products_pages, products_total = paginate(products_query.order_by(Product.id.desc()), products_page, page_size)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 252, in paginate
+    total = query.count()
+            ^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 3207, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2899, in scalar
+    ret = self.one()
+          ^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2872, in one
+    return self._iter().one()  # type: ignore[return-value]
+           ^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2921, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2555, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2445, in _execute_internal
+    compile_state_cls.orm_execute_statement(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 322, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1494, in execute
+    return meth(
+           ^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 335, in _query
+    conn.query(q)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 591, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 867, in _read_query_result
+    result.read()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 1300, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 820, in _read_packet
+    packet.raise_for_error()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+    raise errorclass(errno, errval, sqlstate=sqlstate)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'products.is_new_arrival' in 'field list'")
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT products.id AS products_id, products.name AS products_name, products.price AS products_price, products.description AS products_description, products.sku AS products_sku, products.category_id AS products_category_id, products.status AS products_status, products.is_new_arrival AS products_is_new_arrival, products.cat_image AS products_cat_image, products.featured_image AS products_featured_image, products.material AS products_material, products.weight AS products_weight, products.chain_length AS products_chain_length, products.instagram_link AS products_instagram_link, products.created_at AS products_created_at 
+FROM products ORDER BY products.id DESC) AS anon_1]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+2026-11-12 12:54:06,586 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-12 12:54:06,633 ERROR aartikraft Unhandled exception for GET /dashboard/categories after 0.047s
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 335, in _query
+    conn.query(q)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 591, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 867, in _read_query_result
+    result.read()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 1300, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 820, in _read_packet
+    packet.raise_for_error()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+    raise errorclass(errno, errval, sqlstate=sqlstate)
+pymysql.err.OperationalError: (1054, "Unknown column 'products.is_new_arrival' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 112, in log_request_and_exceptions
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 179, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 149, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/sessions.py", line 92, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 1330, in handle
+    await super().handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 289, in handle
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 152, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 745, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 372, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 940, in dashboard_view
+    products, products_page, products_pages, products_total = paginate(products_query.order_by(Product.id.desc()), products_page, page_size)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 252, in paginate
+    total = query.count()
+            ^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 3207, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2899, in scalar
+    ret = self.one()
+          ^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2872, in one
+    return self._iter().one()  # type: ignore[return-value]
+           ^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2921, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2555, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2445, in _execute_internal
+    compile_state_cls.orm_execute_statement(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 322, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1494, in execute
+    return meth(
+           ^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 335, in _query
+    conn.query(q)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 591, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 867, in _read_query_result
+    result.read()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 1300, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 820, in _read_packet
+    packet.raise_for_error()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+    raise errorclass(errno, errval, sqlstate=sqlstate)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'products.is_new_arrival' in 'field list'")
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT products.id AS products_id, products.name AS products_name, products.price AS products_price, products.description AS products_description, products.sku AS products_sku, products.category_id AS products_category_id, products.status AS products_status, products.is_new_arrival AS products_is_new_arrival, products.cat_image AS products_cat_image, products.featured_image AS products_featured_image, products.material AS products_material, products.weight AS products_weight, products.chain_length AS products_chain_length, products.instagram_link AS products_instagram_link, products.created_at AS products_created_at 
+FROM products ORDER BY products.id DESC) AS anon_1]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+2026-11-12 12:55:27,742 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-12 12:55:27,805 ERROR aartikraft Unhandled exception for GET /dashboard/categories after 0.063s
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 335, in _query
+    conn.query(q)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 591, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 867, in _read_query_result
+    result.read()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 1300, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 820, in _read_packet
+    packet.raise_for_error()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+    raise errorclass(errno, errval, sqlstate=sqlstate)
+pymysql.err.OperationalError: (1054, "Unknown column 'products.is_new_arrival' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 112, in log_request_and_exceptions
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 179, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 149, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/sessions.py", line 92, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 1330, in handle
+    await super().handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 289, in handle
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 152, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 745, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 372, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 940, in dashboard_view
+    products, products_page, products_pages, products_total = paginate(products_query.order_by(Product.id.desc()), products_page, page_size)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 252, in paginate
+    total = query.count()
+            ^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 3207, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2899, in scalar
+    ret = self.one()
+          ^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2872, in one
+    return self._iter().one()  # type: ignore[return-value]
+           ^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2921, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2555, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2445, in _execute_internal
+    compile_state_cls.orm_execute_statement(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 322, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1494, in execute
+    return meth(
+           ^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 335, in _query
+    conn.query(q)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 591, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 867, in _read_query_result
+    result.read()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 1300, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 820, in _read_packet
+    packet.raise_for_error()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+    raise errorclass(errno, errval, sqlstate=sqlstate)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'products.is_new_arrival' in 'field list'")
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT products.id AS products_id, products.name AS products_name, products.price AS products_price, products.description AS products_description, products.sku AS products_sku, products.category_id AS products_category_id, products.status AS products_status, products.is_new_arrival AS products_is_new_arrival, products.cat_image AS products_cat_image, products.featured_image AS products_featured_image, products.material AS products_material, products.weight AS products_weight, products.chain_length AS products_chain_length, products.instagram_link AS products_instagram_link, products.created_at AS products_created_at 
+FROM products ORDER BY products.id DESC) AS anon_1]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+2026-11-12 12:55:44,252 INFO aartikraft Incoming request: GET /dashboard/front-sections
+2026-11-12 12:55:44,266 ERROR aartikraft Unhandled exception for GET /dashboard/front-sections after 0.014s
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 335, in _query
+    conn.query(q)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 591, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 867, in _read_query_result
+    result.read()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 1300, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 820, in _read_packet
+    packet.raise_for_error()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+    raise errorclass(errno, errval, sqlstate=sqlstate)
+pymysql.err.OperationalError: (1054, "Unknown column 'products.is_new_arrival' in 'field list'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 112, in log_request_and_exceptions
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 179, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 149, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/sessions.py", line 92, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 1330, in handle
+    await super().handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 289, in handle
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 152, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 745, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 372, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 940, in dashboard_view
+    products, products_page, products_pages, products_total = paginate(products_query.order_by(Product.id.desc()), products_page, page_size)
+                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 252, in paginate
+    total = query.count()
+            ^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 3207, in count
+    self._legacy_from_self(col).enable_eagerloads(False).scalar()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2899, in scalar
+    ret = self.one()
+          ^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2872, in one
+    return self._iter().one()  # type: ignore[return-value]
+           ^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/query.py", line 2921, in _iter
+    result: Union[ScalarResult[_T], Result[_T]] = self.session.execute(
+                                                  ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2555, in execute
+    return self._execute_internal(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2445, in _execute_internal
+    compile_state_cls.orm_execute_statement(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/orm/context.py", line 322, in orm_execute_statement
+    result = conn.execute(
+             ^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1494, in execute
+    return meth(
+           ^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 170, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/cursors.py", line 335, in _query
+    conn.query(q)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 591, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 867, in _read_query_result
+    result.read()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 1300, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/connections.py", line 820, in _read_packet
+    packet.raise_for_error()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/pymysql/err.py", line 154, in raise_mysql_exception
+    raise errorclass(errno, errval, sqlstate=sqlstate)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1054, "Unknown column 'products.is_new_arrival' in 'field list'")
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT products.id AS products_id, products.name AS products_name, products.price AS products_price, products.description AS products_description, products.sku AS products_sku, products.category_id AS products_category_id, products.status AS products_status, products.is_new_arrival AS products_is_new_arrival, products.cat_image AS products_cat_image, products.featured_image AS products_featured_image, products.material AS products_material, products.weight AS products_weight, products.chain_length AS products_chain_length, products.instagram_link AS products_instagram_link, products.created_at AS products_created_at 
+FROM products ORDER BY products.id DESC) AS anon_1]
+(Background on this error at: https://sqlalche.me/e/21/e3q8)
+2026-11-12 12:57:17,021 INFO aartikraft Incoming request: GET /dashboard/front-sections
+2026-11-12 12:57:17,235 INFO aartikraft Completed request: GET /dashboard/front-sections status=200 elapsed=0.214s
+2026-11-12 12:57:34,412 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-12 12:57:34,441 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.029s
+2026-11-12 12:57:40,804 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-12 12:57:40,841 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.037s
+2026-11-12 12:57:42,630 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-12 12:57:42,659 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.029s
+2026-11-12 12:57:44,318 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-12 12:57:44,350 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.033s
+2026-11-12 12:57:51,094 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-12 12:57:51,120 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.027s
+2026-11-12 12:58:52,681 INFO aartikraft Incoming request: POST /admin/save/category
+2026-11-12 12:58:52,712 INFO aartikraft Completed request: POST /admin/save/category status=303 elapsed=0.031s
+2026-11-12 12:58:52,716 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 12:58:52,740 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.024s
+2026-11-12 12:59:07,382 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-12 12:59:07,418 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.036s
+2026-11-12 12:59:58,025 INFO aartikraft Incoming request: POST /admin/save/category
+2026-11-12 12:59:58,040 INFO aartikraft Completed request: POST /admin/save/category status=303 elapsed=0.015s
+2026-11-12 12:59:58,048 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 12:59:58,075 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.028s
+2026-11-12 13:00:07,494 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-12 13:00:07,526 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.032s
+2026-11-12 13:02:18,570 INFO aartikraft Incoming request: POST /admin/save/product
+2026-11-12 13:02:21,949 INFO aartikraft Completed request: POST /admin/save/product status=303 elapsed=3.379s
+2026-11-12 13:02:21,955 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 13:02:21,973 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.018s
+2026-11-12 13:02:31,370 INFO aartikraft Incoming request: GET /products
+2026-11-12 13:02:31,390 INFO aartikraft Completed request: GET /products status=200 elapsed=0.020s
+2026-11-12 13:02:31,408 INFO aartikraft Incoming request: GET /products
+2026-11-12 13:02:31,424 INFO aartikraft Completed request: GET /products status=200 elapsed=0.016s
+2026-11-12 13:02:31,517 INFO aartikraft Incoming request: GET /media/cat/Picsart_26-01-07_17-43-08-935 (1)-18123b97eb2a4756bd844fbe4183226b.jpg
+2026-11-12 13:02:31,534 INFO aartikraft Completed request: GET /media/cat/Picsart_26-01-07_17-43-08-935 (1)-18123b97eb2a4756bd844fbe4183226b.jpg status=200 elapsed=0.017s
+2026-11-12 13:03:39,407 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:03:39,466 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.059s
+2026-11-12 13:03:39,475 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:03:39,487 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.012s
+2026-11-12 13:04:05,982 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 13:04:06,011 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.029s
+2026-11-12 13:04:07,594 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 13:04:07,626 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.032s
+2026-11-12 13:04:09,289 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-12 13:04:09,316 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.026s
+2026-11-12 13:04:11,466 INFO aartikraft Incoming request: GET /dashboard/categories
+2026-11-12 13:04:11,512 INFO aartikraft Completed request: GET /dashboard/categories status=200 elapsed=0.046s
+2026-11-12 13:04:12,695 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-12 13:04:12,729 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.034s
+2026-11-12 13:04:13,843 INFO aartikraft Incoming request: GET /dashboard/contacts
+2026-11-12 13:04:13,873 INFO aartikraft Completed request: GET /dashboard/contacts status=200 elapsed=0.030s
+2026-11-12 13:04:15,994 INFO aartikraft Incoming request: GET /dashboard/background-tasks
+2026-11-12 13:04:16,028 INFO aartikraft Completed request: GET /dashboard/background-tasks status=200 elapsed=0.034s
+2026-11-12 13:04:17,260 INFO aartikraft Incoming request: GET /dashboard/new-home-blocks
+2026-11-12 13:04:17,301 INFO aartikraft Completed request: GET /dashboard/new-home-blocks status=200 elapsed=0.040s
+2026-11-12 13:04:19,351 INFO aartikraft Incoming request: GET /dashboard/background-tasks
+2026-11-12 13:04:19,405 INFO aartikraft Completed request: GET /dashboard/background-tasks status=200 elapsed=0.054s
+2026-11-12 13:10:52,884 INFO aartikraft Incoming request: GET /dashboard/background-tasks
+2026-11-12 13:10:53,338 INFO aartikraft Completed request: GET /dashboard/background-tasks status=200 elapsed=0.454s
+2026-11-12 13:11:08,300 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 13:11:08,337 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.036s
+2026-11-12 13:11:47,195 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 13:11:47,439 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.243s
+2026-11-12 13:12:42,933 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-12 13:12:42,967 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.033s
+2026-11-12 13:23:18,793 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-12 13:23:19,057 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.264s
+2026-11-12 13:23:21,668 INFO aartikraft Incoming request: GET /dashboard/new-arrivals
+2026-11-12 13:23:21,712 INFO aartikraft Completed request: GET /dashboard/new-arrivals status=200 elapsed=0.044s
+2026-11-12 13:24:14,646 INFO aartikraft Incoming request: POST /admin/save/new_arrival_feature
+2026-11-12 13:24:15,376 INFO aartikraft Completed request: POST /admin/save/new_arrival_feature status=303 elapsed=0.730s
+2026-11-12 13:24:15,381 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 13:24:15,407 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.027s
+2026-11-12 13:24:22,614 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:24:22,674 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.062s
+2026-11-12 13:24:22,721 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:24:22,750 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.029s
+2026-11-12 13:24:23,165 INFO aartikraft Incoming request: GET /media/section/nathan-anderson-XENuKo9Gn8k-unsplash-4e47dfcb9f604db7bb31fea1f762d75d.jpg
+2026-11-12 13:24:23,165 INFO aartikraft Incoming request: GET /media/section/keagan-henman-jr6P9SoJMNs-unsplash-94a334ebfae349eab9f9435fb0d64c5f.jpg
+2026-11-12 13:24:23,186 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-12 13:24:23,188 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-12 13:24:23,234 INFO aartikraft Completed request: GET /media/section/nathan-anderson-XENuKo9Gn8k-unsplash-4e47dfcb9f604db7bb31fea1f762d75d.jpg status=304 elapsed=0.069s
+2026-11-12 13:24:23,236 INFO aartikraft Completed request: GET /media/section/keagan-henman-jr6P9SoJMNs-unsplash-94a334ebfae349eab9f9435fb0d64c5f.jpg status=304 elapsed=0.070s
+2026-11-12 13:24:23,241 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=304 elapsed=0.055s
+2026-11-12 13:24:23,251 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=304 elapsed=0.063s
+2026-11-12 13:27:01,563 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:27:01,596 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.033s
+2026-11-12 13:27:01,611 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:27:01,635 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.023s
+2026-11-12 13:27:02,252 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:27:02,258 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:27:02,290 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.039s
+2026-11-12 13:27:02,315 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:27:02,355 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.041s
+2026-11-12 13:27:02,498 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.240s
+2026-11-12 13:27:02,530 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:27:02,552 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.039s
+2026-11-12 13:27:11,229 INFO aartikraft Incoming request: GET /media/new-arrival/IMG20260810201701-3973f39815d34682bb618be34c7589b8.jpg
+2026-11-12 13:27:11,239 INFO aartikraft Completed request: GET /media/new-arrival/IMG20260810201701-3973f39815d34682bb618be34c7589b8.jpg status=200 elapsed=0.010s
+2026-11-12 13:27:42,355 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:27:42,372 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:27:42,431 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.076s
+2026-11-12 13:27:42,436 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.064s
+2026-11-12 13:27:42,526 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:27:42,538 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:27:42,611 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.084s
+2026-11-12 13:27:42,615 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.078s
+2026-11-12 13:27:43,884 INFO aartikraft Incoming request: GET /media/new-arrival/IMG20260810201701-3973f39815d34682bb618be34c7589b8.jpg
+2026-11-12 13:27:43,887 INFO aartikraft Completed request: GET /media/new-arrival/IMG20260810201701-3973f39815d34682bb618be34c7589b8.jpg status=304 elapsed=0.002s
+2026-11-12 13:28:37,126 INFO aartikraft Incoming request: GET /dashboard/new-arrivals
+2026-11-12 13:28:37,171 INFO aartikraft Completed request: GET /dashboard/new-arrivals status=200 elapsed=0.045s
+2026-11-12 13:28:43,795 INFO aartikraft Incoming request: GET /dashboard/new-arrivals
+2026-11-12 13:28:43,859 INFO aartikraft Completed request: GET /dashboard/new-arrivals status=200 elapsed=0.064s
+2026-11-12 13:28:43,958 INFO aartikraft Incoming request: GET /media/new-arrival/IMG20260810201701-3973f39815d34682bb618be34c7589b8.jpg
+2026-11-12 13:28:43,962 INFO aartikraft Completed request: GET /media/new-arrival/IMG20260810201701-3973f39815d34682bb618be34c7589b8.jpg status=304 elapsed=0.004s
+2026-11-12 13:29:03,121 INFO aartikraft Incoming request: POST /admin/save/new_arrival_feature
+2026-11-12 13:29:03,211 INFO aartikraft Completed request: POST /admin/save/new_arrival_feature status=303 elapsed=0.089s
+2026-11-12 13:29:03,219 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 13:29:03,254 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.035s
+2026-11-12 13:29:09,605 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:29:09,612 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:29:09,631 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.026s
+2026-11-12 13:29:09,634 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.021s
+2026-11-12 13:29:09,650 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:29:09,661 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:29:09,672 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.011s
+2026-11-12 13:29:09,673 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.023s
+2026-11-12 13:29:09,956 INFO aartikraft Incoming request: GET /media/new-arrival/WhatsApp Image 2026-11-01 at 19.08.17-e8c84fe397ad4015b8446a4fef39aad6.jpeg
+2026-11-12 13:29:09,979 INFO aartikraft Completed request: GET /media/new-arrival/WhatsApp Image 2026-11-01 at 19.08.17-e8c84fe397ad4015b8446a4fef39aad6.jpeg status=200 elapsed=0.023s
+2026-11-12 13:30:11,184 INFO aartikraft Incoming request: GET /dashboard/new-arrivals
+2026-11-12 13:30:11,217 INFO aartikraft Completed request: GET /dashboard/new-arrivals status=200 elapsed=0.033s
+2026-11-12 13:30:18,518 INFO aartikraft Incoming request: GET /dashboard/new-arrivals
+2026-11-12 13:30:18,553 INFO aartikraft Completed request: GET /dashboard/new-arrivals status=200 elapsed=0.035s
+2026-11-12 13:30:18,593 INFO aartikraft Incoming request: GET /media/new-arrival/WhatsApp Image 2026-11-01 at 19.08.17-e8c84fe397ad4015b8446a4fef39aad6.jpeg
+2026-11-12 13:30:18,596 INFO aartikraft Completed request: GET /media/new-arrival/WhatsApp Image 2026-11-01 at 19.08.17-e8c84fe397ad4015b8446a4fef39aad6.jpeg status=304 elapsed=0.003s
+2026-11-12 13:30:57,303 INFO aartikraft Incoming request: POST /admin/save/new_arrival_feature
+2026-11-12 13:30:57,372 INFO aartikraft Completed request: POST /admin/save/new_arrival_feature status=303 elapsed=0.069s
+2026-11-12 13:30:57,377 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 13:30:57,414 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.037s
+2026-11-12 13:31:02,471 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:31:02,477 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:31:02,495 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.019s
+2026-11-12 13:31:02,509 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.038s
+2026-11-12 13:31:02,527 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:31:02,536 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:31:02,561 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.025s
+2026-11-12 13:31:02,580 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.054s
+2026-11-12 13:31:02,850 INFO aartikraft Incoming request: GET /media/new-arrival/WhatsApp Image 2026-11-01 at 19.08.20-b998aaba99734fd38adce824f538e398.jpeg
+2026-11-12 13:31:02,859 INFO aartikraft Completed request: GET /media/new-arrival/WhatsApp Image 2026-11-01 at 19.08.20-b998aaba99734fd38adce824f538e398.jpeg status=200 elapsed=0.009s
+2026-11-12 13:33:35,578 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:33:35,616 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:33:35,656 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.078s
+2026-11-12 13:33:35,688 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.072s
+2026-11-12 13:33:35,773 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:33:35,776 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:33:35,813 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.040s
+2026-11-12 13:33:35,845 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.070s
+2026-11-12 13:33:36,734 INFO aartikraft Incoming request: GET /media/new-arrival/WhatsApp Image 2026-11-01 at 19.08.20-b998aaba99734fd38adce824f538e398.jpeg
+2026-11-12 13:33:36,749 INFO aartikraft Completed request: GET /media/new-arrival/WhatsApp Image 2026-11-01 at 19.08.20-b998aaba99734fd38adce824f538e398.jpeg status=304 elapsed=0.015s
+2026-11-12 13:35:09,697 INFO aartikraft Incoming request: GET /dashboard/new-arrivals
+2026-11-12 13:35:09,734 INFO aartikraft Completed request: GET /dashboard/new-arrivals status=200 elapsed=0.037s
+2026-11-12 13:40:15,344 INFO aartikraft Incoming request: GET /dashboard/new-arrivals
+2026-11-12 13:40:16,190 INFO aartikraft Completed request: GET /dashboard/new-arrivals status=200 elapsed=0.846s
+2026-11-12 13:40:37,345 INFO aartikraft Incoming request: GET /dashboard/new-arrivals
+2026-11-12 13:40:37,398 INFO aartikraft Completed request: GET /dashboard/new-arrivals status=200 elapsed=0.053s
+2026-11-12 13:41:16,992 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:41:16,994 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:41:17,040 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.049s
+2026-11-12 13:41:17,060 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:41:17,083 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.023s
+2026-11-12 13:41:17,233 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.239s
+2026-11-12 13:41:17,244 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:41:17,250 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.006s
+2026-11-12 13:41:17,618 INFO aartikraft Incoming request: GET /media/new-arrival/WhatsApp Image 2026-11-01 at 19.08.20-b998aaba99734fd38adce824f538e398.jpeg
+2026-11-12 13:41:17,738 INFO aartikraft Completed request: GET /media/new-arrival/WhatsApp Image 2026-11-01 at 19.08.20-b998aaba99734fd38adce824f538e398.jpeg status=304 elapsed=0.120s
+2026-11-12 13:54:53,358 INFO aartikraft Incoming request: GET /dashboard/new-arrivals
+2026-11-12 13:54:53,398 INFO aartikraft Completed request: GET /dashboard/new-arrivals status=200 elapsed=0.040s
+2026-11-12 13:55:20,671 INFO aartikraft Incoming request: GET /dashboard/new-arrivals
+2026-11-12 13:55:20,712 INFO aartikraft Completed request: GET /dashboard/new-arrivals status=200 elapsed=0.041s
+2026-11-12 13:55:20,778 INFO aartikraft Incoming request: GET /media/new-arrival/WhatsApp Image 2026-11-01 at 19.08.20-b998aaba99734fd38adce824f538e398.jpeg
+2026-11-12 13:55:20,802 INFO aartikraft Completed request: GET /media/new-arrival/WhatsApp Image 2026-11-01 at 19.08.20-b998aaba99734fd38adce824f538e398.jpeg status=304 elapsed=0.024s
+2026-11-12 13:58:04,169 INFO aartikraft Incoming request: POST /admin/save/new_arrival_feature
+2026-11-12 13:58:05,395 INFO aartikraft Completed request: POST /admin/save/new_arrival_feature status=303 elapsed=1.227s
+2026-11-12 13:58:05,401 INFO aartikraft Incoming request: GET /dashboard
+2026-11-12 13:58:05,454 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.052s
+2026-11-12 13:58:10,224 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:58:10,233 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:58:10,254 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.030s
+2026-11-12 13:58:10,264 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.032s
+2026-11-12 13:58:10,278 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 13:58:10,282 INFO aartikraft Incoming request: GET /new_arrival_feature
+2026-11-12 13:58:10,293 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.015s
+2026-11-12 13:58:10,311 INFO aartikraft Completed request: GET /new_arrival_feature status=200 elapsed=0.028s
+2026-11-12 13:58:10,730 INFO aartikraft Incoming request: GET /media/new-arrival/nathan-anderson-XENuKo9Gn8k-unsplash-4609d815cbe14aff9845d42b16979701.jpg
+2026-11-12 13:58:10,767 INFO aartikraft Completed request: GET /media/new-arrival/nathan-anderson-XENuKo9Gn8k-unsplash-4609d815cbe14aff9845d42b16979701.jpg status=200 elapsed=0.037s
+2026-11-12 13:58:10,785 INFO aartikraft Incoming request: GET /media/section/nathan-anderson-XENuKo9Gn8k-unsplash-4e47dfcb9f604db7bb31fea1f762d75d.jpg
+2026-11-12 13:58:10,788 INFO aartikraft Incoming request: GET /media/section/keagan-henman-jr6P9SoJMNs-unsplash-94a334ebfae349eab9f9435fb0d64c5f.jpg
+2026-11-12 13:58:10,790 INFO aartikraft Completed request: GET /media/section/nathan-anderson-XENuKo9Gn8k-unsplash-4e47dfcb9f604db7bb31fea1f762d75d.jpg status=304 elapsed=0.005s
+2026-11-12 13:58:10,793 INFO aartikraft Completed request: GET /media/section/keagan-henman-jr6P9SoJMNs-unsplash-94a334ebfae349eab9f9435fb0d64c5f.jpg status=304 elapsed=0.006s
+2026-11-12 18:45:14,599 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-12 18:45:14,615 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.016s
+2026-11-12 18:45:22,945 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 18:45:23,358 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.413s
+2026-11-12 18:45:32,517 INFO aartikraft Incoming request: GET /slider_images
+2026-11-12 18:45:32,542 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.025s
+2026-11-16 20:54:26,777 INFO aartikraft Incoming request: GET /
+2026-11-16 20:54:26,782 INFO aartikraft Completed request: GET / status=200 elapsed=0.005s
+2026-11-16 20:54:27,049 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-16 20:54:27,050 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.002s
+2026-11-16 20:54:30,660 INFO aartikraft Incoming request: GET /dashboard
+2026-11-16 20:54:30,667 INFO aartikraft Completed request: GET /dashboard status=303 elapsed=0.007s
+2026-11-16 20:54:30,679 INFO aartikraft Incoming request: GET /admin/login
+2026-11-16 20:54:30,690 INFO aartikraft Completed request: GET /admin/login status=200 elapsed=0.012s
+2026-11-16 20:54:30,743 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-16 20:54:30,793 INFO aartikraft Completed request: GET /static/admin.css status=200 elapsed=0.050s
+2026-11-16 20:54:39,276 INFO aartikraft Incoming request: POST /admin/login
+2026-11-16 20:54:39,280 INFO aartikraft Completed request: POST /admin/login status=303 elapsed=0.004s
+2026-11-16 20:54:39,286 INFO aartikraft Incoming request: GET /dashboard
+2026-11-16 20:54:39,632 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.346s
+2026-11-16 20:54:45,002 INFO aartikraft Incoming request: GET /dashboard/products
+2026-11-16 20:54:45,048 INFO aartikraft Completed request: GET /dashboard/products status=200 elapsed=0.046s
+2026-11-16 20:54:48,073 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-16 20:54:48,159 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.087s
+2026-11-16 20:55:22,749 INFO aartikraft Incoming request: POST /admin/save/user
+2026-11-16 20:55:22,778 ERROR aartikraft Unhandled exception for POST /admin/save/user after 0.028s
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 115, in log_request_and_exceptions
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 179, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 91, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/cors.py", line 149, in simple_response
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/sessions.py", line 92, in __call__
+    await self.app(scope, receive, send_wrapper)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 1330, in handle
+    await super().handle(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/routing.py", line 289, in handle
+    await self.app(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 152, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 745, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/fastapi/routing.py", line 372, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 1239, in save_admin_resource
+    user.password = get_password_hash(password)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 321, in get_password_hash
+    return pwd_context.hash(password)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/context.py", line 2258, in hash
+    return record.hash(secret, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 779, in hash
+    self.checksum = self._calc_checksum(secret)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 591, in _calc_checksum
+    self._stub_requires_backend()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2254, in _stub_requires_backend
+    cls.set_backend()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2156, in set_backend
+    return owner.set_backend(name, dryrun=dryrun)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2163, in set_backend
+    return cls.set_backend(name, dryrun=dryrun)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2188, in set_backend
+    cls._set_backend(name, dryrun)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2311, in _set_backend
+    super(SubclassBackendMixin, cls)._set_backend(name, dryrun)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2224, in _set_backend
+    ok = loader(**kwds)
+         ^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 626, in _load_backend_mixin
+    return mixin_cls._finalize_backend_mixin(name, dryrun)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 421, in _finalize_backend_mixin
+    if detect_wrap_bug(IDENT_2A):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 380, in detect_wrap_bug
+    if verify(secret, bug_hash):
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 655, in _calc_checksum
+    hash = _bcrypt.hashpw(secret, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-11-16 20:56:50,305 WARNING aartikraft bcrypt backend is incompatible in this environment; falling back to pbkdf2_sha256 only.
+Traceback (most recent call last):
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/main.py", line 319, in <module>
+    pwd_context.hash("compatibility-check")
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/context.py", line 2258, in hash
+    return record.hash(secret, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 779, in hash
+    self.checksum = self._calc_checksum(secret)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 591, in _calc_checksum
+    self._stub_requires_backend()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2254, in _stub_requires_backend
+    cls.set_backend()
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2156, in set_backend
+    return owner.set_backend(name, dryrun=dryrun)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2163, in set_backend
+    return cls.set_backend(name, dryrun=dryrun)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2188, in set_backend
+    cls._set_backend(name, dryrun)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2311, in _set_backend
+    super(SubclassBackendMixin, cls)._set_backend(name, dryrun)
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 2224, in _set_backend
+    ok = loader(**kwds)
+         ^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 626, in _load_backend_mixin
+    return mixin_cls._finalize_backend_mixin(name, dryrun)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 421, in _finalize_backend_mixin
+    if detect_wrap_bug(IDENT_2A):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 380, in detect_wrap_bug
+    if verify(secret, bug_hash):
+       ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/utils/handlers.py", line 792, in verify
+    return consteq(self._calc_checksum(secret), chk)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/dell/Desktop/desktop/mithila_sep22./Mithila/backend/aartikarft_fastbackend/.venv/lib/python3.12/site-packages/passlib/handlers/bcrypt.py", line 655, in _calc_checksum
+    hash = _bcrypt.hashpw(secret, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: password cannot be longer than 72 bytes, truncate manually if necessary (e.g. my_password[:72])
+2026-11-16 20:57:46,765 INFO aartikraft Incoming request: POST /admin/save/user
+2026-11-16 20:57:47,170 INFO aartikraft Completed request: POST /admin/save/user status=303 elapsed=0.405s
+2026-11-16 20:57:47,175 INFO aartikraft Incoming request: GET /dashboard
+2026-11-16 20:57:47,385 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.210s
+2026-11-16 20:58:11,561 INFO aartikraft Incoming request: GET /admin/logout
+2026-11-16 20:58:11,563 INFO aartikraft Completed request: GET /admin/logout status=303 elapsed=0.002s
+2026-11-16 20:58:11,568 INFO aartikraft Incoming request: GET /admin/login
+2026-11-16 20:58:11,572 INFO aartikraft Completed request: GET /admin/login status=200 elapsed=0.005s
+2026-11-16 20:58:30,088 INFO aartikraft Incoming request: POST /admin/login
+2026-11-16 20:58:30,093 INFO aartikraft Completed request: POST /admin/login status=200 elapsed=0.005s
+2026-11-16 20:58:41,039 INFO aartikraft Incoming request: POST /admin/login
+2026-11-16 20:58:41,043 INFO aartikraft Completed request: POST /admin/login status=303 elapsed=0.004s
+2026-11-16 20:58:41,048 INFO aartikraft Incoming request: GET /dashboard
+2026-11-16 20:58:41,131 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.084s
+2026-11-16 20:58:45,720 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-16 20:58:45,758 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.038s
+2026-11-16 20:58:59,064 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-16 20:58:59,105 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.040s
+2026-11-16 20:59:02,055 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-16 20:59:02,088 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.032s
+2026-11-19 13:12:59,108 INFO aartikraft Incoming request: GET /dashboard
+2026-11-19 13:12:59,126 INFO aartikraft Completed request: GET /dashboard status=303 elapsed=0.018s
+2026-11-19 13:12:59,133 INFO aartikraft Incoming request: GET /admin/login
+2026-11-19 13:12:59,149 INFO aartikraft Completed request: GET /admin/login status=200 elapsed=0.016s
+2026-11-19 13:12:59,211 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-19 13:12:59,270 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.058s
+2026-11-19 13:13:00,307 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-19 13:13:00,318 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.011s
+2026-11-19 13:14:17,362 INFO aartikraft Incoming request: GET /dashboard
+2026-11-19 13:14:17,432 INFO aartikraft Completed request: GET /dashboard status=303 elapsed=0.077s
+2026-11-19 13:14:17,452 INFO aartikraft Incoming request: GET /admin/login
+2026-11-19 13:14:17,465 INFO aartikraft Completed request: GET /admin/login status=200 elapsed=0.014s
+2026-11-19 13:17:20,231 INFO aartikraft Incoming request: GET /dashboard
+2026-11-19 13:17:20,356 INFO aartikraft Completed request: GET /dashboard status=303 elapsed=0.147s
+2026-11-19 13:17:20,411 INFO aartikraft Incoming request: GET /admin/login
+2026-11-19 13:17:20,452 INFO aartikraft Completed request: GET /admin/login status=200 elapsed=0.041s
+2026-11-19 13:17:42,394 INFO aartikraft Incoming request: POST /admin/login
+2026-11-19 13:17:42,493 INFO aartikraft Completed request: POST /admin/login status=303 elapsed=0.101s
+2026-11-19 13:17:42,594 INFO aartikraft Incoming request: GET /dashboard
+2026-11-19 13:17:46,983 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=4.389s
+2026-11-19 13:19:03,828 INFO aartikraft Incoming request: GET /dashboard/contacts
+2026-11-19 13:19:04,467 INFO aartikraft Completed request: GET /dashboard/contacts status=200 elapsed=0.641s
+2026-11-19 13:19:05,988 INFO aartikraft Incoming request: GET /dashboard/contacts
+2026-11-19 13:19:06,140 INFO aartikraft Completed request: GET /dashboard/contacts status=200 elapsed=0.152s
+2026-11-19 13:19:07,720 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-19 13:19:07,900 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.180s
+2026-11-19 13:19:14,643 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-19 13:19:14,876 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.234s
+2026-11-24 10:58:50,856 INFO aartikraft Incoming request: GET /
+2026-11-24 10:58:50,868 INFO aartikraft Completed request: GET / status=200 elapsed=0.013s
+2026-11-24 10:58:51,162 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-24 10:58:51,163 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.001s
+2026-11-24 10:58:57,967 INFO aartikraft Incoming request: GET /dashboard
+2026-11-24 10:58:57,978 INFO aartikraft Completed request: GET /dashboard status=303 elapsed=0.011s
+2026-11-24 10:58:57,987 INFO aartikraft Incoming request: GET /admin/login
+2026-11-24 10:58:57,999 INFO aartikraft Completed request: GET /admin/login status=200 elapsed=0.012s
+2026-11-24 10:58:58,083 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-24 10:58:58,115 INFO aartikraft Completed request: GET /static/admin.css status=304 elapsed=0.032s
+2026-11-24 10:59:04,182 INFO aartikraft Incoming request: POST /admin/login
+2026-11-24 10:59:04,185 INFO aartikraft Completed request: POST /admin/login status=303 elapsed=0.003s
+2026-11-24 10:59:04,193 INFO aartikraft Incoming request: GET /dashboard
+2026-11-24 10:59:04,553 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.360s
+2026-11-24 11:00:51,256 INFO aartikraft Incoming request: GET /openapi.json
+2026-11-24 11:00:51,476 INFO aartikraft Completed request: GET /openapi.json status=200 elapsed=0.220s
+2026-11-24 11:03:00,853 INFO aartikraft Incoming request: GET /dashboard
+2026-11-24 11:03:01,082 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.229s
+2026-11-24 11:03:02,915 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-24 11:03:02,962 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.047s
+2026-11-24 12:37:04,152 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-24 12:37:04,213 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.061s
+2026-11-24 12:37:06,043 INFO aartikraft Incoming request: GET /dashboard/users
+2026-11-24 12:37:06,078 INFO aartikraft Completed request: GET /dashboard/users status=200 elapsed=0.036s
+2026-11-24 12:37:07,856 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:37:07,885 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.029s
+2026-11-24 12:37:12,558 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:37:12,671 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.114s
+2026-11-24 12:37:13,402 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:37:13,450 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.048s
+2026-11-24 12:37:16,044 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:37:16,150 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.107s
+2026-11-24 12:37:16,244 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-24 12:37:16,391 INFO aartikraft Completed request: GET /static/admin.css status=200 elapsed=0.147s
+2026-11-24 12:37:16,783 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-24 12:37:16,792 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.010s
+2026-11-24 12:37:56,231 INFO aartikraft Incoming request: GET /slider_image
+2026-11-24 12:37:56,232 INFO aartikraft Completed request: GET /slider_image status=404 elapsed=0.002s
+2026-11-24 12:38:04,442 INFO aartikraft Incoming request: GET /slider_images
+2026-11-24 12:38:04,487 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.045s
+2026-11-24 12:41:02,651 INFO aartikraft Incoming request: GET /slider_images
+2026-11-24 12:41:02,663 INFO aartikraft Completed request: GET /slider_images status=200 elapsed=0.012s
+2026-11-24 12:41:11,670 INFO aartikraft Incoming request: GET /dashboard
+2026-11-24 12:41:11,713 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.043s
+2026-11-24 12:41:14,490 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:41:14,520 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.030s
+2026-11-24 12:41:20,333 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:41:20,384 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.051s
+2026-11-24 12:41:20,456 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-24 12:41:20,465 INFO aartikraft Completed request: GET /static/admin.css status=200 elapsed=0.009s
+2026-11-24 12:41:20,957 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-24 12:41:20,958 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.001s
+2026-11-24 12:41:52,468 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:41:52,500 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.032s
+2026-11-24 12:41:54,295 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:41:54,330 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.035s
+2026-11-24 12:41:55,482 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:41:55,513 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.031s
+2026-11-24 12:42:13,518 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:42:13,864 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.347s
+2026-11-24 12:42:13,906 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-24 12:42:14,019 INFO aartikraft Completed request: GET /static/admin.css status=200 elapsed=0.113s
+2026-11-24 12:42:14,104 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-24 12:42:14,105 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.001s
+2026-11-24 12:42:15,809 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:42:15,902 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.093s
+2026-11-24 12:42:15,957 INFO aartikraft Incoming request: GET /static/admin.css
+2026-11-24 12:42:15,964 INFO aartikraft Completed request: GET /static/admin.css status=200 elapsed=0.008s
+2026-11-24 12:42:16,119 INFO aartikraft Incoming request: GET /favicon.ico
+2026-11-24 12:42:16,121 INFO aartikraft Completed request: GET /favicon.ico status=404 elapsed=0.001s
+2026-11-24 12:42:17,602 INFO aartikraft Incoming request: GET /dashboard
+2026-11-24 12:42:17,652 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.050s
+2026-11-24 12:44:46,182 INFO aartikraft Incoming request: GET /dashboard
+2026-11-24 12:44:46,440 INFO aartikraft Completed request: GET /dashboard status=200 elapsed=0.258s
+2026-11-24 12:44:57,059 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:44:57,097 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.038s
+2026-11-24 12:45:46,809 INFO aartikraft Incoming request: GET /dashboard/slider
+2026-11-24 12:45:46,845 INFO aartikraft Completed request: GET /dashboard/slider status=200 elapsed=0.037s
+2026-11-24 12:45:46,886 INFO aartikraft Incoming request: GET /media/section/nathan-anderson-XENuKo9Gn8k-unsplash-4e47dfcb9f604db7bb31fea1f762d75d.jpg
+2026-11-24 12:45:46,889 INFO aartikraft Incoming request: GET /media/section/keagan-henman-jr6P9SoJMNs-unsplash-94a334ebfae349eab9f9435fb0d64c5f.jpg
+2026-11-24 12:45:46,895 INFO aartikraft Completed request: GET /media/section/keagan-henman-jr6P9SoJMNs-unsplash-94a334ebfae349eab9f9435fb0d64c5f.jpg status=200 elapsed=0.006s
+2026-11-24 12:45:46,898 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg
+2026-11-24 12:45:46,904 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.17-f51832ec81c04b2392a2d7523e09305c.jpeg status=200 elapsed=0.006s
+2026-11-24 12:45:46,905 INFO aartikraft Completed request: GET /media/section/nathan-anderson-XENuKo9Gn8k-unsplash-4e47dfcb9f604db7bb31fea1f762d75d.jpg status=200 elapsed=0.019s
+2026-11-24 12:45:46,915 INFO aartikraft Incoming request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg
+2026-11-24 12:45:46,925 INFO aartikraft Completed request: GET /media/section/WhatsApp Image 2026-11-01 at 19.08.07-707225156870452d84c5478c36ee7376.jpeg status=200 elapsed=0.011s
