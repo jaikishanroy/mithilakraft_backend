@@ -48,8 +48,6 @@ from schemas import (
     HomeBlockPayload,
     MultiImageSectionCreate,
     MultiImageSectionOut,
-    NewArrivalFeatureCreate,
-    NewArrivalFeatureOut,
     NewSectionHomeBlockCreate,
     NewSectionHomeBlockOut,
     ProductCreate,
@@ -142,36 +140,17 @@ def resolve_public_base_url(request: Request | None = None) -> str:
     return configured_base_url.rstrip("/") if configured_base_url else (str(request.base_url).rstrip("/") if request else "http://localhost:8001")
 
 
-def looks_like_url_or_asset(value: str | None) -> bool:
-    if not value or not isinstance(value, str):
-        return False
-    text = value.strip()
-    if not text:
-        return False
-    if text.startswith(("http://", "https://", "data:", "mailto:")):
-        return True
-    if text.startswith(("/", "./", "../", "media/", "static/", "uploads/", "new-arrival/", "cat/", "section/", "front/")):
-        return True
-    if any(text.lower().endswith(ext) for ext in (".jpg", ".jpeg", ".png", ".webp", ".gif", ".svg", ".bmp", ".pdf")):
-        return True
-    if "/" in text or ("." in text and text.split(".")[-1].isalpha()):
-        return True
-    return False
-
-
 def prepend_base_url(value: str | None, base_url: str | None = None) -> str | None:
     if value is None or value == "":
         return value
     if value.startswith(("http://", "https://", "data:")):
         return value
-    if not looks_like_url_or_asset(value):
-        return value
     normalized_base_url = (base_url or resolve_public_base_url()).rstrip("/")
     if value.startswith("/") and not value.startswith("//"):
         return f"{normalized_base_url}{value}"
-    if value.startswith(("./", "../")):
-        return f"{normalized_base_url}/{value.lstrip('./')}"
-    return f"{normalized_base_url}/{value.lstrip('/')}"
+    if not value.startswith(("http://", "https://")):
+        return f"{normalized_base_url}/{value.lstrip('/')}"
+    return value
 
 
 def add_base_url_prefix(value, base_url):
@@ -180,13 +159,11 @@ def add_base_url_prefix(value, base_url):
     if isinstance(value, list):
         return [add_base_url_prefix(item, base_url) for item in value]
     if isinstance(value, str):
-        if not value or value.startswith(("http://", "https://", "data:")):
+        if value.startswith(("http://", "https://", "data:")):
             return value
-        if looks_like_url_or_asset(value):
-            if value.startswith("/") and not value.startswith("//"):
-                return f"{base_url}{value}"
-            if value.startswith(("./", "../")):
-                return f"{base_url}/{value.lstrip('./')}"
+        if value.startswith("/") and not value.startswith("//"):
+            return f"{base_url}{value}"
+        if value and not value.startswith("//"):
             return f"{base_url}/{value.lstrip('/')}"
     return value
 
@@ -194,6 +171,9 @@ def add_base_url_prefix(value, base_url):
 @app.middleware("http")
 async def add_base_url_to_json_responses(request: Request, call_next):
     response = await call_next(request)
+    # Do not modify the OpenAPI schema.
+    if request.url.path == app.openapi_url:
+        return response
     content_type = response.headers.get("content-type", "")
     if not content_type.startswith("application/json"):
         return response
@@ -230,98 +210,9 @@ async def add_base_url_to_json_responses(request: Request, call_next):
         return response
 
 
-def ensure_product_schema():
-    try:
-        with engine.begin() as connection:
-            inspector = connection.dialect.get_table_names(connection) if hasattr(connection.dialect, "get_table_names") else None
-            if inspector is not None and "products" not in inspector:
-                Base.metadata.create_all(bind=engine)
-                return
-
-            if "sqlite" in str(engine.url).lower():
-                existing = connection.exec_driver_sql("PRAGMA table_info(products)").fetchall()
-                existing_cols = {row[1] for row in existing}
-            else:
-                result = connection.exec_driver_sql(
-                    "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'products'"
-                ).fetchall()
-                existing_cols = {row[0] for row in result}
-
-            required = {
-                "is_new_arrival": "BOOLEAN NOT NULL DEFAULT 0",
-                "featured_image": "VARCHAR(500)",
-                "material": "VARCHAR(255)",
-                "weight": "VARCHAR(255)",
-                "chain_length": "VARCHAR(255)",
-            }
-
-            for column_name, column_sql in required.items():
-                if column_name in existing_cols:
-                    continue
-                try:
-                    if "sqlite" in str(engine.url).lower():
-                        connection.exec_driver_sql(f"ALTER TABLE products ADD COLUMN {column_name} {column_sql};")
-                    else:
-                        connection.exec_driver_sql(f"ALTER TABLE products ADD COLUMN {column_name} {column_sql};")
-                except Exception:
-                    logger.warning("Could not add column %s to products table; continuing.", column_name)
-    except Exception:
-        logger.warning("Could not ensure product schema migration; fallback to create_all.", exc_info=True)
-        Base.metadata.create_all(bind=engine)
-
-
-def ensure_new_arrival_schema():
-    try:
-        with engine.begin() as connection:
-            inspector = connection.dialect.get_table_names(connection) if hasattr(connection.dialect, "get_table_names") else None
-            if inspector is not None and "new_arrival_features" not in inspector:
-                Base.metadata.create_all(bind=engine)
-                return
-
-            if "sqlite" in str(engine.url).lower():
-                existing = connection.exec_driver_sql("PRAGMA table_info(new_arrival_features)").fetchall()
-                existing_cols = {row[1] for row in existing}
-            else:
-                result = connection.exec_driver_sql(
-                    "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME = 'new_arrival_features'"
-                ).fetchall()
-                existing_cols = {row[0] for row in result}
-
-            required = {
-                "price": "VARCHAR(100)",
-                "category": "VARCHAR(255)",
-                "fabric": "VARCHAR(255)",
-                "material": "VARCHAR(255)",
-                "color": "VARCHAR(255)",
-                "work": "VARCHAR(255)",
-                "craft": "VARCHAR(255)",
-                "print_details": "VARCHAR(255)",
-                "occasion": "VARCHAR(255)",
-                "sizes": "TEXT",
-            }
-
-            for column_name, column_sql in required.items():
-                if column_name in existing_cols:
-                    continue
-                try:
-                    connection.exec_driver_sql(f"ALTER TABLE new_arrival_features ADD COLUMN {column_name} {column_sql};")
-                except Exception:
-                    logger.warning("Could not add column %s to new_arrival_features table; continuing.", column_name)
-    except Exception:
-        logger.warning("Could not ensure new_arrival schema migration; fallback to create_all.", exc_info=True)
-        Base.metadata.create_all(bind=engine)
-
-
 Base.metadata.create_all(bind=engine)
-ensure_product_schema()
-ensure_new_arrival_schema()
 
-try:
-    pwd_context = CryptContext(schemes=["bcrypt", "pbkdf2_sha256"], deprecated="auto")
-    pwd_context.hash("compatibility-check")
-except Exception:
-    logger.warning("bcrypt backend is incompatible in this environment; falling back to pbkdf2_sha256 only.", exc_info=True)
-    pwd_context = CryptContext(schemes=["pbkdf2_sha256"], deprecated="auto")
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 
 def get_password_hash(password: str) -> str:
@@ -329,17 +220,7 @@ def get_password_hash(password: str) -> str:
 
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
-    try:
-        return pwd_context.verify(plain_password, hashed_password)
-    except Exception:
-        if hashed_password and hashed_password.startswith("$2"):
-            try:
-                import bcrypt as bcrypt_module
-
-                return bcrypt_module.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
-            except Exception:
-                return False
-        return False
+    return pwd_context.verify(plain_password, hashed_password)
 
 
 def get_selected_dashboard_item(db: Session, resource: str, resource_id: str | None):
@@ -439,12 +320,7 @@ def build_product_response(product: Product, db: Session) -> ProductOut:
         sku=product.sku,
         category_id=product.category_id,
         status=bool(product.status),
-        is_new_arrival=bool(product.is_new_arrival),
         cat_image=prepend_base_url(product.cat_image, base_url),
-        featured_image=prepend_base_url(product.featured_image or product.cat_image, base_url),
-        material=product.material,
-        weight=product.weight,
-        chain_length=product.chain_length,
         instagram_link=product.instagram_link,
         category_name=category.name if category else None,
         images=[
@@ -457,40 +333,6 @@ def build_product_response(product: Product, db: Session) -> ProductOut:
             }
             for img in images
         ],
-    )
-
-
-def parse_sizes(value: str | None) -> list[str]:
-    if not value:
-        return []
-    try:
-        parsed = json.loads(value)
-    except (TypeError, ValueError, json.JSONDecodeError):
-        parsed = [item.strip() for item in str(value).split(",") if item.strip()]
-    if not isinstance(parsed, list):
-        return []
-    return [str(item).strip() for item in parsed if str(item).strip()]
-
-
-def build_new_arrival_feature_response(feature: NewArrivalFeature) -> NewArrivalFeatureOut:
-    base_url = resolve_public_base_url()
-    return NewArrivalFeatureOut(
-        id=feature.id,
-        title=feature.title,
-        image=prepend_base_url(feature.image, base_url),
-        badge=feature.badge,
-        description=feature.description,
-        price=feature.price,
-        category=feature.category,
-        fabric=feature.fabric,
-        material=feature.material,
-        color=feature.color,
-        work=feature.work,
-        craft=feature.craft,
-        print=feature.print_details,
-        occasion=feature.occasion,
-        sizes=parse_sizes(feature.sizes),
-        created_at=feature.created_at,
     )
 
 
@@ -533,13 +375,8 @@ def create_product(
     sku: str = Form(...),
     category_id: int = Form(...),
     status: bool = Form(True),
-    is_new_arrival: bool = Form(False),
-    material: str | None = Form(None),
-    weight: str | None = Form(None),
-    chain_length: str | None = Form(None),
     instagram_link: str | None = Form(None),
     cat_image: UploadFile | None = File(None),
-    featured_image: UploadFile | None = File(None),
     images: List[UploadFile] = File(default=[]),
     db: Session = Depends(get_db),
 ):
@@ -548,7 +385,6 @@ def create_product(
         raise HTTPException(status_code=404, detail="Category not found")
 
     cat_image_path = save_upload(cat_image, "cat") if cat_image and getattr(cat_image, "filename", None) else ""
-    featured_image_path = save_upload(featured_image, "cat") if featured_image and getattr(featured_image, "filename", None) else None
     product = Product(
         name=name,
         price=price,
@@ -556,13 +392,8 @@ def create_product(
         sku=sku,
         category_id=category_id,
         status=status,
-        is_new_arrival=is_new_arrival,
-        material=material,
-        weight=weight,
-        chain_length=chain_length,
         instagram_link=instagram_link,
         cat_image=cat_image_path,
-        featured_image=featured_image_path or cat_image_path or None,
     )
     db.add(product)
     db.commit()
@@ -587,127 +418,6 @@ def create_product(
 def list_products(db: Session = Depends(get_db)):
     products = db.query(Product).all()
     return [build_product_response(product, db) for product in products]
-
-
-@app.get("/new_arrivals", response_model=list[NewArrivalFeatureOut])
-def list_new_arrivals(db: Session = Depends(get_db)):
-    features = db.query(NewArrivalFeature).filter(NewArrivalFeature.status.is_(True)).order_by(NewArrivalFeature.id.desc()).all()
-    return [build_new_arrival_feature_response(feature) for feature in features]
-
-
-@app.get("/products/new-arrivals", response_model=list[ProductOut])
-def list_product_new_arrivals(db: Session = Depends(get_db)):
-    products = db.query(Product).filter(Product.is_new_arrival.is_(True)).order_by(Product.id.desc()).all()
-    return [build_product_response(product, db) for product in products]
-
-
-@app.get("/new_arrivals/featured", response_model=NewArrivalFeatureOut | None)
-def get_featured_new_arrival(db: Session = Depends(get_db)):
-    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.status.is_(True)).order_by(NewArrivalFeature.id.desc()).first()
-    if not feature:
-        return None
-    return build_new_arrival_feature_response(feature)
-
-
-@app.get("/new_arrival_features", response_model=list[NewArrivalFeatureOut])
-def list_new_arrival_features(db: Session = Depends(get_db)):
-    features = db.query(NewArrivalFeature).order_by(NewArrivalFeature.id.desc()).all()
-    return [build_new_arrival_feature_response(feature) for feature in features]
-
-
-@app.get("/new_arrival_feature", response_model=NewArrivalFeatureOut | None)
-def get_new_arrival_feature(db: Session = Depends(get_db)):
-    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.status.is_(True)).order_by(NewArrivalFeature.id.desc()).first()
-    if not feature:
-        return None
-    return build_new_arrival_feature_response(feature)
-
-
-@app.get("/new_arrival_features/{feature_id}", response_model=NewArrivalFeatureOut)
-def get_new_arrival_feature_by_id(feature_id: int, db: Session = Depends(get_db)):
-    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.id == feature_id).first()
-    if not feature:
-        raise HTTPException(status_code=404, detail="New arrival not found")
-    return build_new_arrival_feature_response(feature)
-
-
-@app.post("/new_arrival_features/create", response_model=NewArrivalFeatureOut)
-def create_new_arrival_feature(
-    title: str = Form(...),
-    badge: str | None = Form(None),
-    description: str | None = Form(None),
-    price: str | None = Form(None),
-    category: str | None = Form(None),
-    fabric: str | None = Form(None),
-    material: str | None = Form(None),
-    color: str | None = Form(None),
-    work: str | None = Form(None),
-    craft: str | None = Form(None),
-    print: str | None = Form(None),
-    occasion: str | None = Form(None),
-    sizes: str | None = Form(None),
-    status: bool = Form(True),
-    url: str | None = Form(None),
-    image: UploadFile | None = File(None),
-    db: Session = Depends(get_db),
-):
-    parsed_sizes = parse_sizes(sizes)
-    feature = NewArrivalFeature(
-        title=title,
-        badge=badge or None,
-        description=description,
-        price=price or None,
-        category=category or None,
-        fabric=fabric or None,
-        material=material or None,
-        color=color or None,
-        work=work or None,
-        craft=craft or None,
-        print_details=print or None,
-        occasion=occasion or None,
-        sizes=json.dumps(parsed_sizes),
-        status=status,
-        image=save_upload(image, "new-arrival") if image and getattr(image, "filename", None) else (url or None),
-    )
-    db.add(feature)
-    db.commit()
-    db.refresh(feature)
-    return build_new_arrival_feature_response(feature)
-
-
-@app.put("/new_arrival_features/{feature_id}", response_model=NewArrivalFeatureOut)
-def update_new_arrival_feature(feature_id: int, payload: NewArrivalFeatureCreate, db: Session = Depends(get_db)):
-    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.id == feature_id).first()
-    if not feature:
-        raise HTTPException(status_code=404, detail="New arrival not found")
-    data = payload.model_dump()
-    feature.title = data["title"]
-    feature.image = data.get("image")
-    feature.badge = data.get("badge")
-    feature.description = data.get("description")
-    feature.price = data.get("price")
-    feature.category = data.get("category")
-    feature.fabric = data.get("fabric")
-    feature.material = data.get("material")
-    feature.color = data.get("color")
-    feature.work = data.get("work")
-    feature.craft = data.get("craft")
-    feature.print_details = data.get("print")
-    feature.occasion = data.get("occasion")
-    feature.sizes = json.dumps(data.get("sizes") or [])
-    db.commit()
-    db.refresh(feature)
-    return build_new_arrival_feature_response(feature)
-
-
-@app.delete("/new_arrival_features/{feature_id}")
-def delete_new_arrival_feature(feature_id: int, db: Session = Depends(get_db)):
-    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.id == feature_id).first()
-    if not feature:
-        raise HTTPException(status_code=404, detail="New arrival not found")
-    db.delete(feature)
-    db.commit()
-    return {"detail": "New arrival deleted"}
 
 
 @app.get("/get_product/{product_id}", response_model=ProductOut)
@@ -1231,9 +941,14 @@ async def dashboard_view(request: Request, db: Session = Depends(get_db), resour
     new_arrivals_query = db.query(NewArrivalFeature)
     new_arrivals_search = request.query_params.get("new_arrivals_search", "")
     if new_arrivals_search:
-        new_arrivals_query = new_arrivals_query.filter(NewArrivalFeature.title.ilike(f"%{new_arrivals_search}%"))
+        new_arrivals_query = new_arrivals_query.filter(
+            NewArrivalFeature.title.ilike(f"%{new_arrivals_search}%")
+            | NewArrivalFeature.category.ilike(f"%{new_arrivals_search}%")
+        )
     new_arrivals_page = max(1, int(request.query_params.get("new_arrivals_page", "1") or 1))
-    new_arrivals, new_arrivals_page, new_arrivals_pages, new_arrivals_total = paginate(new_arrivals_query.order_by(NewArrivalFeature.id.desc()), new_arrivals_page, page_size)
+    new_arrivals, new_arrivals_page, new_arrivals_pages, new_arrivals_total = paginate(
+        new_arrivals_query.order_by(NewArrivalFeature.id.desc()), new_arrivals_page, page_size
+    )
 
     background_tasks_query = db.query(BackgroundTask)
     task_search = request.query_params.get("background_tasks_search", "")
@@ -1360,13 +1075,6 @@ async def save_admin_resource(resource: str, request: Request, db: Session = Dep
         elif isinstance(cat_image_field, str):
             saved_cat_image = (cat_image_field or "").strip() or saved_cat_image
 
-        featured_image_field = form.get("featured_image")
-        saved_featured_image = product.featured_image if product and product.featured_image else saved_cat_image
-        if featured_image_field and getattr(featured_image_field, "filename", None):
-            saved_featured_image = save_upload(featured_image_field, "cat")
-        elif isinstance(featured_image_field, str):
-            saved_featured_image = (featured_image_field or "").strip() or saved_featured_image
-
         payload = {
             "name": (form.get("name") or "").strip(),
             "price": float(price_value),
@@ -1374,13 +1082,8 @@ async def save_admin_resource(resource: str, request: Request, db: Session = Dep
             "sku": (form.get("sku") or "").strip(),
             "category_id": int(category_id),
             "status": form.get("status") == "on",
-            "is_new_arrival": form.get("is_new_arrival") == "on",
-            "material": (form.get("material") or "").strip() or None,
-            "weight": (form.get("weight") or "").strip() or None,
-            "chain_length": (form.get("chain_length") or "").strip() or None,
             "instagram_link": form.get("instagram_link") or None,
             "cat_image": saved_cat_image,
-            "featured_image": saved_featured_image,
         }
         if product is None:
             product = Product(**payload)
@@ -1506,34 +1209,6 @@ async def save_admin_resource(resource: str, request: Request, db: Session = Dep
                     item.image = saved_path
         db.commit(); db.refresh(obj)
 
-    elif resource == "new_arrival_feature":
-        obj = db.query(NewArrivalFeature).filter(NewArrivalFeature.id == int(resource_id)).first() if resource_id else None
-        if obj is None:
-            obj = NewArrivalFeature(title=(form.get("title") or "").strip() or "New Arrival")
-            db.add(obj)
-        obj.title = (form.get("title") or "").strip() or obj.title
-        obj.badge = (form.get("badge") or "").strip() or None
-        obj.description = form.get("description") or None
-        obj.price = (form.get("price") or "").strip() or None
-        obj.category = (form.get("category") or "").strip() or None
-        obj.fabric = (form.get("fabric") or "").strip() or None
-        obj.material = (form.get("material") or "").strip() or None
-        obj.color = (form.get("color") or "").strip() or None
-        obj.work = (form.get("work") or "").strip() or None
-        obj.craft = (form.get("craft") or "").strip() or None
-        obj.print_details = (form.get("print") or "").strip() or None
-        obj.occasion = (form.get("occasion") or "").strip() or None
-        obj.sizes = json.dumps(parse_sizes(form.get("sizes")))
-        obj.status = form.get("status") == "on"
-        image = form.get("image")
-        if image and getattr(image, "filename", None):
-            obj.image = save_upload(image, "new-arrival")
-        else:
-            image_url = (form.get("url") or "").strip()
-            if image_url:
-                obj.image = image_url
-        db.commit(); db.refresh(obj)
-
     elif resource == "new_section_homeblock":
         block = int(form.get("block") or 0)
         section = int(form.get("section") or 0)
@@ -1554,6 +1229,44 @@ async def save_admin_resource(resource: str, request: Request, db: Session = Dep
             if value is not None:
                 setattr(obj, url_key, value)
         db.commit(); db.refresh(obj)
+
+    elif resource == "new_arrival_feature":
+        feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.id == int(resource_id)).first() if resource_id else None
+        image_field = form.get("image")
+        image_path = feature.image if feature else None
+        if image_field and getattr(image_field, "filename", None):
+            image_path = save_upload(image_field, "new-arrival")
+        elif form.get("url"):
+            image_path = form.get("url").strip() or image_path
+
+        title = (form.get("title") or "").strip()
+        if not title:
+            raise HTTPException(status_code=400, detail="New arrival title is required")
+        sizes = [size.strip() for size in (form.get("sizes") or "").split(",") if size.strip()]
+        payload = {
+            "title": title,
+            "badge": (form.get("badge") or "").strip() or "New Arrival",
+            "description": (form.get("description") or "").strip() or None,
+            "image": image_path,
+            "price": (form.get("price") or "").strip() or None,
+            "category": (form.get("category") or "").strip() or None,
+            "fabric": (form.get("fabric") or "").strip() or None,
+            "material": (form.get("material") or "").strip() or None,
+            "color": (form.get("color") or "").strip() or None,
+            "work": (form.get("work") or "").strip() or None,
+            "craft": (form.get("craft") or "").strip() or None,
+            "print_details": (form.get("print") or "").strip() or None,
+            "occasion": (form.get("occasion") or "").strip() or None,
+            "sizes": json.dumps(sizes),
+            "status": form.get("status") == "on",
+        }
+        if feature is None:
+            feature = NewArrivalFeature(**payload)
+            db.add(feature)
+        else:
+            for key, value in payload.items():
+                setattr(feature, key, value)
+        db.commit(); db.refresh(feature)
 
     elif resource == "background_task":
         task = db.query(BackgroundTask).filter(BackgroundTask.id == int(resource_id)).first() if resource_id else None
