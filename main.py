@@ -48,6 +48,8 @@ from schemas import (
     HomeBlockPayload,
     MultiImageSectionCreate,
     MultiImageSectionOut,
+    NewArrivalFeatureCreate,
+    NewArrivalFeatureOut,
     NewSectionHomeBlockCreate,
     NewSectionHomeBlockOut,
     ProductCreate,
@@ -153,18 +155,18 @@ def prepend_base_url(value: str | None, base_url: str | None = None) -> str | No
     return value
 
 
-def add_base_url_prefix(value, base_url):
+def add_base_url_prefix(value, base_url, key=None):
+    url_keys = {
+        "image", "featured_image", "cat_image", "thumbnail", "original", "large",
+        "image_primary", "image_hover", "image1", "image2", "image3", "image4",
+        "url1", "url2", "url3", "url4",
+    }
     if isinstance(value, dict):
-        return {key: add_base_url_prefix(item, base_url) for key, item in value.items()}
+        return {child_key: add_base_url_prefix(child_value, base_url, child_key) for child_key, child_value in value.items()}
     if isinstance(value, list):
-        return [add_base_url_prefix(item, base_url) for item in value]
-    if isinstance(value, str):
-        if value.startswith(("http://", "https://", "data:")):
-            return value
-        if value.startswith("/") and not value.startswith("//"):
-            return f"{base_url}{value}"
-        if value and not value.startswith("//"):
-            return f"{base_url}/{value.lstrip('/')}"
+        return [add_base_url_prefix(item, base_url, key) for item in value]
+    if isinstance(value, str) and key in url_keys:
+        return prepend_base_url(value, base_url)
     return value
 
 
@@ -211,6 +213,26 @@ async def add_base_url_to_json_responses(request: Request, call_next):
 
 
 Base.metadata.create_all(bind=engine)
+
+with engine.begin() as connection:
+    try:
+        inspector = connection.dialect.get_columns(connection, "new_arrival_features")
+        existing_cols = {row["name"] for row in inspector}
+        required = {
+            "category": "VARCHAR(255)",
+            "fabric": "VARCHAR(255)",
+            "color": "VARCHAR(255)",
+            "work": "VARCHAR(255)",
+            "craft": "VARCHAR(255)",
+            "print_details": "VARCHAR(255)",
+            "occasion": "VARCHAR(255)",
+            "sizes": "TEXT",
+        }
+        for column_name, column_sql in required.items():
+            if column_name not in existing_cols:
+                connection.exec_driver_sql(f"ALTER TABLE new_arrival_features ADD COLUMN {column_name} {column_sql}")
+    except Exception:
+        logger.warning("Could not ensure new-arrival schema columns", exc_info=True)
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -336,6 +358,40 @@ def build_product_response(product: Product, db: Session) -> ProductOut:
     )
 
 
+def parse_new_arrival_sizes(value):
+    if not value:
+        return []
+    try:
+        parsed = json.loads(value)
+    except (TypeError, ValueError, json.JSONDecodeError):
+        parsed = [item.strip() for item in str(value).split(",") if item.strip()]
+    if not isinstance(parsed, list):
+        return []
+    return [str(item).strip() for item in parsed if str(item).strip()]
+
+
+def build_new_arrival_feature_response(feature: NewArrivalFeature) -> NewArrivalFeatureOut:
+    base_url = resolve_public_base_url()
+    return NewArrivalFeatureOut(
+        id=feature.id,
+        title=feature.title,
+        image=prepend_base_url(feature.image, base_url),
+        badge=feature.badge,
+        description=feature.description,
+        price=feature.price,
+        category=feature.category,
+        fabric=feature.fabric,
+        material=feature.material,
+        color=feature.color,
+        work=feature.work,
+        craft=feature.craft,
+        print=feature.print_details,
+        occasion=feature.occasion,
+        sizes=parse_new_arrival_sizes(feature.sizes),
+        created_at=feature.created_at,
+    )
+
+
 @app.post("/register", response_model=TokenResponse)
 def register(payload: UserCreate, db: Session = Depends(get_db)):
     existing = db.query(User).filter(User.email == payload.email.lower()).first()
@@ -418,6 +474,101 @@ def create_product(
 def list_products(db: Session = Depends(get_db)):
     products = db.query(Product).all()
     return [build_product_response(product, db) for product in products]
+
+
+@app.get("/new_arrivals", response_model=list[NewArrivalFeatureOut])
+def list_new_arrivals(db: Session = Depends(get_db)):
+    features = db.query(NewArrivalFeature).filter(NewArrivalFeature.status.is_(True)).order_by(NewArrivalFeature.id.desc()).all()
+    return [build_new_arrival_feature_response(feature) for feature in features]
+
+
+@app.get("/new_arrivals/featured", response_model=NewArrivalFeatureOut | None)
+def get_featured_new_arrival(db: Session = Depends(get_db)):
+    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.status.is_(True)).order_by(NewArrivalFeature.id.desc()).first()
+    return build_new_arrival_feature_response(feature) if feature else None
+
+
+@app.get("/new_arrival_features", response_model=list[NewArrivalFeatureOut])
+def list_new_arrival_features(db: Session = Depends(get_db)):
+    features = db.query(NewArrivalFeature).order_by(NewArrivalFeature.id.desc()).all()
+    return [build_new_arrival_feature_response(feature) for feature in features]
+
+
+@app.get("/new_arrival_features/{feature_id}", response_model=NewArrivalFeatureOut)
+def get_new_arrival_feature(feature_id: int, db: Session = Depends(get_db)):
+    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.id == feature_id).first()
+    if not feature:
+        raise HTTPException(status_code=404, detail="New arrival not found")
+    return build_new_arrival_feature_response(feature)
+
+
+@app.post("/new_arrival_features/create", response_model=NewArrivalFeatureOut)
+def create_new_arrival_feature(
+    title: str = Form(...),
+    badge: str | None = Form(None),
+    description: str | None = Form(None),
+    price: str | None = Form(None),
+    category: str | None = Form(None),
+    fabric: str | None = Form(None),
+    material: str | None = Form(None),
+    color: str | None = Form(None),
+    work: str | None = Form(None),
+    craft: str | None = Form(None),
+    print: str | None = Form(None),
+    occasion: str | None = Form(None),
+    sizes: str | None = Form(None),
+    status: bool = Form(True),
+    url: str | None = Form(None),
+    image: UploadFile | None = File(None),
+    db: Session = Depends(get_db),
+):
+    parsed_sizes = parse_new_arrival_sizes(sizes)
+    feature = NewArrivalFeature(
+        title=title,
+        badge=badge or None,
+        description=description,
+        image=save_upload(image, "new-arrival") if image and getattr(image, "filename", None) else (url or None),
+        price=price or None,
+        category=category or None,
+        fabric=fabric or None,
+        material=material or None,
+        color=color or None,
+        work=work or None,
+        craft=craft or None,
+        print_details=print or None,
+        occasion=occasion or None,
+        sizes=json.dumps(parsed_sizes),
+        status=status,
+    )
+    db.add(feature)
+    db.commit()
+    db.refresh(feature)
+    return build_new_arrival_feature_response(feature)
+
+
+@app.put("/new_arrival_features/{feature_id}", response_model=NewArrivalFeatureOut)
+def update_new_arrival_feature(feature_id: int, payload: NewArrivalFeatureCreate, db: Session = Depends(get_db)):
+    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.id == feature_id).first()
+    if not feature:
+        raise HTTPException(status_code=404, detail="New arrival not found")
+    data = payload.model_dump()
+    for key in ("title", "badge", "description", "image", "price", "category", "fabric", "material", "color", "work", "craft", "occasion"):
+        setattr(feature, key, data.get(key))
+    feature.print_details = data.get("print")
+    feature.sizes = json.dumps(data.get("sizes") or [])
+    db.commit()
+    db.refresh(feature)
+    return build_new_arrival_feature_response(feature)
+
+
+@app.delete("/new_arrival_features/{feature_id}")
+def delete_new_arrival_feature(feature_id: int, db: Session = Depends(get_db)):
+    feature = db.query(NewArrivalFeature).filter(NewArrivalFeature.id == feature_id).first()
+    if not feature:
+        raise HTTPException(status_code=404, detail="New arrival not found")
+    db.delete(feature)
+    db.commit()
+    return {"detail": "New arrival deleted"}
 
 
 @app.get("/get_product/{product_id}", response_model=ProductOut)
@@ -554,11 +705,10 @@ def list_slider_images(block: int = 1, db: Session = Depends(get_db)):
             slider_images.append(
                 SliderImageOut(
                     id=item.id,
-                    title=item.title or section.title or f"Slider {section.section}",
+                    title=(section.title.strip() if section.title and section.title.strip().lower() != "none" else f"Slider {section.section}"),
                     image=image_url,
-                    hover_image=None,
-                    url=prepend_base_url(item.url, base_url) if item.url else None,
-                    section=section.section,
+                    description=item.title,
+                    url=item.url or None,
                     status=bool(section.status),
                 )
             )
@@ -581,9 +731,8 @@ def list_slider_images(block: int = 1, db: Session = Depends(get_db)):
                 id=section.id,
                 title=section.name or f"Slider {section.section}",
                 image=image_url,
-                hover_image=prepend_base_url(section.image_hover, base_url),
+                description=None,
                 url=None,
-                section=section.section,
                 status=bool(section.status),
             )
         )

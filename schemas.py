@@ -156,9 +156,8 @@ class SliderImageOut(BaseModel):
     id: int
     title: str
     image: Optional[str] = None
-    hover_image: Optional[str] = None
+    description: Optional[str] = None
     url: Optional[str] = None
-    section: int
     status: bool
 
     model_config = ConfigDict(from_attributes=True)
